@@ -63,13 +63,13 @@ public class Projectile : GenericProjectile
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Monster enemy = collision.gameObject.GetComponent<Monster>();
-        if (enemy != null)
+        MonsterController monster = collision.gameObject.GetComponent<MonsterController>();
+        if (monster != null)
         {
             gameObject.SetActive(false);
-            Destroy(collision.gameObject);
-            MovementController.instance.CanMove();
-            MonsterSpawnController.instance.CanSpawn();
+            monster.OnDamge(5);
+           // Destroy(collision.gameObject);
+
 
         }
 

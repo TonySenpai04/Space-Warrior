@@ -7,12 +7,14 @@ public class MonsterController : MonoBehaviour
 {
     [SerializeField]private Monster monsterData;
     [SerializeField]private Transform player;
-    [SerializeField] private float speed;
-
+    [SerializeField]private float speed;
+    [SerializeField]private float health=100;
+    public static MonsterController instance;
 
     private void Start()
     {
         monsterData = GetComponent<Monster>();
+        instance = this;
         player = FindAnyObjectByType<PlayerController>().transform;
 
     }
@@ -23,5 +25,14 @@ public class MonsterController : MonoBehaviour
             transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
     }
-
+    public void OnDamge(float dam)
+    {
+        health-= dam;
+        if (health <= 0)
+        {
+            MovementController.instance.CanMove();
+            MonsterSpawnController.instance.CanSpawn();
+            Destroy(gameObject);
+        }
+    }
 }
