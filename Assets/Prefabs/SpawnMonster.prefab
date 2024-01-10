@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5956800224977788752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1262396901822591847}
+  - component: {fileID: 3958541141595039651}
+  m_Layer: 0
+  m_Name: SpawnMonster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1262396901822591847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956800224977788752}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3958541141595039651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956800224977788752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f44368677ecc1fc43a8b5e89cf9b5f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  distanceSpawn: 2
+  enemyDatas:
+  - {fileID: 5938841270373569292, guid: 8ec08b8bbd59f994db0d06285306cc0a, type: 3}
+  - {fileID: 2967184882445698374, guid: 03af634ec171b63478050f2204966f9a, type: 3}
+  - {fileID: 4172475631520907990, guid: 4fc8be699cdd5cf49a63798e544c4d18, type: 3}
+  - {fileID: 1691909247619816378, guid: fd7aeb544287d384eb9e6956d32a420d, type: 3}
+  - {fileID: 5881746346971842134, guid: 8c1541821e5915a49a72d5f02deab7af, type: 3}
+  - {fileID: 2930889248331213892, guid: 7e457c1c6a730bd439f7e0b4c0b33628, type: 3}
+  enemyPrefab: {fileID: 1077161312021733051, guid: 03062ec78407a894aae7b50f133f7647, type: 3}
+  currentTransform: {x: 0, y: 0, z: 0}
+  canSpawn: 1
