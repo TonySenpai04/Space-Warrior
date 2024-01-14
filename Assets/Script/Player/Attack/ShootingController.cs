@@ -2,18 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random;
 public class ShootingController : ShootingControllerBase
 {
  
-    public bool RandomWeaponAtStart;
-
-    public int EquippedSlot;
-    public int EquippedWeapon;
-    public List<WeaponSlot> Slots;
-
+    [SerializeField]private bool RandomWeaponAtStart;
+    [SerializeField] private int EquippedSlot;
+    [SerializeField] private int EquippedWeapon;
+    [SerializeField] private List<WeaponSlot> Slots;
+    [SerializeField] private bool isShooting;
+    public static ShootingController instance;
     //
-    private CharacterAvatar _avatar;
+    [SerializeField] private CharacterAvatar avatar;
+    [SerializeField] private float fireRate;
+    [SerializeField] private float nextFireTime;
 
     //
     [Serializable]
@@ -47,12 +50,10 @@ public class ShootingController : ShootingControllerBase
         Melee
     }
 
-
-
     private void Awake()
     {
-        _avatar = GetComponent<CharacterAvatar>();
-
+        avatar = GetComponent<CharacterAvatar>();
+        instance = this;
         if (RandomWeaponAtStart)
         {
             EquippedSlot = UnityEngine.Random.Range(0, 5);
@@ -61,25 +62,33 @@ public class ShootingController : ShootingControllerBase
 
         ActivateWeapon(EquippedSlot, EquippedWeapon);
     }
+    public void IsShooting()
+    {
+        isShooting=true;
+    }
+    public void StopShooting()
+    {
+        isShooting=false;
+    }
+    private void Start() {
+       
+    }
 
-    // Use this for initialization
-    private void Start() { }
 
-
-    // Update is called once per frame
     private void Update()
     {
         // Fire
-        if (Input.GetMouseButtonDown(0))
+        if (isShooting)
         {
-            Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
+            nextFireTime += Time.deltaTime;
+            if (nextFireTime >= fireRate)
+            {
+
+                Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
+                nextFireTime = 0;
+            }
         }
 
-        // Stop
-        if (Input.GetMouseButtonUp(0))
-        {
-            Slots[EquippedSlot].Weapons[EquippedWeapon].Stop();
-        }
 
         // Switch Weapon Slot
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -107,9 +116,6 @@ public class ShootingController : ShootingControllerBase
         EquippedWeapon = Slots[EquippedSlot].WeaponSlotCounter;
         ActivateWeapon(EquippedSlot, EquippedWeapon);
     }
-
-    //////////////////////////////////////////////////////////////
-    // Pass animation data to an active weapon controller
     public void SetBool(string var, bool value)
     {
         Slots[EquippedSlot].Weapons[EquippedWeapon].Animator.SetBool(var, value);
@@ -119,9 +125,7 @@ public class ShootingController : ShootingControllerBase
     {
         Slots[EquippedSlot].Weapons[EquippedWeapon].Animator.SetFloat(var, value);
     }
-    //////////////////////////////////////////////////////////////
-
-    // Weapon activation
+   
     private void ActivateWeapon(int slot, int weapon)
     {
         EquippedSlot = slot;
@@ -130,49 +134,49 @@ public class ShootingController : ShootingControllerBase
         {
             for (var y = 0; y < Slots[i].Weapons.Count; y++)
             {
-
-                Debug.Log(Slots[i].Weapons[y].gameObject.name);
                 Slots[i].Weapons[y].gameObject.SetActive(slot == i && weapon == y);
+                
+
             }
         }
-        //   Slots[slot].Weapons[weapon].OnAnimationReadyEvent();
-
-        UpdateCharacterHands(_avatar.Characters[_avatar.CharacterId]);
+        fireRate = Slots[slot].Weapons[weapon].fireRate;
+        Slots[slot].Weapons[weapon].Projectile.GetComponent<GenericProjectile>().damage = Slots[slot].Weapons[weapon].damage;
+        UpdateCharacterHands(avatar.Characters[avatar.CharacterId]);
     }
 
 
 
     // Weapon drop on character killed
-    public void Drop()
-    {
-        var powerUpPrefab = Slots[EquippedSlot].Weapons[EquippedWeapon].PowerUp;
-        if (powerUpPrefab != null)
-        {
-            // Random Rotation
-            var rot = Slots[EquippedSlot].Weapons[EquippedWeapon].FXSocket.rotation *
-                      Quaternion.Euler(0, 0, Random.Range(-5, 5));
+    //public void Drop()
+    //{
+    //    var powerUpPrefab = Slots[EquippedSlot].Weapons[EquippedWeapon].PowerUp;
+    //    if (powerUpPrefab != null)
+    //    {
+    //        // Random Rotation
+    //        var rot = Slots[EquippedSlot].Weapons[EquippedWeapon].FXSocket.rotation *
+    //                  Quaternion.Euler(0, 0, Random.Range(-5, 5));
 
-            // Spawn
-            var powerUp = F3DSpawner.Spawn(powerUpPrefab, Slots[EquippedSlot].Weapons[EquippedWeapon].FXSocket.position,
-                rot, null);
+    //        // Spawn
+    //        var powerUp = F3DSpawner.Spawn(powerUpPrefab, Slots[EquippedSlot].Weapons[EquippedWeapon].FXSocket.position,
+    //            rot, null);
 
-            // Flip
-            var powerUpFlip = Mathf.Sign(Slots[EquippedSlot].Weapons[EquippedWeapon].FXSocket.lossyScale.x);
-            var curScale = powerUp.localScale;
-            curScale.x *= powerUpFlip;
-            powerUp.localScale = curScale;
+    //        // Flip
+    //        var powerUpFlip = Mathf.Sign(Slots[EquippedSlot].Weapons[EquippedWeapon].FXSocket.lossyScale.x);
+    //        var curScale = powerUp.localScale;
+    //        curScale.x *= powerUpFlip;
+    //        powerUp.localScale = curScale;
 
-            // Add random force / torque
-            var powerUpRb = powerUp.GetComponent<Rigidbody2D>();
-            powerUpRb.AddForce((Vector2)Slots[EquippedSlot].Weapons[EquippedWeapon].FXSocket.up * Random.Range(8, 12),
-                ForceMode2D.Impulse);
-            powerUpRb.AddTorque(Random.Range(-250, 250), ForceMode2D.Force);
-        }
+    //        // Add random force / torque
+    //        var powerUpRb = powerUp.GetComponent<Rigidbody2D>();
+    //        powerUpRb.AddForce((Vector2)Slots[EquippedSlot].Weapons[EquippedWeapon].FXSocket.up * Random.Range(8, 12),
+    //            ForceMode2D.Impulse);
+    //        powerUpRb.AddTorque(Random.Range(-250, 250), ForceMode2D.Force);
+    //    }
 
         // Deactivate components
-        Slots[EquippedSlot].Weapons[EquippedWeapon].gameObject.SetActive(false);
-        this.enabled = false;
-    }
+    //    Slots[EquippedSlot].Weapons[EquippedWeapon].gameObject.SetActive(false);
+    //    this.enabled = false;
+    //}
 
     public GenericWeapon GetCurrentWeapon()
     {
@@ -204,6 +208,15 @@ public class ShootingController : ShootingControllerBase
             default:
                 return armature.Hand1;
         }
+    }
+    public void LookAtMonster(Transform pos)
+    {
+        EquippedSlot = 0;
+        EquippedWeapon = Slots[EquippedSlot].WeaponSlotCounter;
+        Vector3 targetDirection = pos.position - Slots[0].Weapons[EquippedWeapon].transform.position;
+        float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+        Slots[0].Weapons[EquippedWeapon].transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
     }
 }
  

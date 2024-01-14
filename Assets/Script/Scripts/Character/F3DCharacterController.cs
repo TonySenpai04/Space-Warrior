@@ -272,7 +272,7 @@ public class F3DCharacterController : MonoBehaviour
 
         // Weapon socket to FX Socket offset
         var currentWeapon = _weaponController.GetCurrentWeapon();
-        if (currentWeapon.Type == ShootingController.WeaponType.Melee)
+        if (currentWeapon.weaponType == ShootingController.WeaponType.Melee)
         {
             WeaponSocket.rotation = Quaternion.identity;
         }

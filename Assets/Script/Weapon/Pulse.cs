@@ -30,6 +30,7 @@ public class Pulse : GenericProjectile
                 
         _lineRenderer.startColor = Color.white;
         _lineRenderer.endColor = Color.white;
+    
     }
 
     private void Start()
@@ -82,7 +83,7 @@ public class Pulse : GenericProjectile
             // Damage and Hit Effects
             if (Hit && !_alreadyHit)
             {
-                DealDamage(5, WeaponType, lineHit.transform, Hit, HitLifeTime, lineHit.point, lineHit.normal);
+               
                 _alreadyHit = true;
 
                 // Shift the AudioSource attached to this pulse to the lineEnd position

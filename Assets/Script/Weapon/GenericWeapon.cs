@@ -18,15 +18,12 @@ public class GenericWeapon : MonoBehaviour
 
     // Weapon 
     [Header("Weapon")]
-    public ShootingController.WeaponType Type;
-    // Checks
-    //public float ProjectileCloseRange;
+    public ShootingController.WeaponType weaponType;
     public float force;
 
     // Sockets
     [Header("Sockets")]
     public Transform FXSocket;
-
     public Transform ShellSocket;
 
     // Prefabs
@@ -38,31 +35,13 @@ public class GenericWeapon : MonoBehaviour
     public Transform Smoke;
     public Transform BarrelSpark;
 
+    [Header("Weapon Settings")]
+    public float damage;
+    public float fireRate;
 
 
+    [SerializeField]protected Collider2D[] colliders;
 
-    public enum Mode
-    {
-        Single,
-        Auto,
-        Loop
-    }
-
-    public enum LoopState
-    {
-        None,
-        Auto,
-        Start,
-        Loop,
-        End,
-        EarlyStop
-    }
-
-    // Colliders cache
-    protected Collider2D[] colliders;
-
-
-    // Attached weapon effects
     private List<Transform> barrelEffects = new List<Transform>();
     private List<Transform> smokeEffects = new List<Transform>();
 
@@ -70,7 +49,7 @@ public class GenericWeapon : MonoBehaviour
     {
         Animator = GetComponent<Animator>();
         colliders = transform.root.GetComponentsInChildren<Collider2D>();
-      
+
     }
 
     public void OnEnable()
@@ -124,11 +103,11 @@ public class GenericWeapon : MonoBehaviour
     // WEAPON
     protected virtual void OnFire()
     {
-        if (Type == ShootingController.WeaponType.Knife) return;
+        if (weaponType == ShootingController.WeaponType.Knife) return;
 
         SpawnShell();
         SpawnMuzzleFlash();
-        if (this.Type == ShootingController.WeaponType.Beam)
+        if (this.weaponType == ShootingController.WeaponType.Beam)
             SpawnBeam(Projectile);
         else
             SpawnProjectile(Projectile);
@@ -166,7 +145,7 @@ public class GenericWeapon : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab.gameObject, FXSocket.transform.position, Quaternion.identity);
         // Set Weapon Type
         var projectileObject = projectile.GetComponent<GenericProjectile>();
-        projectileObject.WeaponType = Type;
+        projectileObject.WeaponType = weaponType;
         var projRb = projectile.GetComponent<Rigidbody2D>();
         // Launch  
         projRb.AddForce(projectile.transform.right * force, ForceMode2D.Force);
@@ -180,7 +159,7 @@ public class GenericWeapon : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab.gameObject, FXSocket.transform.position, Quaternion.identity);
         // Set Weapon Type
         var projectileObject = projectile.GetComponent<Pulse>();
-        projectileObject.WeaponType = Type;
+        projectileObject.WeaponType = weaponType;
       
     }
 

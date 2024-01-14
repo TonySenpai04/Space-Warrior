@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Audio: {fileID: 82000013572165398}
-  WeaponType: 0
+  WeaponType: 2
   Hit: {fileID: 4000011555818812, guid: efc00ae131f8d86498732bf05e786740, type: 3}
   PostHitHide: 0
   DelayDespawn: 0

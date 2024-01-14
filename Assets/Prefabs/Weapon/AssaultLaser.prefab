@@ -303,7 +303,7 @@ MonoBehaviour:
   RightHand: {fileID: 8192920553513432599}
   LeftHandId: 0
   RightHandId: 2
-  Type: 5
+  weaponType: 1
   force: 5000
   FXSocket: {fileID: 8290534489321064460}
   ShellSocket: {fileID: 7575750975108183144}
@@ -312,6 +312,8 @@ MonoBehaviour:
   Shell: {fileID: 0}
   Smoke: {fileID: 0}
   BarrelSpark: {fileID: 4000010522800416, guid: 6367420a16cafbe43b12bb7c02846d4c, type: 3}
+  damage: 0
+  fireRate: 0
 --- !u!114 &6077595563762086120
 MonoBehaviour:
   m_ObjectHideFlags: 0

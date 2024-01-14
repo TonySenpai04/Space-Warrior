@@ -3,15 +3,11 @@ using System.Collections;
 
 public class Assault : GenericWeapon
 {
-    private void DespawnFXSocketObjects()
+    public override void Awake()
     {
-        var fxSocketObjects = FXSocket.GetComponentsInChildren<Animator>();
-        if (fxSocketObjects == null) return;
-        for (var i = 0; i < fxSocketObjects.Length; i++)
-            if (fxSocketObjects[i] != null)
-            {
-                F3DSpawner.Despawn(fxSocketObjects[i].gameObject);
-                Debug.Log("Despawn " + fxSocketObjects[i].gameObject.name);
-            }
+        base.Awake();
+        fireRate = 0.12f;
+        damage = 3f;
+        
     }
 }

@@ -28,6 +28,7 @@ public class MonsterSpawnController :MonoBehaviour,IMonsterSpawn
          
             Instantiate(enemyPrefab, new Vector3(player.position.x + 15, player.position.y , player.position.z), Quaternion.identity);
             MovementController.instance.StopMove();
+           
             currentTransform = player.position;
             canSpawn = !canSpawn;
         }

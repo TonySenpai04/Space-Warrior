@@ -4,28 +4,21 @@ using UnityEngine;
 
 public class AnimationController : AnimationControllerBase
 {
-   
+   public static AnimationController instance;
     protected override void  Start()
     {
         base.Start();
+        instance = this;
+        Move();
     }
 
-    void Update()
+    
+    public void Idle()
     {
-        if (Input.GetKey(KeyCode.A))
-        {
-            Shooting();
-        }else if (Input.GetKey(KeyCode.S))
-        {
-            Walk();
-        }
+        animator.SetBool("move", false);
     }
-    public void Shooting()
+    public void Move()
     {
-        animator.SetBool("isShoot", true);
-    }
-    public void Walk()
-    {
-        animator.SetBool("isShoot", false);
+        animator.SetBool("move", true);
     }
 }

@@ -55,24 +55,6 @@ public class Projectile : GenericProjectile
     // Update is called once per frame
     private void FixedUpdate()
     {
-        // Skip FixedUpdate ticks before showing the sprite to avoid passing through objects
-//        if (_counter > SkipFixedFrames && !_sprite.enabled)
-//            _sprite.enabled = true;
-//        else
-//            _counter++;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        MonsterController monster = collision.gameObject.GetComponent<MonsterController>();
-        if (monster != null)
-        {
-            gameObject.SetActive(false);
-            monster.OnDamge(5);
-           // Destroy(collision.gameObject);
-
-
-        }
-
-
-    }
+   
 }

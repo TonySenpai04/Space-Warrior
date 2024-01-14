@@ -12,7 +12,10 @@ public class Melee : GenericWeapon
     public override void Awake()
     {
         base.Awake();
-       
+        fireRate = 0.33f;
+        damage = 7f;
+
+
     }
 
     private int _stateSlashId = UnityEngine.Animator.StringToHash("Slash");

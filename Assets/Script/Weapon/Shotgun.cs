@@ -7,11 +7,12 @@ public class Shotgun : GenericWeapon
     public int ProjectilesPerRound;
     public int SparksPerRound;
 
-    //protected override void OnAnimationFireEvent()
-    //{
-    //    if (!AnimationFireEvent) return;
-    //    OnFire();
-    //}
+    public override void Awake()
+    {
+        base.Awake();
+        fireRate = 1f;
+        damage = 12f;
+    }
 
 
     protected override void OnFire()
