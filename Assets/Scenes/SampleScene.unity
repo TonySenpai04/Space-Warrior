@@ -695,8 +695,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1935685932}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
@@ -752,6 +751,7 @@ Transform:
   - {fileID: 1476021046}
   - {fileID: 1376528569}
   - {fileID: 356834654}
+  - {fileID: 1935685932}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &618321023 stripped
@@ -780,6 +780,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6653752287273545188, guid: 3138c5e914195c1488bab19a8ab33b62, type: 3}
   m_PrefabInstance: {fileID: 1904970086652704271}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &766194340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 766194341}
+  m_Layer: 0
+  m_Name: poolProjtectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &766194341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766194340}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4917314582061901178}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &840974558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1683614864699600457, guid: bc7f76ebdd8220446b8ed0ab36d6151f, type: 3}
@@ -1349,6 +1380,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 565396840}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1575151690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1575151691}
+  m_Layer: 0
+  m_Name: poolMonstersPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1575151691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575151690}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1262396902682831800}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1770561704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2407687101811224894, guid: d9c940f5e08c9914fb4916d7415072e3, type: 3}
@@ -1592,11 +1654,11 @@ Transform:
   m_GameObject: {fileID: 1935685930}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8, y: 1.7712088, z: 10}
+  m_LocalPosition: {x: -0.8, y: 4.771209, z: 0}
   m_LocalScale: {x: 5, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 519420032}
+  m_Father: {fileID: 565396840}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1952049562
 GameObject:
@@ -2374,7 +2436,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1575151691}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1300707364712139716
@@ -16484,16 +16547,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 4917314582061901178}
   distanceSpawn: 2
-  enemyDatas:
-  - {fileID: 5938841270373569292, guid: 8ec08b8bbd59f994db0d06285306cc0a, type: 3}
-  - {fileID: 2967184882445698374, guid: 03af634ec171b63478050f2204966f9a, type: 3}
-  - {fileID: 4172475631520907990, guid: 4fc8be699cdd5cf49a63798e544c4d18, type: 3}
-  - {fileID: 1691909247619816378, guid: fd7aeb544287d384eb9e6956d32a420d, type: 3}
-  - {fileID: 5881746346971842134, guid: 8c1541821e5915a49a72d5f02deab7af, type: 3}
-  - {fileID: 2930889248331213892, guid: 7e457c1c6a730bd439f7e0b4c0b33628, type: 3}
-  enemyPrefab: {fileID: 1077161312021733051, guid: 03062ec78407a894aae7b50f133f7647, type: 3}
+  monstersPrefab:
+  - {fileID: 1075856812865088535, guid: 94390323767d78f45b65dd964cd715b7, type: 3}
+  - {fileID: 1329546521094671733, guid: 8ec08b8bbd59f994db0d06285306cc0a, type: 3}
+  - {fileID: 8399041451769411731, guid: fd7aeb544287d384eb9e6956d32a420d, type: 3}
+  - {fileID: 3857891277587266473, guid: a4ae5b56bd1da8c42ab8fc243ce06a2c, type: 3}
+  - {fileID: 4815105039288033511, guid: de851701628c7704a8165c209f879e5f, type: 3}
   currentTransform: {x: 0, y: 0, z: 0}
   canSpawn: 1
+  poolMonsterPos: {fileID: 1575151691}
+  poolMonsters: []
 --- !u!4 &3964990100643929477
 Transform:
   m_ObjectHideFlags: 0
@@ -23111,6 +23174,7 @@ MonoBehaviour:
   avatar: {fileID: 0}
   fireRate: 1
   nextFireTime: 0
+  poolProjectile: {fileID: 766194341}
 --- !u!4 &4917314582061901178
 Transform:
   m_ObjectHideFlags: 0
@@ -23131,6 +23195,7 @@ Transform:
   - {fileID: 900666530545088533}
   - {fileID: 8190519299008410594}
   - {fileID: 5497620109994768268}
+  - {fileID: 766194341}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4966596927339907972

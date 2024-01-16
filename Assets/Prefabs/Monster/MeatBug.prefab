@@ -324,8 +324,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5355740628986654657}
   - component: {fileID: 3736206135593688180}
-  - component: {fileID: 1080275237762961635}
-  - component: {fileID: 1223108072871163352}
   - component: {fileID: 4340748584171300026}
   - component: {fileID: 1170501110189230180}
   - component: {fileID: 3860438297180917905}
@@ -372,47 +370,9 @@ MonoBehaviour:
   - {fileID: 5617316583316421107, guid: 4b6418e9d3cbe1741ae3072e3245e2b9, type: 3}
   - {fileID: -1381065623766834176, guid: 4b6418e9d3cbe1741ae3072e3245e2b9, type: 3}
   Animator: {fileID: 1170501110189230180}
-  Variations: 0
---- !u!114 &1080275237762961635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5881746346971842134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c8ad34430ec104ea8c1856fce3164b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Body: {fileID: 2826283069663966693}
-  Weapon: {fileID: 420215869727514393}
-  Shield: {fileID: 0}
-  Status: {fileID: 3167288216131684969}
---- !u!114 &1223108072871163352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5881746346971842134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80e7850929f3a324984a5875e3615cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortingGroup: {fileID: 4340748584171300026}
-  Sprites:
-  - {fileID: 4919640602697717937}
-  - {fileID: 6194080209789730094}
-  - {fileID: 9127253469791092792}
-  - {fileID: 781272242373223297}
-  - {fileID: 4283657740255804204}
-  - {fileID: 4437990550138748227}
-  - {fileID: 204027713501330444}
-  - {fileID: 4380211780930871078}
-  - {fileID: 4546900309412539387}
-  - {fileID: 1109294457185721791}
+  health: 100
+  currentHealth: 0
+  body: {fileID: 1464967099995524371}
 --- !u!210 &4340748584171300026
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -526,8 +486,7 @@ MonoBehaviour:
   monsterData: {fileID: 0}
   player: {fileID: 0}
   speed: 2
-  health: 100
-  floatingTextPfb: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+  floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
 --- !u!1 &5955219816703484168
 GameObject:
   m_ObjectHideFlags: 0

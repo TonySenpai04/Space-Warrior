@@ -249,8 +249,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5100945610787960739}
   - component: {fileID: 1075856812865088535}
-  - component: {fileID: 3405990348914888649}
-  - component: {fileID: 5213745130133835226}
   - component: {fileID: 8381900380387684856}
   - component: {fileID: 356230205843106341}
   - component: {fileID: 8849795324583940262}
@@ -298,45 +296,9 @@ MonoBehaviour:
   - {fileID: -7252215782646672311, guid: cfebf538519b6e340a85bf83f02063d0, type: 3}
   - {fileID: -1381065623766834176, guid: cfebf538519b6e340a85bf83f02063d0, type: 3}
   Animator: {fileID: 356230205843106341}
-  Variations: 0
---- !u!114 &3405990348914888649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3570869814363673306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c8ad34430ec104ea8c1856fce3164b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Body: {fileID: 3544368141458942981}
-  Weapon: {fileID: 6397277560735597077}
-  Shield: {fileID: 0}
-  Status: {fileID: 4160368168063470662}
---- !u!114 &5213745130133835226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3570869814363673306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80e7850929f3a324984a5875e3615cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortingGroup: {fileID: 8381900380387684856}
-  Sprites:
-  - {fileID: 1724297489929941256}
-  - {fileID: 1600716213788950360}
-  - {fileID: 154916734657758289}
-  - {fileID: 612098720367926484}
-  - {fileID: 508358387555757654}
-  - {fileID: 5972045610119181850}
-  - {fileID: 5771304990076459873}
-  - {fileID: 5180318104733707063}
+  health: 100
+  currentHealth: 0
+  body: {fileID: 2170107857833156316}
 --- !u!210 &8381900380387684856
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -359,7 +321,7 @@ Animator:
   m_GameObject: {fileID: 3570869814363673306}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ca807e5cd44ff9345915305d7d6b4f51, type: 2}
+  m_Controller: {fileID: 9100000, guid: 160e488c2b72c444981b7d7af9546314, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -450,8 +412,7 @@ MonoBehaviour:
   monsterData: {fileID: 0}
   player: {fileID: 0}
   speed: 2
-  health: 100
-  floatingTextPfb: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+  floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
 --- !u!1 &4506221702912069660
 GameObject:
   m_ObjectHideFlags: 0

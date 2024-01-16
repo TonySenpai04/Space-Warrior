@@ -209,8 +209,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8118955877903164782}
   - component: {fileID: 6700712445213597324}
-  - component: {fileID: 2079108913838664682}
-  - component: {fileID: 1390767608323525022}
   - component: {fileID: 2629926643240301511}
   - component: {fileID: 8028253066815984490}
   - component: {fileID: 2964239691507393763}
@@ -257,44 +255,9 @@ MonoBehaviour:
   - {fileID: -7252215782646672311, guid: 048ad0e0bfed7844badd77f1a7d75227, type: 3}
   - {fileID: -1381065623766834176, guid: 048ad0e0bfed7844badd77f1a7d75227, type: 3}
   Animator: {fileID: 8028253066815984490}
-  Variations: 0
---- !u!114 &2079108913838664682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4172475631520907990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c8ad34430ec104ea8c1856fce3164b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Body: {fileID: 9150257501960738768}
-  Weapon: {fileID: 2213580491300320298}
-  Shield: {fileID: 0}
-  Status: {fileID: 9043123533352946321}
---- !u!114 &1390767608323525022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4172475631520907990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80e7850929f3a324984a5875e3615cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortingGroup: {fileID: 2629926643240301511}
-  Sprites:
-  - {fileID: 5621828660471336813}
-  - {fileID: 6802331336042917611}
-  - {fileID: 2018234930123581039}
-  - {fileID: 3916295596682494304}
-  - {fileID: 6580963005400970842}
-  - {fileID: 5193379857176478069}
-  - {fileID: 2328487371322678002}
+  health: 100
+  currentHealth: 0
+  body: {fileID: 2856297587403111918}
 --- !u!210 &2629926643240301511
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -408,8 +371,7 @@ MonoBehaviour:
   monsterData: {fileID: 0}
   player: {fileID: 0}
   speed: 2
-  health: 100
-  floatingTextPfb: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+  floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
 --- !u!1 &4174650002429541753
 GameObject:
   m_ObjectHideFlags: 0

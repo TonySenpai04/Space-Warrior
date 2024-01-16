@@ -21,7 +21,7 @@ public class Melee : GenericWeapon
     private int _stateSlashId = UnityEngine.Animator.StringToHash("Slash");
     private int _stateStabId = UnityEngine.Animator.StringToHash("Stab");
 
-    public override void Fire()
+    public override void Fire(Transform poolProjectile)
     {
         // Need MeleeTrigger Component for Melee Weapons
         

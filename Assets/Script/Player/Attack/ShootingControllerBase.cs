@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 
-public class ShootingControllerBase:MonoBehaviour
+public abstract class ShootingControllerBase:MonoBehaviour
 {
-   
+    public virtual void Awake()
+    {
+        
+    }
+    public virtual void Start()
+    {
+        
+    }
 }

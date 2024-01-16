@@ -17,6 +17,7 @@ public class ShootingController : ShootingControllerBase
     [SerializeField] private CharacterAvatar avatar;
     [SerializeField] private float fireRate;
     [SerializeField] private float nextFireTime;
+    [SerializeField] private Transform poolProjectile;
 
     //
     [Serializable]
@@ -50,7 +51,7 @@ public class ShootingController : ShootingControllerBase
         Melee
     }
 
-    private void Awake()
+    public override void Awake()
     {
         avatar = GetComponent<CharacterAvatar>();
         instance = this;
@@ -62,7 +63,7 @@ public class ShootingController : ShootingControllerBase
 
         ActivateWeapon(EquippedSlot, EquippedWeapon);
     }
-    public void IsShooting()
+    public void StartShooting()
     {
         isShooting=true;
     }
@@ -70,7 +71,7 @@ public class ShootingController : ShootingControllerBase
     {
         isShooting=false;
     }
-    private void Start() {
+    public override void Start() {
        
     }
 
@@ -84,7 +85,7 @@ public class ShootingController : ShootingControllerBase
             if (nextFireTime >= fireRate)
             {
 
-                Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
+                Slots[EquippedSlot].Weapons[EquippedWeapon].Fire(poolProjectile);
                 nextFireTime = 0;
             }
         }

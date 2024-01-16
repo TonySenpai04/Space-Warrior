@@ -1,8 +1,4 @@
-﻿namespace Assets.FantasyMonsters.Scripts
-{
-    /// <summary>
-    /// Monster state. The same parameter controls animation transitions.
-    /// </summary>
+﻿
     public enum MonsterState
     {
         Idle 	= 0,
@@ -13,4 +9,3 @@
         Climb 	= 5,
         Death   = 9
     }
-}

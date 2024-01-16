@@ -15,21 +15,21 @@ public class Shotgun : GenericWeapon
     }
 
 
-    protected override void OnFire()
-    {
+    //protected override void OnFire(Transform poolProjectile)
+    //{
         
-        // Muzzle Flash
-        SpawnMuzzleFlash();
-        if (Projectile)
-            for (var i = 0; i < ProjectilesPerRound; i++)
-                SpawnProjectile(Projectile);
-        if (SparkFragment)
-            for (var i = 0; i < SparksPerRound; i++)
-                SpawnProjectile(SparkFragment);
-        SpawnSmoke();
-        SpawnBarrelSpark();
+    //    // Muzzle Flash
+    //    SpawnMuzzleFlash(poolProjectile);
+    //    if (Projectile)
+    //        for (var i = 0; i < ProjectilesPerRound; i++)
+    //            SpawnProjectile(Projectile);
+    //    if (SparkFragment)
+    //        for (var i = 0; i < SparksPerRound; i++)
+    //            SpawnProjectile(SparkFragment);
+    //    SpawnSmoke(poolProjectile);
+    //    SpawnBarrelSpark(poolProjectile);
 
-        // Play Audio
-      //  _weaponAudio.OnFire(AudioInfo);
-    }
+    //    // Play Audio
+    //  //  _weaponAudio.OnFire(AudioInfo);
+    //}
 }

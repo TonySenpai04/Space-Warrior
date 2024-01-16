@@ -91,9 +91,9 @@ public class GenericWeapon : MonoBehaviour
        
     }
 
-    public virtual void Fire()
+    public virtual void Fire(Transform poolProjectile)
     {
-       OnFire();
+       OnFire(poolProjectile);
     }
 
     public virtual void Stop()
@@ -101,79 +101,84 @@ public class GenericWeapon : MonoBehaviour
     }
 
     // WEAPON
-    protected virtual void OnFire()
+    protected virtual void OnFire(Transform poolProjectile)
     {
         if (weaponType == ShootingController.WeaponType.Knife) return;
 
-        SpawnShell();
-        SpawnMuzzleFlash();
+        SpawnShell(poolProjectile);
+        SpawnMuzzleFlash(poolProjectile);
         if (this.weaponType == ShootingController.WeaponType.Beam)
             SpawnBeam(Projectile);
         else
-            SpawnProjectile(Projectile);
-        SpawnSmoke();
-        SpawnBarrelSpark();
+            SpawnProjectile( poolProjectile);
+        SpawnSmoke(poolProjectile);
+        SpawnBarrelSpark(poolProjectile);
 
        
     }
 
-    protected void SpawnShell()
+    protected void SpawnShell(Transform poolProjectile)
     {
         
         // Spawn 
         if (Shell == null) return;
         GameObject shell = Instantiate(Shell.gameObject, FXSocket.transform.position, Quaternion.identity, null);
-      
+        shell.transform.SetParent(poolProjectile);
 
         // Despawn
         F3DSpawner.Despawn(shell.transform, 1.5f);
     }
 
-    protected void SpawnMuzzleFlash()
+    protected void SpawnMuzzleFlash(Transform poolProjectile)
     {
         //// Spawn 
         if (MuzzleFlash == null) return;
         var muzzleFlash = Instantiate(MuzzleFlash.gameObject, FXSocket.transform.position, Quaternion.identity, FXSocket);
         barrelEffects.Add(muzzleFlash.transform);
+        muzzleFlash.transform.SetParent(poolProjectile);
         // Despawn
         F3DSpawner.Despawn(muzzleFlash.transform, 1f);
     }
 
-    protected void SpawnProjectile(Transform projectilePrefab)
+    protected void SpawnProjectile(Transform poolProjectile)
     {
        
-        GameObject projectile = Instantiate(projectilePrefab.gameObject, FXSocket.transform.position, Quaternion.identity);
+        GameObject projectile = Instantiate(Projectile.gameObject, FXSocket.transform.position, Quaternion.identity);
+        projectile.transform.SetParent(poolProjectile);
         // Set Weapon Type
         var projectileObject = projectile.GetComponent<GenericProjectile>();
         projectileObject.WeaponType = weaponType;
         var projRb = projectile.GetComponent<Rigidbody2D>();
         // Launch  
         projRb.AddForce(projectile.transform.right * force, ForceMode2D.Force);
-        F3DSpawner.Despawn(projectile.transform, 3f);
+        Destroy(projectile, 3f);
     }
 
    
     protected void SpawnBeam(Transform projectilePrefab)
     {
         // Spawn
-        GameObject projectile = Instantiate(projectilePrefab.gameObject, FXSocket.transform.position, Quaternion.identity);
+        GameObject beam = Instantiate(projectilePrefab.gameObject, FXSocket.transform.position, Quaternion.identity);
+        beam.transform.SetParent(projectilePrefab);
         // Set Weapon Type
-        var projectileObject = projectile.GetComponent<Pulse>();
+        var projectileObject = beam.GetComponent<Pulse>();
         projectileObject.WeaponType = weaponType;
       
     }
 
-    protected void SpawnSmoke()
+    protected void SpawnSmoke(Transform poolProjectile)
     {
         GameObject smoke = Instantiate(Smoke.gameObject,FXSocket.transform.position, Quaternion.identity);
         smokeEffects.Add(smoke.transform);
-        F3DSpawner.Despawn(smoke.transform, 1f);
+        smoke.transform.SetParent(poolProjectile);
+        Destroy(smoke, 1f);
     }
 
-    protected void SpawnBarrelSpark()
+    protected void SpawnBarrelSpark(Transform poolProjectile)
     {   
         var barrelSpark =Instantiate(BarrelSpark.gameObject, FXSocket.transform.position, Quaternion.identity);
-        F3DSpawner.Despawn(barrelSpark.transform, 1f);
+        barrelSpark.transform.SetParent(poolProjectile);
+        Destroy(barrelSpark,1f);
     }
 
     private void DragBarrelEffects()
