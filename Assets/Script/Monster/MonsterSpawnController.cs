@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterSpawnController :MonoBehaviour,IMonsterSpawn
+public class MonsterSpawnController :MonoBehaviour,ISpawn
 {
     [SerializeField] private Transform player;
     [SerializeField] private float distanceSpawn;

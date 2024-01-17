@@ -1273,7 +1273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1332935674080603819
 Transform:
   m_ObjectHideFlags: 0
@@ -1289,7 +1289,7 @@ Transform:
   m_Children:
   - {fileID: 8300403551293011037}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.28203124}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1490814090616620209
 Animator:
   serializedVersion: 7
@@ -1336,12 +1336,13 @@ MonoBehaviour:
   FXSocket: {fileID: 1578796835452234255}
   ShellSocket: {fileID: 4095118037580971631}
   MuzzleFlash: {fileID: 4000011775555972, guid: 3ae339c3d0cefae47a16e226b5e488d3, type: 3}
-  Projectile: {fileID: 4000011712449506, guid: 67b40ebfa678d6e469f2b1c4f3c7147b, type: 3}
+  Projectile: {fileID: 4000012985297386, guid: 93c3cfa0b5e89d14d91510b5f09bde3a, type: 3}
   Shell: {fileID: 4000011218590730, guid: f3d7a49b2eaee0640bb0ce2f56b6af54, type: 3}
   Smoke: {fileID: 4000013190636638, guid: 27d88b28ec2c56a45aa5909999736c42, type: 3}
   BarrelSpark: {fileID: 4000013190636638, guid: fd647ffe292106f4fbf6d7f62657fe96, type: 3}
-  damage: 0
-  fireRate: 0
+  Damage: 0
+  FireRate: 0
+  colliders: []
 --- !u!114 &9037222226747567967
 MonoBehaviour:
   m_ObjectHideFlags: 0

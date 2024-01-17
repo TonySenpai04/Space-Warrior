@@ -85,7 +85,7 @@ public class ShootingController : ShootingControllerBase
             if (nextFireTime >= fireRate)
             {
 
-                Slots[EquippedSlot].Weapons[EquippedWeapon].Fire(poolProjectile);
+                Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
                 nextFireTime = 0;
             }
         }
@@ -140,8 +140,8 @@ public class ShootingController : ShootingControllerBase
 
             }
         }
-        fireRate = Slots[slot].Weapons[weapon].fireRate;
-        Slots[slot].Weapons[weapon].Projectile.GetComponent<GenericProjectile>().damage = Slots[slot].Weapons[weapon].damage;
+        fireRate = Slots[slot].Weapons[weapon].FireRate;
+        Slots[slot].Weapons[weapon].Projectile.GetComponent<GenericProjectile>().damage = Slots[slot].Weapons[weapon].Damage;
         UpdateCharacterHands(avatar.Characters[avatar.CharacterId]);
     }
 
@@ -212,9 +212,9 @@ public class ShootingController : ShootingControllerBase
     }
     public void LookAtMonster(Transform pos)
     {
-        EquippedSlot = 0;
+        
         EquippedWeapon = Slots[EquippedSlot].WeaponSlotCounter;
-        Vector3 targetDirection = pos.position - Slots[0].Weapons[EquippedWeapon].transform.position;
+        Vector3 targetDirection = pos.position - Slots[EquippedSlot].Weapons[EquippedWeapon].transform.position;
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
         Slots[0].Weapons[EquippedWeapon].transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 

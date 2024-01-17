@@ -10,8 +10,8 @@ public class Shotgun : GenericWeapon
     public override void Awake()
     {
         base.Awake();
-        fireRate = 1f;
-        damage = 12f;
+        FireRate = 1f;
+        Damage = 12f;
     }
 
 

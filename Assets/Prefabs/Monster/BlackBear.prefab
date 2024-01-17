@@ -367,8 +367,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.5, y: 2}
-  m_Size: {x: 8, y: 6}
+  m_Offset: {x: -0.49999976, y: 2.434028}
+  m_Size: {x: 8.000001, y: 5.131945}
   m_Direction: 1
 --- !u!50 &-9121154355775984165
 Rigidbody2D:
@@ -378,7 +378,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3570869814363673306}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -396,7 +396,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 4
 --- !u!114 &4307522840213260988
 MonoBehaviour:
   m_ObjectHideFlags: 0

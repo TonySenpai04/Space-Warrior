@@ -561,7 +561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1683614864699600457
 Transform:
   m_ObjectHideFlags: 0
@@ -628,11 +628,12 @@ MonoBehaviour:
   Shell: {fileID: 4000014033885840, guid: 658b0afcf0b5cc7488c36fd3bf129b8f, type: 3}
   Smoke: {fileID: 4000013190636638, guid: 442e5f2697c8e814793262c5c17c5180, type: 3}
   BarrelSpark: {fileID: 4000013190636638, guid: 2dc7033f457b8574a9c92ec912ce59b4, type: 3}
-  damage: 0
-  fireRate: 0
+  Damage: 0
+  FireRate: 0
+  colliders: []
   SparkFragment: {fileID: 4000014148530854, guid: aa6784c2a3c1556448285c8009326e5a, type: 3}
-  ProjectilesPerRound: 4
-  SparksPerRound: 4
+  ProjectilesPerRound: 1
+  SparksPerRound: 0
 --- !u!114 &-7855353055327833480
 MonoBehaviour:
   m_ObjectHideFlags: 0

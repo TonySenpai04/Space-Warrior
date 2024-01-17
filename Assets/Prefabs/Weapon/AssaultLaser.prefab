@@ -245,7 +245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &177633285098822791
 Transform:
   m_ObjectHideFlags: 0
@@ -254,7 +254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5638826163257535293}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -309,11 +309,12 @@ MonoBehaviour:
   ShellSocket: {fileID: 7575750975108183144}
   MuzzleFlash: {fileID: 4000012883924136, guid: 07a859312ddeaef4597e8a0ade44d808, type: 3}
   Projectile: {fileID: 4000013655879204, guid: 7d0a566457e4db44fb061d1c469d1485, type: 3}
-  Shell: {fileID: 0}
-  Smoke: {fileID: 0}
+  Shell: {fileID: 4000011218590730, guid: ca31063a8dfa29848b644d743a77e607, type: 3}
+  Smoke: {fileID: 4000013190636638, guid: 32b1e4eabf82eb649af19cde876a42e0, type: 3}
   BarrelSpark: {fileID: 4000010522800416, guid: 6367420a16cafbe43b12bb7c02846d4c, type: 3}
-  damage: 0
-  fireRate: 0
+  Damage: 0
+  FireRate: 0
+  colliders: []
 --- !u!114 &6077595563762086120
 MonoBehaviour:
   m_ObjectHideFlags: 0

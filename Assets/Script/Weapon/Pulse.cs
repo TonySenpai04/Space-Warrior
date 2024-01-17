@@ -35,7 +35,7 @@ public class Pulse : GenericProjectile
 
     private void Start()
     {
-        F3DSpawner.Despawn(transform, DelayDespawn);
+        //F3DSpawner.Despawn(transform, DelayDespawn);
     }
 
     // Update is called once per frame

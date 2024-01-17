@@ -12,8 +12,8 @@ public class Melee : GenericWeapon
     public override void Awake()
     {
         base.Awake();
-        fireRate = 0.33f;
-        damage = 7f;
+        FireRate = 0.33f;
+        Damage = 7f;
 
 
     }
@@ -21,7 +21,7 @@ public class Melee : GenericWeapon
     private int _stateSlashId = UnityEngine.Animator.StringToHash("Slash");
     private int _stateStabId = UnityEngine.Animator.StringToHash("Stab");
 
-    public override void Fire(Transform poolProjectile)
+    public override void Fire()
     {
         // Need MeleeTrigger Component for Melee Weapons
         

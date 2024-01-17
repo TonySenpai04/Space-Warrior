@@ -36,20 +36,34 @@ public class GenericWeapon : MonoBehaviour
     public Transform BarrelSpark;
 
     [Header("Weapon Settings")]
-    public float damage;
-    public float fireRate;
+    public float Damage;
+    public float FireRate;
 
 
     [SerializeField]protected Collider2D[] colliders;
 
     private List<Transform> barrelEffects = new List<Transform>();
     private List<Transform> smokeEffects = new List<Transform>();
-
+    private ISpawn spawnShell;
+    private ISpawn spawnProjectile;
+    private ISpawn spawnMuzzleFlash;
+    private ISpawn spawnSmoke;
+    private ISpawn spawnBarrelSpark;
+    private ISpawn spawnBeam;
+    private PoolObjectManager poolObjectManager;
     public virtual void Awake()
     {
         Animator = GetComponent<Animator>();
         colliders = transform.root.GetComponentsInChildren<Collider2D>();
-
+        poolObjectManager= FindAnyObjectByType<PoolObjectManager>();
+        Transform poolProjectile = poolObjectManager.gameObject.transform;
+        spawnShell = new SpawnShell(Shell, poolProjectile, FXSocket, this);
+        spawnProjectile = new SpawnProjectile(Projectile, poolProjectile, FXSocket,
+            this, weaponType, force);
+        spawnMuzzleFlash = new SpawnMuzzleFlash(MuzzleFlash, poolProjectile, FXSocket, this,barrelEffects);
+        spawnSmoke=new SpawnSmoke(Smoke, poolProjectile, FXSocket, this,smokeEffects);
+        spawnBarrelSpark=new SpawnBarrelSpark(BarrelSpark, poolProjectile, FXSocket, this);
+        spawnBeam=new SpawnBeam(poolProjectile, poolProjectile, FXSocket, this,weaponType);
     }
 
     public void OnEnable()
@@ -75,112 +89,39 @@ public class GenericWeapon : MonoBehaviour
       
     }
 
-    // Use this for initialization
-    private void Start() { }
-
-    // Update is called once per frame
-    private void Update()
-    {
-     
-    }
-
     private void LateUpdate()
     {
         DragBarrelEffects();
-
        
     }
 
-    public virtual void Fire(Transform poolProjectile)
+    public virtual void Fire()
     {
-       OnFire(poolProjectile);
+       OnFire();
     }
 
     public virtual void Stop()
     {
     }
-
+   
     // WEAPON
-    protected virtual void OnFire(Transform poolProjectile)
+    protected virtual void OnFire()
     {
         if (weaponType == ShootingController.WeaponType.Knife) return;
 
-        SpawnShell(poolProjectile);
-        SpawnMuzzleFlash(poolProjectile);
+        spawnShell.Spawn();
+        spawnMuzzleFlash.Spawn();
         if (this.weaponType == ShootingController.WeaponType.Beam)
-            SpawnBeam(Projectile);
+            spawnBeam.Spawn();
         else
-            SpawnProjectile( poolProjectile);
-        SpawnSmoke(poolProjectile);
-        SpawnBarrelSpark(poolProjectile);
+            spawnProjectile.Spawn();
+        spawnSmoke.Spawn();
+        spawnBarrelSpark.Spawn();
 
        
     }
 
-    protected void SpawnShell(Transform poolProjectile)
-    {
-        
-        // Spawn 
-        if (Shell == null) return;
-        GameObject shell = Instantiate(Shell.gameObject, FXSocket.transform.position, Quaternion.identity, null);
-        shell.transform.SetParent(poolProjectile);
-
-        // Despawn
-        F3DSpawner.Despawn(shell.transform, 1.5f);
-    }
-
-    protected void SpawnMuzzleFlash(Transform poolProjectile)
-    {
-        //// Spawn 
-        if (MuzzleFlash == null) return;
-        var muzzleFlash = Instantiate(MuzzleFlash.gameObject, FXSocket.transform.position, Quaternion.identity, FXSocket);
-        barrelEffects.Add(muzzleFlash.transform);
-        muzzleFlash.transform.SetParent(poolProjectile);
-        // Despawn
-        F3DSpawner.Despawn(muzzleFlash.transform, 1f);
-    }
-
-    protected void SpawnProjectile(Transform poolProjectile)
-    {
-       
-        GameObject projectile = Instantiate(Projectile.gameObject, FXSocket.transform.position, Quaternion.identity);
-        projectile.transform.SetParent(poolProjectile);
-        // Set Weapon Type
-        var projectileObject = projectile.GetComponent<GenericProjectile>();
-        projectileObject.WeaponType = weaponType;
-        var projRb = projectile.GetComponent<Rigidbody2D>();
-        // Launch  
-        projRb.AddForce(projectile.transform.right * force, ForceMode2D.Force);
-        Destroy(projectile, 3f);
-    }
-
-   
-    protected void SpawnBeam(Transform projectilePrefab)
-    {
-        // Spawn
-        GameObject beam = Instantiate(projectilePrefab.gameObject, FXSocket.transform.position, Quaternion.identity);
-        beam.transform.SetParent(projectilePrefab);
-        // Set Weapon Type
-        var projectileObject = beam.GetComponent<Pulse>();
-        projectileObject.WeaponType = weaponType;
-      
-    }
-
-    protected void SpawnSmoke(Transform poolProjectile)
-    {
-        GameObject smoke = Instantiate(Smoke.gameObject,FXSocket.transform.position, Quaternion.identity);
-        smokeEffects.Add(smoke.transform);
-        smoke.transform.SetParent(poolProjectile);
-        Destroy(smoke, 1f);
-    }
-
-    protected void SpawnBarrelSpark(Transform poolProjectile)
-    {   
-        var barrelSpark =Instantiate(BarrelSpark.gameObject, FXSocket.transform.position, Quaternion.identity);
-        barrelSpark.transform.SetParent(poolProjectile);
-        Destroy(barrelSpark,1f);
-    }
-
+ 
     private void DragBarrelEffects()
     {
         for (var i = barrelEffects.Count - 1; i >= 0; i--)

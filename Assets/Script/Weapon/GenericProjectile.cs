@@ -30,14 +30,14 @@ public class GenericProjectile : MonoBehaviour
         _origin = transform.position;
     }
 
-    public static void SpawnHit(Transform hitPrefab, Vector2 contactPoint, Vector2 contactNormal, Transform parent,
-        float lifeTime)
-    {
-        if (hitPrefab == null) return;
-        var hit = F3DSpawner.Spawn(hitPrefab, contactPoint, Quaternion.LookRotation(Vector3.forward, contactNormal),
-            parent);
-        F3DSpawner.Despawn(hit, lifeTime);
-    }
+    //public static void SpawnHit(Transform hitPrefab, Vector2 contactPoint, Vector2 contactNormal, Transform parent,
+    //    float lifeTime)
+    //{
+    //    if (hitPrefab == null) return;
+    //    var hit = F3DSpawner.Spawn(hitPrefab, contactPoint, Quaternion.LookRotation(Vector3.forward, contactNormal),
+    //        parent);
+       
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -5,8 +5,8 @@ public class Sniper : GenericWeapon {
     public override void Awake()
     {
         base.Awake();
-        fireRate = 1f;
-        damage = 15f;
+        FireRate = 1f;
+        Damage = 15f;
     }
 
 }
