@@ -701,6 +701,7 @@ GameObject:
   - component: {fileID: 1410841270538389328}
   - component: {fileID: -3895248416810897521}
   - component: {fileID: 4196761673837284577}
+  - component: {fileID: 4937808662632892065}
   m_Layer: 0
   m_Name: PirateBoar
   m_TagString: Untagged
@@ -860,6 +861,22 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+--- !u!114 &4937808662632892065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6467196914706143007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf0e6a062357ec541bf9ab0a5c91fa5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData: {fileID: 0}
+  player: {fileID: 0}
+  speed: 0
+  floatingTextPrefab: {fileID: 0}
 --- !u!1 &6691644349440674586
 GameObject:
   m_ObjectHideFlags: 0

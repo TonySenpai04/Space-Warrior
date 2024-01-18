@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.FantasyMonsters.Scripts.Tweens;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
@@ -19,10 +18,6 @@ public class Monster : MonoBehaviour
        
     }
 
-    public void SetState(MonsterState state)
-    {
-        Animator.SetInteger("State", (int)state);
-    }
     public void Walk()
     {
         SetHead(0);
@@ -31,11 +26,6 @@ public class Monster : MonoBehaviour
     public void Attack()
     {
         Animator.SetTrigger("Attack");
-    }
-
-    public virtual void Spring()
-    {
-        ScaleSpring.Begin(this, 1f, 1.1f, 40, 2);
     }
 
     // Play Die animation.
@@ -47,7 +37,7 @@ public class Monster : MonoBehaviour
 
     public void SetHead(int index)
     {
-        if (index != 2 && Animator.GetInteger("State") == (int)MonsterState.Death) return;
+        //if (index != 2 ) return;
 
         if (index < HeadSprites.Count)
         {

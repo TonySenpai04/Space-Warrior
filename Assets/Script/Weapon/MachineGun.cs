@@ -5,8 +5,8 @@ public class MachineGun : GenericWeapon {
     public override void Awake()
     {
         base.Awake();
-        Damage = 5;
-        FireRate = 0.2f;
+        Damage = 20f;
+        FireRate = 0.7f;
     }
 
 }

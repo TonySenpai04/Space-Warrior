@@ -19,7 +19,6 @@ public class GenericProjectile : MonoBehaviour
     public bool PostHitHide;
     public float DelayDespawn;
     public float HitLifeTime;
-    public float damage;
 
     public virtual void Awake()
     {
@@ -45,7 +44,8 @@ public class GenericProjectile : MonoBehaviour
         if (monster != null)
         {
             gameObject.SetActive(false);
-            monster.OnDamge(damage);
+            var currentWeapon = ShootingController.instance.GetCurrentWeapon();
+            monster.OnDamge(currentWeapon.Damage);
         }
 
 

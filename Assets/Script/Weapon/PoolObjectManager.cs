@@ -28,19 +28,11 @@ public class PoolObjectManager : MonoBehaviour
             {
                 pool[i].gameObject.transform.position = shotPoint.position;
                 pool[i].gameObject.SetActive(true);
+ 
                 return pool[i];
             }
         }
-        //foreach (Transform obj in pool)
-        //{
-        //    if (!obj.gameObject.activeInHierarchy)
-        //    {
-        //        obj.position = shotPoint.position;
-        //        obj.gameObject.SetActive(true);
-        //        StartCoroutine(DelayedDespawn(obj, 0.5f));
-        //        return obj;
-        //    }
-        //}
+ 
         GameObject newObj = Instantiate(prefab.gameObject, shotPoint.position, Quaternion.identity, parent);
         pool.Add(newObj.transform);
         return newObj.transform;

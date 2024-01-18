@@ -2,7 +2,6 @@
 using UnityEngine;
 using System.Collections;
 using Random = UnityEngine.Random;
-using Assets.FantasyMonsters.Scripts;
 
 public class Projectile : GenericProjectile
 {

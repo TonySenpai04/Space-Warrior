@@ -33,12 +33,8 @@ public class SpawnProjectile : ISpawn
         projectileObject.WeaponType = weaponType;
         var projRb = projectile.GetComponent<Rigidbody2D>();
         // Launch  
-        projRb.AddForce(projectile.transform.right * force, ForceMode2D.Force);
-        monoBehaviour.StartCoroutine(DelayedDespawn(projectile, 0.5f));
-    }
-    private IEnumerator DelayedDespawn(Transform obj, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        PoolObjectManager.Instance.ReturnObjectToPool(obj);
+        //   projRb.AddForce(projectile.transform.right * force, ForceMode2D.Force);
+        var currentWeapon = ShootingController.instance.GetCurrentWeapon();
+        projRb.AddForce(currentWeapon.transform.right * force, ForceMode2D.Force);
     }
 }

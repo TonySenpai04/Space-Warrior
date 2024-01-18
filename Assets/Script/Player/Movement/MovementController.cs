@@ -11,7 +11,7 @@ public class MovementController : MovementControllerBase
         instance = this;
         move = new Move(rigidbody, speed);
     }
-    private void Update()
+    private void FixedUpdate()
     {
         move.Move();
     }

@@ -1,4 +1,3 @@
-using Assets.FantasyMonsters.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,12 +36,13 @@ public class MonsterSpawnController :MonoBehaviour,ISpawn
         if (player.position.x - currentTransform.x > distanceSpawn && canSpawn)
         {
            var monster = poolMonsters[Random.Range(0, poolMonsters.Count)];
-            monster.body.rotation=Quaternion.Euler(0,0,0);  
+            monster.body.rotation = Quaternion.Euler(0, 0, 0);
             monster.gameObject.SetActive (true);
             if (monster.currentHealth <= 0)
             {
                 monster.currentHealth = monster.health;
             }
+          
             monster.Walk();
             monster.transform.position = new Vector3(player.position.x + 15, player.position.y, player.position.z);
            MovementController.instance.StopMove();
