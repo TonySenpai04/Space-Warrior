@@ -30,7 +30,7 @@ public class Move : IMove, IStopMove,ICanMove
     
     public void StopMove()
     {
-        isMove = !isMove;
+        isMove = false;
         rigidbody.velocity = Vector2.zero;
     }
 

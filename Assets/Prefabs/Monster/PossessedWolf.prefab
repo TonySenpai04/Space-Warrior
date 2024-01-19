@@ -718,6 +718,7 @@ MonoBehaviour:
   health: 100
   currentHealth: 0
   body: {fileID: 3799238963310398633}
+  enemyType: 1
 --- !u!210 &9003765707896872867
 SortingGroup:
   m_ObjectHideFlags: 0

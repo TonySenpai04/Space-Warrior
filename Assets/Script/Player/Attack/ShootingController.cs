@@ -180,13 +180,13 @@ public class ShootingController : ShootingControllerBase
                 return armature.Hand1;
         }
     }
-    public void LookAtMonster(Transform pos)
+    public void LookAtMonster(Vector3 pos)
     {
         
         EquippedWeapon = Slots[EquippedSlot].WeaponSlotCounter;
-        Vector3 targetDirection = pos.position - Slots[EquippedSlot].Weapons[EquippedWeapon].transform.position;
-        float angle = Mathf.Atan2(targetDirection.y+1, targetDirection.x) * Mathf.Rad2Deg;
-        Slots[0].Weapons[EquippedWeapon].transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Vector3 targetDirection = pos- Slots[EquippedSlot].Weapons[EquippedWeapon].transform.position;
+        float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+        Slots[EquippedSlot].Weapons[EquippedWeapon].transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
     }
 }

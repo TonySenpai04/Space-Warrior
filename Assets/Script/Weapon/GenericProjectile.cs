@@ -40,12 +40,12 @@ public class GenericProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        MonsterController monster = collision.gameObject.GetComponent<MonsterController>();
+        Enemy monster = collision.gameObject.GetComponent<Enemy>();
         if (monster != null)
         {
             gameObject.SetActive(false);
             var currentWeapon = ShootingController.instance.GetCurrentWeapon();
-            monster.OnDamge(currentWeapon.Damage);
+            monster.GetComponent<EnemyController>().OnDamge(currentWeapon.Damage);
         }
 
 
