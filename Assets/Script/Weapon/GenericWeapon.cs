@@ -36,7 +36,7 @@ public class GenericWeapon : MonoBehaviour
     public Transform BarrelSpark;
 
     [Header("Weapon Settings")]
-    public float Damage;
+    public float DamageRate;
     public float FireRate;
 
 

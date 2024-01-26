@@ -11,7 +11,7 @@ public class Shotgun : GenericWeapon
     {
         base.Awake();
         FireRate = 1f;
-        Damage = 12f;
+        DamageRate = 1.2f;
     }
 
 

@@ -42,10 +42,10 @@ public abstract class EnemyController : MonoBehaviour
     }
     public virtual void OnDamge(float dam)
     {
-        monsterData.currentHealth -= dam;
+        monsterData.currentHealth -= (int)dam;
         var floatingText = Instantiate(floatingTextPrefab.gameObject, new Vector3(Random.Range(transform.position.x - 1, transform.position.x + 1),
             Random.Range(transform.position.y + 2.5f, transform.position.y + 3f), transform.position.z), Quaternion.identity, transform);
-        floatingText.GetComponent<TextMesh>().text = dam.ToString();
+        floatingText.GetComponent<TextMesh>().text = ((int)dam).ToString();
         if (monsterData.currentHealth <= 0)
         {
             MovementController.instance.CanMove();

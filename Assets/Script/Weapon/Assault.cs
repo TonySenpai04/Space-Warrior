@@ -7,7 +7,7 @@ public class Assault : GenericWeapon
     {
         base.Awake();
         FireRate = 0.5f;
-        Damage = 15f;
+        DamageRate = 1.5f;
         
     }
 }

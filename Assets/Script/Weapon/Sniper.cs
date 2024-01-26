@@ -6,7 +6,7 @@ public class Sniper : GenericWeapon {
     {
         base.Awake();
         FireRate = 1f;
-        Damage = 15f;
+        DamageRate = 2.0f;
     }
 
 }

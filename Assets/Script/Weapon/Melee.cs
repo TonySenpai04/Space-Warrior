@@ -13,7 +13,7 @@ public class Melee : GenericWeapon
     {
         base.Awake();
         FireRate = 0.33f;
-        Damage = 7f;
+        DamageRate = 1.1f;
 
 
     }

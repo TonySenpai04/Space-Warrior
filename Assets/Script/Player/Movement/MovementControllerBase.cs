@@ -10,4 +10,8 @@ public class MovementControllerBase:MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
 
     }
+    public virtual void Move()
+    {
+        move.Move();
+    }
 }

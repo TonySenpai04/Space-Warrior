@@ -130,6 +130,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2886883680071472797, guid: e5cdfb3bfa71f8545a78c9fc6b6a31e5, type: 3}
   m_PrefabInstance: {fileID: 258219762931193336}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &175510359 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2994910436900386015, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+  m_PrefabInstance: {fileID: 8024512971103388781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &322505395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 177633285098822791, guid: 415f7a42026459c479fac7989abbdfb6, type: 3}
@@ -1905,6 +1910,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9511d20b13866d540a731b49547aa017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1427390322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1427390323}
+  m_Layer: 0
+  m_Name: Pet
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1427390323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427390322}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.04, y: 9.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 175510359}
+  m_Father: {fileID: 4917314582061901178}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1429571129 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2683642805116511089, guid: e80e7f921df665447ada627a68d2aab1, type: 3}
@@ -5397,6 +5434,7 @@ MonoBehaviour:
   movementController: {fileID: 7223970034186606008}
   shootingController: {fileID: 4805932193163173695}
   animationController: {fileID: 221141724607878888}
+  damage: 5
 --- !u!4 &1055333706794578932
 Transform:
   m_ObjectHideFlags: 0
@@ -19585,8 +19623,6 @@ MonoBehaviour:
   - {fileID: 6700712445213597324, guid: 4fc8be699cdd5cf49a63798e544c4d18, type: 3}
   - {fileID: 3911352415539640251, guid: b8e57f3b57b525443a531380709a49fd, type: 3}
   - {fileID: 989335941861152316, guid: d495086bafc1f794ba4091b176059d9f, type: 3}
-  currentTransform: {x: 0, y: 0, z: 0}
-  canSpawn: 1
   poolMonsterPos: {fileID: 1575151691}
   poolMonsters: []
 --- !u!4 &3964990100643929477
@@ -26225,6 +26261,7 @@ MonoBehaviour:
   fireRate: 1
   nextFireTime: 0
   poolProjectile: {fileID: 766194341}
+  crit: 0
 --- !u!4 &4917314582061901178
 Transform:
   m_ObjectHideFlags: 0
@@ -26245,6 +26282,7 @@ Transform:
   - {fileID: 900666530545088533}
   - {fileID: 8190519299008410594}
   - {fileID: 5497620109994768268}
+  - {fileID: 1427390323}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4966596927339907972
@@ -28150,6 +28188,63 @@ Transform:
   - {fileID: 3945329871099758046}
   m_Father: {fileID: 6080618881788489516}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8024512971103388781
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1427390323}
+    m_Modifications:
+    - target: {fileID: 2994910436900386015, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994910436900386015, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994910436900386015, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994910436900386015, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994910436900386015, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994910436900386015, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994910436900386015, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994910436900386015, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994910436900386015, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994910436900386015, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3587406803579026348, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: m_Name
+      value: Death Scythe Green Pet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
 --- !u!19719996 &8071791769386118533
 TilemapCollider2D:
   m_ObjectHideFlags: 0

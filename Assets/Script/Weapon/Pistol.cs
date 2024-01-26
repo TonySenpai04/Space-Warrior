@@ -7,7 +7,7 @@ public class Pistol : GenericWeapon
     {
         base.Awake();
         FireRate = 0.5f;
-        Damage = 6f;
+        DamageRate = 1f;
     }
 
 }

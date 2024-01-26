@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class ShootingController : ShootingControllerBase
 {
  
-    [SerializeField]private bool RandomWeaponAtStart;
+    [SerializeField] private bool RandomWeaponAtStart;
     [SerializeField] private int EquippedSlot;
     [SerializeField] private int EquippedWeapon;
     [SerializeField] private List<WeaponSlot> Slots;
@@ -17,6 +17,8 @@ public class ShootingController : ShootingControllerBase
     [SerializeField] private float fireRate;
     [SerializeField] private float nextFireTime;
     [SerializeField] private Transform poolProjectile;
+    //
+    [SerializeField] private int crit;
     //
     public static ShootingController instance;
     //
@@ -75,11 +77,8 @@ public class ShootingController : ShootingControllerBase
     public override void Start() {
        
     }
-
-
-    private void Update()
+    public override void Shoot()
     {
-        // Fire
         if (isShooting)
         {
             nextFireTime += Time.deltaTime;
@@ -91,7 +90,10 @@ public class ShootingController : ShootingControllerBase
                 nextFireTime = 0;
             }
         }
+    }
 
+    public override void Update()
+    {
 
         // Switch Weapon Slot
         if (Input.GetKeyDown(KeyCode.Alpha1))
