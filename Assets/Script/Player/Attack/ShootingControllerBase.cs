@@ -19,4 +19,17 @@ public abstract class ShootingControllerBase:MonoBehaviour
     {
 
     }
+    public virtual void StartShooting()
+    {
+
+
+    }
+    public virtual void StopShooting()
+    {
+        
+    }
+    public virtual void LookAtMonster(Vector3 pos)
+    {
+
+    }
 }

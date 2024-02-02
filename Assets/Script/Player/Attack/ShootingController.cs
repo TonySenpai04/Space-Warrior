@@ -22,6 +22,7 @@ public class ShootingController : ShootingControllerBase
     //
     public static ShootingController instance;
     //
+
     [Serializable]
     public class WeaponSlot
     {
@@ -65,11 +66,11 @@ public class ShootingController : ShootingControllerBase
 
         ActivateWeapon(EquippedSlot, EquippedWeapon);
     }
-    public void StartShooting()
+    public override void StartShooting()
     {
         isShooting=true;
     }
-    public void StopShooting()
+    public override void StopShooting()
     {
         isShooting=false;
         SetBool("Fire", false);
@@ -182,7 +183,7 @@ public class ShootingController : ShootingControllerBase
                 return armature.Hand1;
         }
     }
-    public void LookAtMonster(Vector3 pos)
+    public override void LookAtMonster(Vector3 pos)
     {
         
         EquippedWeapon = Slots[EquippedSlot].WeaponSlotCounter;

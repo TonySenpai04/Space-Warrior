@@ -9,18 +9,18 @@ public class MovementController : MovementControllerBase
     {
         base.Start();
         instance = this;
-        move = new Move(rigidbody, speed);
+        move = new Move(rigidbody2d, speed);
     }
     public override void Move()
     {
         base.Move();
     }
-    public void StopMove()
+    public override void StopMove()
     {
         IStopMove stopMove=(IStopMove) move;
         stopMove.StopMove();
     }
-    public void CanMove()
+    public override void CanMove()
     {
         ICanMove canMove = (ICanMove)move;
         canMove.CanMove();
