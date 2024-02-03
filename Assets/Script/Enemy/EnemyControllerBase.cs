@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class EnemyControllerBase : MonoBehaviour
 {
-    [SerializeField] protected Enemy monsterData;
+    [SerializeField] protected Enemy enemyData;
     [SerializeField] protected Transform player;
     [SerializeField] protected float speed;
     [SerializeField] protected GameObject floatingTextPrefab;
@@ -13,9 +13,9 @@ public abstract class EnemyControllerBase : MonoBehaviour
 
     public virtual void Start()
     {
-        monsterData = GetComponent<Enemy>();
+        enemyData = GetComponent<Enemy>();
         player = FindAnyObjectByType<PlayerController>().transform;
-        monsterData.Walk();
+        enemyData.Walk();
         move = new EnemyMove(speed,this.gameObject);
 
     }

@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     public SpriteRenderer Head;
-    public List<Sprite> HeadSprites;
-    public Animator Animator;
+    public List<Sprite> headSprites;
+    public Animator animator;
     public float health = 100;
     public float currentHealth;
     public Transform body;
@@ -19,22 +19,23 @@ public abstract class Enemy : MonoBehaviour
     public virtual void Awake()
     {
         currentHealth = health;
+        animator = GetComponent<Animator>();
 
     }
     public virtual void Walk()
     {
         SetHead(0);
-        Animator.SetBool("Walk", true);
+        animator.SetBool("Walk", true);
     }
     public virtual void Attack()
     {
-        Animator.SetTrigger("Attack");
+        animator.SetTrigger("Attack");
     }
 
     // Play Die animation.
     public virtual void Die()
     {
-        Animator.SetTrigger("Death");
+        animator.SetTrigger("Death");
     }
 
 
@@ -42,9 +43,9 @@ public abstract class Enemy : MonoBehaviour
     {
         //if (index != 2 ) return;
 
-        if (index < HeadSprites.Count)
+        if (index < headSprites.Count)
         {
-            Head.sprite = HeadSprites[index];
+            Head.sprite = headSprites[index];
         }
     }
 

@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 4782958675580712128}
   - component: {fileID: -4783111672648172311}
   - component: {fileID: -7197998736225657987}
+  - component: {fileID: -5293219635841965778}
   m_Layer: 0
   m_Name: Porcupine
   m_TagString: Untagged
@@ -167,11 +168,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Head: {fileID: 2962588760237415760}
-  HeadSprites:
+  headSprites:
   - {fileID: -1828946549344447192, guid: 9b7299502aa23664188a406337ee19b3, type: 3}
   - {fileID: -7252215782646672311, guid: 9b7299502aa23664188a406337ee19b3, type: 3}
   - {fileID: -1381065623766834176, guid: 9b7299502aa23664188a406337ee19b3, type: 3}
-  Animator: {fileID: 6849535064931268597}
+  animator: {fileID: 0}
   health: 100
   currentHealth: 0
   body: {fileID: 8219984191204085988}
@@ -240,7 +241,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -259,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0e6a062357ec541bf9ab0a5c91fa5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterData: {fileID: 0}
+  enemyData: {fileID: 0}
   player: {fileID: 0}
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
@@ -275,10 +276,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb942d77f03d604fa9a9da29e149d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemDrop: {fileID: 7261437047791348846, guid: acf16accdf6a60845a097b2022b15a61, type: 3}
   lootList:
   - {fileID: 7782746300635471, guid: acf16accdf6a60845a097b2022b15a61, type: 3}
   - {fileID: -6392110908979428449, guid: eee589e3ad9d59b44b9ddac402802521, type: 3}
+--- !u!50 &-5293219635841965778
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756151813300781392}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
 --- !u!1 &2076099026709907391
 GameObject:
   m_ObjectHideFlags: 0

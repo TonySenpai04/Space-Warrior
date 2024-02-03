@@ -209,12 +209,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7674194800288999094}
-  - component: {fileID: 8101716620317720281}
   - component: {fileID: 4178607657994856724}
   - component: {fileID: 1906841228437758395}
   - component: {fileID: 4799068549233536037}
   - component: {fileID: -2804683099226444723}
   - component: {fileID: 1979373476689646566}
+  - component: {fileID: -3547795613556225998}
+  - component: {fileID: 9122109113135070527}
+  - component: {fileID: 173775407245683821}
   m_Layer: 0
   m_Name: ButcherGradeC
   m_TagString: Untagged
@@ -239,28 +241,6 @@ Transform:
   - {fileID: 1267119892546136751}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8101716620317720281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2202772435748665834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62b9a7e211ea2074c83a96a2ab1e590f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Head: {fileID: 6962331788507772006}
-  HeadSprites:
-  - {fileID: -1828946549344447192, guid: e856a4bac9367d6499cf15032e4dddc5, type: 3}
-  - {fileID: -7252215782646672311, guid: e856a4bac9367d6499cf15032e4dddc5, type: 3}
-  - {fileID: -1381065623766834176, guid: e856a4bac9367d6499cf15032e4dddc5, type: 3}
-  Animator: {fileID: 1906841228437758395}
-  health: 100
-  currentHealth: 0
-  body: {fileID: 2799853069866168882}
-  enemyType: 1
 --- !u!210 &4178607657994856724
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -371,10 +351,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0e6a062357ec541bf9ab0a5c91fa5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterData: {fileID: 0}
+  enemyData: {fileID: 0}
   player: {fileID: 0}
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+--- !u!114 &-3547795613556225998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202772435748665834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb942d77f03d604fa9a9da29e149d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootList:
+  - {fileID: -6392110908979428449, guid: eee589e3ad9d59b44b9ddac402802521, type: 3}
+  - {fileID: 7782746300635471, guid: acf16accdf6a60845a097b2022b15a61, type: 3}
+  - {fileID: -3972795983043725926, guid: b4b3b86d3c5879544a8d0d7293f1025c, type: 3}
+--- !u!114 &9122109113135070527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202772435748665834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c2c2f0dab9ec44eae90fe0685ede68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 0}
+  player: {fileID: 0}
+  speed: 2
+  floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+--- !u!114 &173775407245683821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202772435748665834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c1e486dbea13c40a3b23b1fb2c68d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Head: {fileID: 6962331788507772006}
+  headSprites:
+  - {fileID: -1828946549344447192, guid: e856a4bac9367d6499cf15032e4dddc5, type: 3}
+  - {fileID: -7252215782646672311, guid: e856a4bac9367d6499cf15032e4dddc5, type: 3}
+  - {fileID: -1381065623766834176, guid: e856a4bac9367d6499cf15032e4dddc5, type: 3}
+  animator: {fileID: 0}
+  health: 1000
+  currentHealth: 0
+  body: {fileID: 2799853069866168882}
+  enemyType: 1
 --- !u!1 &3135515306018004603
 GameObject:
   m_ObjectHideFlags: 0

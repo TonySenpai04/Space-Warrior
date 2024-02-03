@@ -20,6 +20,8 @@ public class ItemManager : MonoBehaviour
 
    [SerializeField] private List<Item> inventory ;
 
+    public List<Item> Inventory { get => inventory;  }
+
     void Start()
     {
         instance = this;
@@ -28,30 +30,30 @@ public class ItemManager : MonoBehaviour
 
     public void AddItem(ItemType type, int quantity)
     {
-        int index = inventory.FindIndex(item => item.type == type);
+        int index = Inventory.FindIndex(item => item.type == type);
         if (index != -1)
         {
-            Item existingItem = inventory[index];
+            Item existingItem = Inventory[index];
             existingItem.quantity += quantity;
-            inventory[index] = existingItem;
+            Inventory[index] = existingItem;
         }
         else
         {
             Item newItem = new Item { type = type, quantity = quantity };
-            inventory.Add(newItem);
+            Inventory.Add(newItem);
         }
     }
 
     public void RemoveItem(ItemType type, int quantity)
     {
-        Item existingItem = inventory.Find(item => item.type == type);
+        Item existingItem = Inventory.Find(item => item.type == type);
 
         if (existingItem.type == type)
         {
             existingItem.quantity -= quantity;
             if (existingItem.quantity <= 0)
             {
-                inventory.Remove(existingItem);
+                Inventory.Remove(existingItem);
             }
         }
     }

@@ -53,11 +53,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Head: {fileID: 6554934225608519603}
-  HeadSprites:
+  headSprites:
   - {fileID: -7252215782646672311, guid: 7710e9dac4ae65646afba25205cc4cb3, type: 3}
   - {fileID: 5617316583316421107, guid: 7710e9dac4ae65646afba25205cc4cb3, type: 3}
   - {fileID: -1381065623766834176, guid: 7710e9dac4ae65646afba25205cc4cb3, type: 3}
-  Animator: {fileID: 3105185404161141964}
+  animator: {fileID: 0}
   health: 100
   currentHealth: 0
   body: {fileID: 275422912558460733}
@@ -126,7 +126,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -141,7 +141,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39047331111117803}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -159,7 +159,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!114 &2231292480441419834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0e6a062357ec541bf9ab0a5c91fa5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterData: {fileID: 0}
+  enemyData: {fileID: 0}
   player: {fileID: 0}
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
@@ -188,7 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb942d77f03d604fa9a9da29e149d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemDrop: {fileID: 7261437047791348846, guid: acf16accdf6a60845a097b2022b15a61, type: 3}
   lootList:
   - {fileID: 7782746300635471, guid: acf16accdf6a60845a097b2022b15a61, type: 3}
   - {fileID: -6392110908979428449, guid: eee589e3ad9d59b44b9ddac402802521, type: 3}
