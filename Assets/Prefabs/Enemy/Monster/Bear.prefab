@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1612562853169780046}
   - component: {fileID: 6191701735357074263}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3046443591061272805}
   - component: {fileID: 3421672627715083442}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7504073445319798064}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4741004279832962058}
   - component: {fileID: 1782315678617097478}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegBackR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4404010752142290295}
   - component: {fileID: 4493289457857869372}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegFrontR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3260279174567695599}
   - component: {fileID: 7520022139722516203}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegBackL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 935465398735392651}
   - component: {fileID: 557107683441089642}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegFrontL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +544,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5464643739698630192}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8898631666955030171}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -607,7 +607,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5978345287465023214}
   - component: {fileID: 4716114055556116722}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 1436726506586942131}
   - component: {fileID: -2806069501341832770}
   - component: {fileID: -2755351102220591408}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,7 +891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3895236131226599180}
   - component: {fileID: 8278118633075369138}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}

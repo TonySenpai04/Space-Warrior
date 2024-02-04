@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6221144168649391834}
   - component: {fileID: 4467198263856095372}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegFrontL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 755660644874355198}
   - component: {fileID: 9022770020202237887}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4409638294744786020}
   - component: {fileID: 2510529888618938481}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8071050767861237601}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4984237459667243280}
   - component: {fileID: 5414182415037559909}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6873693622932711551}
   - component: {fileID: 8079258685914424312}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegBackL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +460,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8584345430056063333}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7065527404550326496}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8579066958694279120}
   - component: {fileID: 2983835153139999982}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1154920301208305001}
   - component: {fileID: 7117562175107145586}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegFrontR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: -7871975474872315537}
   - component: {fileID: -4825759256154991353}
   - component: {fileID: 326849714717560603}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WinterWolfTypeA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,7 +891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5585985468236756635}
   - component: {fileID: 188162783394975126}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegBackR
   m_TagString: Untagged
   m_Icon: {fileID: 0}

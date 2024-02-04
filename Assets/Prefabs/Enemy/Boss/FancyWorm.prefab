@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4937059259479891403}
   - component: {fileID: 1839807801373788530}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2200038601174733252}
   - component: {fileID: 8979298557191619130}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5246448938162929145}
   - component: {fileID: 6505074564327950609}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8671960465596741136}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4897076207177925321}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WeaponAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3267898909610979042}
   - component: {fileID: 8830740090677652663}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7203911148113084689}
   - component: {fileID: 3563727722825040179}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: -2909027381540580980}
   - component: {fileID: -4684969871357321864}
   - component: {fileID: 8949383347868461450}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FancyWorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -706,7 +706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5260104043170305549}
   - component: {fileID: 7974290789958114431}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,7 +791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5834963055451087167}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BodyAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

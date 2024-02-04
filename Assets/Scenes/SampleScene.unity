@@ -6609,6 +6609,10 @@ MonoBehaviour:
   shootingController: {fileID: 4805932193163173695}
   animationController: {fileID: 221141724607878888}
   damage: 10
+  detectionRadius: 9.1
+  mask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!4 &1055333706794578932
 Transform:
   m_ObjectHideFlags: 0

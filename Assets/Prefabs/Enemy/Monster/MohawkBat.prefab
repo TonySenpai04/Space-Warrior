@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7536276416247385754}
   - component: {fileID: 6109831607500737047}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingUpL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 681867307293409343}
   - component: {fileID: 8493998985508636101}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingDownL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2723801434217200549}
   - component: {fileID: 431541428203169231}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingDownR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4125650563732168466}
   - component: {fileID: 739100973642791993}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 5953216050570522638}
   - component: {fileID: 3515969693290821031}
   - component: {fileID: -3337858724261142849}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MohawkBat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8577644518854196557}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4047465443143671946}
   - component: {fileID: 2071954073568953830}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,7 +659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6123712970679074999}
   - component: {fileID: 2712767210143926011}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingUpR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,7 +743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5784898009887361540}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6165228185789143676}
   - component: {fileID: 7721570352450454877}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -858,7 +858,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3525958142770131066}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

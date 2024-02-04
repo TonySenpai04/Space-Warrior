@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3310868236166471873}
   - component: {fileID: 5335750956651509248}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7661774986849252733}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3719971844991079125}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 3719834603013308763}
   - component: {fileID: 271194514776400472}
   - component: {fileID: -5504544335655271015}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EvilEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7460527872151665452}
   - component: {fileID: 2635982116639003924}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingDownL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9044959240104711459}
   - component: {fileID: 3137872563688302608}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingDownR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 483771309063510599}
   - component: {fileID: 935735408492134256}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingUpL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3888715675443997074}
   - component: {fileID: 965392184915306915}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingUpR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -690,7 +690,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1214675638352199354}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,7 +721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2290254270886813857}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -753,7 +753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 523546202762167363}
   - component: {fileID: 116771717588118959}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

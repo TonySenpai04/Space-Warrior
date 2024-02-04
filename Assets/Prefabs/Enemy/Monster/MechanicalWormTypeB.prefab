@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5442456020387580641}
   - component: {fileID: 2231292480441419834}
   - component: {fileID: 5668522240773922180}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MechanicalWormTypeB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1382142038682681062}
   - component: {fileID: 9086821496061849398}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6886968900380092940}
   - component: {fileID: 3913266409876534963}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4292958607666241848}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9070589383709848921}
   - component: {fileID: 4890134297313466230}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7659253177330670843}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BodyAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 275422912558460733}
   - component: {fileID: 2900762307137562528}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8329477809510805558}
   - component: {fileID: 6554934225608519603}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,7 +688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2492291892093639187}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WeaponAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1263067837715473166}
   - component: {fileID: 2316322952489365955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

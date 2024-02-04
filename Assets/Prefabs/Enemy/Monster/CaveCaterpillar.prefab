@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3808533060961436957}
   - component: {fileID: 2022901954801424581}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegL1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6180832149925881092}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: -9154415360037399745}
   - component: {fileID: 4016925989812726889}
   - component: {fileID: -8976584160174611604}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CaveCaterpillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2626529058105998096}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 959789052746619313}
   - component: {fileID: 816287863907152119}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegR1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3194597201998909967}
   - component: {fileID: 9104606915969296475}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegR2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8394516937735104451}
   - component: {fileID: 7755631879745183853}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1489987387044846726}
   - component: {fileID: 7488846203657285219}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegL3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -683,7 +683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3548534969879542995}
   - component: {fileID: 2523452698614334059}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegL2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1265460757248312322}
   - component: {fileID: 6355371975275411366}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,7 +861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2826438124464720601}
   - component: {fileID: 2886441236979134339}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -944,7 +944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1744694104592889057}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -976,7 +976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5602617543979974635}
   - component: {fileID: 1323485497022766128}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LegR3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

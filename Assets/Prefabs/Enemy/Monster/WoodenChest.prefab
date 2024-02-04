@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3152218114290113285}
   - component: {fileID: 6128332482681946493}
   - component: {fileID: -5449375297236096252}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WoodenChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,10 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Head: {fileID: 0}
-  HeadSprites: []
-  Animator: {fileID: 3152218114290113285}
+  headSprites: []
+  animator: {fileID: 0}
   health: 100
   currentHealth: 0
+  body: {fileID: 0}
+  enemyType: 0
 --- !u!210 &4364741097925287518
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -139,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0e6a062357ec541bf9ab0a5c91fa5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterData: {fileID: 0}
+  enemyData: {fileID: 0}
   player: {fileID: 0}
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
@@ -152,7 +154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7012108718831862724}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2119674884623576837}
   - component: {fileID: 5607797959997409579}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Broken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5477489874262893794}
   - component: {fileID: 3508064301944952094}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6514336136592297797}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8540050860902452144}
   - component: {fileID: 410887131036844889}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

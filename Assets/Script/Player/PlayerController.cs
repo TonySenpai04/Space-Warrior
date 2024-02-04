@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +7,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private MovementControllerBase movementController;
     [SerializeField]private ShootingControllerBase shootingController;
     [SerializeField] private AnimationControllerBase animationController;
-    public float damage=5f;
+    [SerializeField] private float damage=5f;
     public static PlayerController instance;
+    [SerializeField] private float detectionRadius = 5f;
+    [SerializeField] private LayerMask mask;
+    public float Damage { get => damage;}
     private void Start()
     {
         instance=this;
@@ -16,10 +19,45 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         shootingController.Shoot();
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius,mask);
+        if (hitColliders.Length > 0 )
+        {
+            foreach (var item in hitColliders)
+            {
+                if (item.GetComponent<Enemy>())
+                {
+                    if (item.GetComponent<Enemy>().enemyType == Enemy.EnemyType.Fly)
+                    {
+                       shootingController.LookAtMonster(new Vector3(item.GetComponent<Enemy>().transform.position.x, transform.position.y + 1.25f, transform.position.z));
+                    }
+                    else
+                    {
+                        shootingController.LookAtMonster(item.GetComponent<Enemy>().transform.position);
+                    }
+                    movementController.StopMove();
+                    animationController.Idle();
+                    shootingController.StartShooting();
+                    return;
+                }
+
+            }
+        }
+        else
+        {
+            movementController.CanMove();
+            shootingController.StopShooting();
+            animationController.Move();
+            shootingController.StopShooting();
+        }
     }
     private void FixedUpdate()
     {
         movementController.Move();
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 
 

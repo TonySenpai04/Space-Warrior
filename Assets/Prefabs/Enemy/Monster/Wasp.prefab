@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2833966866050624719}
   - component: {fileID: 5193379857176478069}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingDownL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1465294850488399708}
   - component: {fileID: 3916295596682494304}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingUpL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2213580491300320298}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: -8221302502513651545}
   - component: {fileID: 9069420838791929670}
   - component: {fileID: -3698827056722592997}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wasp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7318716457830327492}
   - component: {fileID: 6580963005400970842}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingUpR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,7 +482,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9150257501960738768}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -513,7 +513,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9043123533352946321}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnchorStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6525054004973200326}
   - component: {fileID: 2328487371322678002}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingDownR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6979869128715176373}
   - component: {fileID: 5621828660471336813}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 102453992785720429}
   - component: {fileID: 2018234930123581039}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -797,7 +797,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2856297587403111918}
   - component: {fileID: 6802331336042917611}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

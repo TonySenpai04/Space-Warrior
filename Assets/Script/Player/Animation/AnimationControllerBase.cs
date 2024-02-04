@@ -7,4 +7,12 @@ public class AnimationControllerBase:MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
+    public virtual void Idle()
+    {
+
+    }
+    public virtual void Move()
+    {
+
+    }
 }

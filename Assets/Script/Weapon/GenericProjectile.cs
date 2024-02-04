@@ -45,7 +45,7 @@ public class GenericProjectile : MonoBehaviour
         {
             gameObject.SetActive(false);
             var currentWeapon = ShootingController.instance.GetCurrentWeapon();
-            monster.GetComponent<EnemyControllerBase>().TakeDamage(currentWeapon.DamageRate*PlayerController.instance.damage);
+            monster.GetComponent<EnemyControllerBase>().TakeDamage(currentWeapon.DamageRate*PlayerController.instance.Damage);
         }
 
 

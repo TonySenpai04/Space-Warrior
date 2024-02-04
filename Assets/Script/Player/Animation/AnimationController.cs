@@ -13,11 +13,11 @@ public class AnimationController : AnimationControllerBase
     }
 
     
-    public void Idle()
+    public override void Idle()
     {
         animator.SetBool("move", false);
     }
-    public void Move()
+    public override void Move()
     {
         animator.SetBool("move", true);
     }
