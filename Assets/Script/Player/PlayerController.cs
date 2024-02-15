@@ -22,24 +22,34 @@ public class PlayerController : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius,mask);
         if (hitColliders.Length > 0 )
         {
+            Enemy firstEnemy = null;
             foreach (var item in hitColliders)
             {
-                if (item.GetComponent<Enemy>())
+                var enemy = item.GetComponent<Enemy>();
+                if (enemy!=null)
                 {
-                    if (item.GetComponent<Enemy>().enemyType == Enemy.EnemyType.Fly)
+                    if (enemy.currentHealth>=0)
                     {
-                       shootingController.LookAtMonster(new Vector3(item.GetComponent<Enemy>().transform.position.x, transform.position.y + 1.25f, transform.position.z));
+                        firstEnemy = enemy;
+                        break;
                     }
-                    else
-                    {
-                        shootingController.LookAtMonster(item.GetComponent<Enemy>().transform.position);
-                    }
-                    movementController.StopMove();
-                    animationController.Idle();
-                    shootingController.StartShooting();
-                    return;
+                   
                 }
 
+            }
+            if (firstEnemy != null)
+            {
+                if (firstEnemy.enemyType == Enemy.EnemyType.Fly)
+                {
+                    shootingController.LookAtMonster(new Vector3(firstEnemy.transform.position.x, transform.position.y + 1.25f, transform.position.z));
+                }
+                else
+                {
+                    shootingController.LookAtMonster(firstEnemy.transform.position);
+                }
+                movementController.StopMove();
+                animationController.Idle();
+                shootingController.StartShooting();
             }
         }
         else

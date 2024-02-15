@@ -33,7 +33,6 @@ public class MonsterController : EnemyControllerBase
         floatingText.GetComponent<TextMesh>().text = ((int)dam).ToString();
         if (enemyData.currentHealth <= 0)
         {
-            MonsterSpawnController.instance.CanSpawn();
             enemyData.Die();
             StartCoroutine(Death());
         }
@@ -47,4 +46,5 @@ public class MonsterController : EnemyControllerBase
         }
         gameObject.SetActive(false);
     }
+
 }

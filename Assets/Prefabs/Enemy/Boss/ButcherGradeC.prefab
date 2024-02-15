@@ -212,8 +212,6 @@ GameObject:
   - component: {fileID: 4178607657994856724}
   - component: {fileID: 1906841228437758395}
   - component: {fileID: 4799068549233536037}
-  - component: {fileID: -2804683099226444723}
-  - component: {fileID: 1979373476689646566}
   - component: {fileID: -3547795613556225998}
   - component: {fileID: 9122109113135070527}
   - component: {fileID: 173775407245683821}
@@ -312,49 +310,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.5, y: 2.5}
   m_Size: {x: 6, y: 5}
   m_Direction: 1
---- !u!50 &-2804683099226444723
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2202772435748665834}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &1979373476689646566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2202772435748665834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf0e6a062357ec541bf9ab0a5c91fa5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyData: {fileID: 0}
-  player: {fileID: 0}
-  speed: 2
-  floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
 --- !u!114 &-3547795613556225998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,7 +360,7 @@ MonoBehaviour:
   - {fileID: -7252215782646672311, guid: e856a4bac9367d6499cf15032e4dddc5, type: 3}
   - {fileID: -1381065623766834176, guid: e856a4bac9367d6499cf15032e4dddc5, type: 3}
   animator: {fileID: 0}
-  health: 1000
+  health: 150
   currentHealth: 0
   body: {fileID: 2799853069866168882}
   enemyType: 1

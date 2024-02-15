@@ -22,20 +22,7 @@ public class BossController : EnemyControllerBase
         {
             Move();
         }
-        //if (distance <= 12f && enemyData.currentHealth > 0)
-        //{
-        //    ShootingController.instance.StartShooting();
-        //    if (enemyData.enemyType == Enemy.EnemyType.Fly)
-        //    {
-        //        ShootingController.instance.LookAtMonster(new Vector3(this.transform.position.x, transform.position.y + 1.25f, transform.position.z));
-        //    }
-        //    else
-        //    {
-        //        ShootingController.instance.LookAtMonster(this.transform.position);
-        //    }
-        //    MovementController.instance.StopMove();
-        //    AnimationController.instance.Idle();
-        //}
+
     }
     public override void TakeDamage(float dam)
     {
@@ -45,10 +32,6 @@ public class BossController : EnemyControllerBase
         floatingText.GetComponent<TextMesh>().text = ((int)dam).ToString();
         if (enemyData.currentHealth <= 0)
         {
-          // MovementController.instance.CanMove();
-            BossSpawnController.instance.CanSpawn();
-            //ShootingController.instance.StopShooting();
-            //AnimationController.instance.Move();
             enemyData.Die();
             StartCoroutine(Death());
         }

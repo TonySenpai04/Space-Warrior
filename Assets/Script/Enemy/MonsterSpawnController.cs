@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterSpawnController :EnemySpawnController
+public class MonsterSpawnController :EnemySpawnControllerBase
 {
-
-    public static MonsterSpawnController instance;
     public override void Start()
     {
-        instance= this;
         base.Start();
     }
     public override void InitializeEnemySpawn()

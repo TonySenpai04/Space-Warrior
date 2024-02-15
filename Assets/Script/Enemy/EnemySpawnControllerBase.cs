@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
 
-public abstract class EnemySpawnController : MonoBehaviour
+public abstract class EnemySpawnControllerBase : MonoBehaviour
 {
     [SerializeField] public Transform player;
     [SerializeField] public float distanceSpawn;

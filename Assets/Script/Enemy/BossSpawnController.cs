@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossSpawnController : EnemySpawnController
+public class BossSpawnController : EnemySpawnControllerBase
 {
-    public static BossSpawnController instance; 
     public override void Start()
     {
-        instance = this;
         base.Start();
     }
     public override void InitializeEnemySpawn()

@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class MovementController : MovementControllerBase
 {
-    public static MovementController instance;
     protected override void Start()
     {
         base.Start();
-        instance = this;
         move = new Move(rigidbody2d, speed);
     }
     public override void Move()

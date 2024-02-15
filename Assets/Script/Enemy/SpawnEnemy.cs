@@ -9,6 +9,7 @@ public class SpawnEnemy : ISpawn,ICanSpawn
     protected Vector3 currentTransform;
     protected bool canSpawn = true;
     protected List<Enemy> poolMonsters;
+    protected Enemy currentEnemy;
     public SpawnEnemy(Transform player, float distanceSpawn, List<Enemy> poolMonsters)
     {
         this.player = player;
@@ -20,27 +21,33 @@ public class SpawnEnemy : ISpawn,ICanSpawn
     {
         if (player.position.x - currentTransform.x > distanceSpawn && canSpawn)
         {
-            var enemy = poolMonsters[Random.Range(0, poolMonsters.Count)];
-            SetupMonster(enemy);
-            enemy.transform.position = new Vector3(player.position.x + 15, player.position.y, player.position.z);
+            currentEnemy = poolMonsters[Random.Range(0, poolMonsters.Count)];
+            SetupEnemy(currentEnemy);
+            currentEnemy.transform.position = new Vector3(player.position.x + 15, player.position.y, player.position.z);
             currentTransform = player.position;
             canSpawn = !canSpawn;
+
         }
+        CanSpawn();
     }
     public virtual void CanSpawn()
     {
-        canSpawn = true;
-    }
-    private void SetupMonster(Enemy monster)
-    {
-        monster.body.rotation = Quaternion.Euler(0, 0, 0);
-        monster.gameObject.SetActive(true);
-
-        if (monster.currentHealth <= 0)
+        if (currentEnemy != null && currentEnemy.currentHealth <= 0)
         {
-            monster.currentHealth = monster.health;
+            canSpawn = true;
+        }
+    }
+    public virtual void SetupEnemy(Enemy enemy)
+    {
+        enemy.body.rotation = Quaternion.Euler(0, 0, 0);
+        enemy.Head.transform.rotation = Quaternion.Euler(0, 0, 0);
+        enemy.gameObject.SetActive(true);
+
+        if (enemy.currentHealth <= 0)
+        {
+            enemy.currentHealth = enemy.health;
         }
 
-        monster.Walk();
+        enemy.Walk();
     }
 }

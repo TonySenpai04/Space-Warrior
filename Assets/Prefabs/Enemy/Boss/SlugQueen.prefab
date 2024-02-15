@@ -394,7 +394,7 @@ MonoBehaviour:
   - {fileID: 5617316583316421107, guid: 28442bc4b10fa97458fc47dc13e9dd68, type: 3}
   - {fileID: -1381065623766834176, guid: 28442bc4b10fa97458fc47dc13e9dd68, type: 3}
   animator: {fileID: 0}
-  health: 1000
+  health: 150
   currentHealth: 0
   body: {fileID: 4109710012576678932}
   enemyType: 1

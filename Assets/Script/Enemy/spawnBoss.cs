@@ -12,28 +12,15 @@ internal class spawnBoss : SpawnEnemy
     {
         if (player.position.x - currentTransform.x > distanceSpawn && canSpawn)
         {
-            var monster = poolMonsters[nextMonsterIndex];
-
-            SetupMonster(monster);
-            monster.transform.position = new Vector3(player.position.x + 15, player.position.y, player.position.z);
+            currentEnemy = poolMonsters[nextMonsterIndex];
+            SetupEnemy(currentEnemy);
+            currentEnemy.transform.position = new Vector3(player.position.x + 15, player.position.y, player.position.z);
             nextMonsterIndex = (nextMonsterIndex + 1) % poolMonsters.Count;
-
             currentTransform = player.position;
             canSpawn=!canSpawn; 
           
         }
-
+        CanSpawn();
     }
-    private void SetupMonster(Enemy monster)
-    {
-        monster.body.rotation = Quaternion.Euler(0, 0, 0);
-        monster.gameObject.SetActive(true);
 
-        if (monster.currentHealth <= 0)
-        {
-            monster.currentHealth = monster.health;
-        }
-
-        monster.Walk();
-    }
 }

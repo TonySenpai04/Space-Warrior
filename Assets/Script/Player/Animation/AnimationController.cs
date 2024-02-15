@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class AnimationController : AnimationControllerBase
 {
-   public static AnimationController instance;
     protected override void  Start()
     {
         base.Start();
-        instance = this;
         Move();
     }
 

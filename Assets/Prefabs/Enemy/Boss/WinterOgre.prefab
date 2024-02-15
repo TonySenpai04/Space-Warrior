@@ -296,7 +296,6 @@ GameObject:
   - component: {fileID: 4315063328798739635}
   - component: {fileID: 9032775050360463331}
   - component: {fileID: 6777448529538245217}
-  - component: {fileID: 1505953903783098060}
   - component: {fileID: -4829807079837808024}
   - component: {fileID: -4734236876353574183}
   - component: {fileID: 7080581934473344624}
@@ -395,33 +394,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.5, y: 2.5}
   m_Size: {x: 6, y: 5}
   m_Direction: 1
---- !u!50 &1505953903783098060
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3293320546048097956}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &-4829807079837808024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,7 +444,7 @@ MonoBehaviour:
   - {fileID: -7252215782646672311, guid: 649e66efda2257a4da8ab5325f7b5ea1, type: 3}
   - {fileID: -1381065623766834176, guid: 649e66efda2257a4da8ab5325f7b5ea1, type: 3}
   animator: {fileID: 0}
-  health: 1000
+  health: 150
   currentHealth: 0
   body: {fileID: 9026738145387418279}
   enemyType: 1
