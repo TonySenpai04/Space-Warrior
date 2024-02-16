@@ -38,7 +38,11 @@ public abstract class Enemy : MonoBehaviour
         animator.SetTrigger("Death");
     }
 
-
+    private void Update()
+    {
+        float gameTime = Time.time;
+        health = 100 + 0.5f * gameTime;
+    }
     public virtual void SetHead(int index)
     {
         //if (index != 2 ) return;

@@ -27,8 +27,10 @@ public class BossController : EnemyControllerBase
     public override void TakeDamage(float dam)
     {
         enemyData.currentHealth -= (int)dam;
-        var floatingText = Instantiate(floatingTextPrefab.gameObject, new Vector3(Random.Range(transform.position.x - 1, transform.position.x + 1),
-            Random.Range(transform.position.y + 2.5f, transform.position.y + 3f), transform.position.z), Quaternion.identity, transform);
+        var floatingText = Instantiate(floatingTextPrefab.gameObject, 
+            new Vector3(Random.Range(transform.position.x - 1, transform.position.x + 1),
+            Random.Range(transform.position.y + offsetFloatingtext.y, transform.position.y + offsetFloatingtext.y+1f),
+            transform.position.z), Quaternion.identity, transform);
         floatingText.GetComponent<TextMesh>().text = ((int)dam).ToString();
         if (enemyData.currentHealth <= 0)
         {

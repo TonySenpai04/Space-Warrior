@@ -519,7 +519,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3267898909610979042}
@@ -594,8 +594,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 2.5}
-  m_Size: {x: 5, y: 5}
+  m_Offset: {x: -0.20299643, y: 2.7733543}
+  m_Size: {x: 7.816986, y: 6.496778}
   m_Direction: 1
 --- !u!114 &-2909027381540580980
 MonoBehaviour:
@@ -629,6 +629,7 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+  offsetFloatingtext: {x: 0, y: 5, z: 0}
 --- !u!114 &8949383347868461450
 MonoBehaviour:
   m_ObjectHideFlags: 0

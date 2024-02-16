@@ -863,6 +863,7 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+  offsetFloatingtext: {x: 0, y: 1.5, z: 0}
 --- !u!114 &4937808662632892065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,6 +880,7 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 0
   floatingTextPrefab: {fileID: 0}
+  offsetFloatingtext: {x: 0, y: 0, z: 0}
 --- !u!114 &5588135915336379653
 MonoBehaviour:
   m_ObjectHideFlags: 0

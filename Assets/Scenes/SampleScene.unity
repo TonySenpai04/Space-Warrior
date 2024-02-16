@@ -799,7 +799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -115.6}
+  m_AnchoredPosition: {x: 120, y: -115.600006}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &422065128
@@ -877,9 +877,9 @@ MonoBehaviour:
   player: {fileID: 4917314582061901178}
   distanceSpawn: 11
   enemiesPrefab:
-  - {fileID: 8949383347868461450, guid: fb30aeff376c9db4184fbb9ea62583c4, type: 3}
-  - {fileID: 5414006764511330575, guid: 95cbea1a392648247885258424072c7a, type: 3}
-  - {fileID: -4201976231002765778, guid: 03af634ec171b63478050f2204966f9a, type: 3}
+  - {fileID: 2006331890209423220, guid: bc56fa633ae955f458c5501baa163a76, type: 3}
+  - {fileID: 173775407245683821, guid: 86e4f09a76a68834d86c01e9693a4d26, type: 3}
+  - {fileID: 1069558448102512818, guid: 183eb63aa75e30a449514697af555b64, type: 3}
   poolEnemiesPos: {fileID: 977153616}
   poolEnemies: []
 --- !u!4 &485007927
@@ -897,6 +897,37 @@ Transform:
   m_Children:
   - {fileID: 977153616}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &490977404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 490977405}
+  m_Layer: 0
+  m_Name: PosStartLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &490977405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490977404}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.279, y: 0.276, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 175510359}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &504350512
 GameObject:
@@ -29646,9 +29677,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: Death Scythe Green Pet
       objectReference: {fileID: 0}
+    - target: {fileID: 5055502625991312681, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: linePrefab
+      value: 
+      objectReference: {fileID: 1785373917862135332, guid: bed0df80d17e4584daeb655ac20cb6b3, type: 3}
+    - target: {fileID: 5055502625991312681, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: mask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055502625991312681, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: posStartLine
+      value: 
+      objectReference: {fileID: 490977405}
+    - target: {fileID: 5055502625991312681, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: detectionRadius
+      value: 9.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 5513971417629107501, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -102348650, guid: 7d2b86ff0ffbc1f49bddf5564f6164ee, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2994910436900386015, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 490977405}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 982e5c2427bdc0f4e87817adfc18bb55, type: 3}
 --- !u!19719996 &8071791769386118533

@@ -9,8 +9,7 @@ public abstract class EnemyControllerBase : MonoBehaviour
     [SerializeField] protected float speed;
     [SerializeField] protected GameObject floatingTextPrefab;
     protected IMove move;
-
-
+    [SerializeField] protected Vector3 offsetFloatingtext;
     public virtual void Start()
     {
         enemyData = GetComponent<Enemy>();
