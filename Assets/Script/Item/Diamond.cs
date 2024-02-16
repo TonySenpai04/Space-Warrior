@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Diamond : Loot
+public class Diamond : Item
 {
     
 }

@@ -7,7 +7,7 @@ public class MovementControllerBase:MonoBehaviour
     [SerializeField] protected Rigidbody2D rigidbody2d;
     protected virtual void Start()
     {
-        rigidbody2d = GetComponent<Rigidbody2D>();
+        rigidbody2d = GetComponentInParent<Rigidbody2D>();
 
     }
     public virtual void Move()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Loot:MonoBehaviour
+public abstract class Item:MonoBehaviour
 {
     public Sprite sprite;
     public string lootName;

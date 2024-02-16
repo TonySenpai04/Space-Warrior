@@ -43,9 +43,9 @@ public class MonsterController : EnemyControllerBase
     public override IEnumerator Death()
     {
         yield return new WaitForSeconds(0.5f);
-        if (GetComponent<LootBag>())
+        if (GetComponent<DropItem>())
         {
-            GetComponent<LootBag>().CreateItem(this.transform.position);
+            GetComponent<DropItem>().CreateItem(this.transform.position);
         }
         gameObject.SetActive(false);
     }

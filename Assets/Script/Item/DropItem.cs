@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LootBag : MonoBehaviour
+public class DropItem : MonoBehaviour
 {
-    [SerializeField] private List<Loot> lootList = new List<Loot>();
+    [SerializeField] private List<Item> itemList = new List<Item>();
     float separationDistance = 0.5f;
     void Start()
     {
     }
 
-   List <Loot> GetDropItem()
+   List <Item> GetDropItem()
     {
         int RanDom = Random.Range(1, 101);
-        List<Loot> itemList = new List<Loot>();
-        foreach (Loot item in lootList)
+        List<Item> itemList = new List<Item>();
+        foreach (Item item in this.itemList)
         {
 
             if (RanDom <= item.dropChange)
@@ -25,7 +25,7 @@ public class LootBag : MonoBehaviour
         }
         if (itemList.Count > 0)
         {
-            Loot dropitem = itemList[Random.Range(0, itemList.Count)];
+            Item dropitem = itemList[Random.Range(0, itemList.Count)];
 
             return itemList;
         }
@@ -33,14 +33,14 @@ public class LootBag : MonoBehaviour
     }
     public void CreateItem(Vector3 spawnPosition)
     {
-       List<Loot> dropitem = GetDropItem();
+       List<Item> dropitem = GetDropItem();
         if (dropitem != null)
         {
             for (int i = 0; i < dropitem.Count; i++)
             {
                 Vector3 spawnPositionNew = new Vector3(spawnPosition.x + i * separationDistance, spawnPosition.y + 0.4f, spawnPosition.z);
-                Loot lootObject= Instantiate(dropitem[i], spawnPositionNew, Quaternion.identity);
-                Loot lootScript = lootObject.GetComponent<Loot>();
+                Item lootObject= Instantiate(dropitem[i], spawnPositionNew, Quaternion.identity);
+                Item lootScript = lootObject.GetComponent<Item>();
                 lootScript.PlayBurstAnimation();
             }
         }

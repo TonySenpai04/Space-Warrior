@@ -56,7 +56,7 @@ public class ShootingController : ShootingControllerBase
 
     public override void Awake()
     {
-        avatar = GetComponent<CharacterAvatar>();
+        avatar = FindAnyObjectByType<CharacterAvatar>();
         instance = this;
         if (RandomWeaponAtStart)
         {
