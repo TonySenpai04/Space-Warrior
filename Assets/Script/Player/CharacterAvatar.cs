@@ -57,22 +57,22 @@ public class CharacterAvatar : MonoBehaviour
     // DEBUG 
     private void DebugSwitchCharacter()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            CharacterId++;
-            if (CharacterId > 5)
-                CharacterId = 0;
-            SwitchCharacter(CharacterId);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            CharacterId--;
-            if (CharacterId < 0)
-                CharacterId = 5;
-            SwitchCharacter(CharacterId);
-        }
-         
-        /*
+        //if(Input.GetKeyDown(KeyCode.Alpha8))
+        //{
+        //    CharacterId++;
+        //    if (CharacterId > 5)
+        //        CharacterId = 0;
+        //    SwitchCharacter(CharacterId);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha7))
+        //{
+        //    CharacterId--;
+        //    if (CharacterId < 0)
+        //        CharacterId = 5;
+        //    SwitchCharacter(CharacterId);
+        //}
+
+
         if (Input.GetKeyDown(KeyCode.F1))
         {
             CharacterId = 0;
@@ -102,6 +102,6 @@ public class CharacterAvatar : MonoBehaviour
         {
             CharacterId = 5;
             SwitchCharacter(CharacterId);
-        }*/
+        }
     }
 }
