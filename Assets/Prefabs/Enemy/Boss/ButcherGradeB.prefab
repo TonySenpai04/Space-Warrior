@@ -443,8 +443,8 @@ GameObject:
   - component: {fileID: 7676462466946390658}
   - component: {fileID: -3589683799110893093}
   - component: {fileID: -6650707486350752431}
-  - component: {fileID: -4626999204913824723}
   - component: {fileID: 559398134341071376}
+  - component: {fileID: 1443266394702525085}
   m_Layer: 3
   m_Name: ButcherGradeB
   m_TagString: Untagged
@@ -573,28 +573,6 @@ MonoBehaviour:
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
   offsetFloatingtext: {x: 0, y: 5, z: 0}
---- !u!114 &-4626999204913824723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978114997727804186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c1e486dbea13c40a3b23b1fb2c68d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Head: {fileID: 8155465969752997697}
-  headSprites:
-  - {fileID: -1828946549344447192, guid: 10bcb629e03823f4bbb5ae2ea2091897, type: 3}
-  - {fileID: -7252215782646672311, guid: 10bcb629e03823f4bbb5ae2ea2091897, type: 3}
-  - {fileID: -1381065623766834176, guid: 10bcb629e03823f4bbb5ae2ea2091897, type: 3}
-  animator: {fileID: 0}
-  health: 150
-  currentHealth: 0
-  body: {fileID: 8835369774314683748}
-  enemyType: 1
 --- !u!50 &559398134341071376
 Rigidbody2D:
   serializedVersion: 4
@@ -622,6 +600,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!114 &1443266394702525085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978114997727804186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c09974e2a2aac49a04e6bd37f509d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Head: {fileID: 8155465969752997697}
+  headSprites:
+  - {fileID: -1828946549344447192, guid: 10bcb629e03823f4bbb5ae2ea2091897, type: 3}
+  - {fileID: -7252215782646672311, guid: 10bcb629e03823f4bbb5ae2ea2091897, type: 3}
+  - {fileID: -1381065623766834176, guid: 10bcb629e03823f4bbb5ae2ea2091897, type: 3}
+  animator: {fileID: 0}
+  health: 150
+  currentHealth: 0
+  body: {fileID: 8835369774314683748}
+  enemyType: 1
 --- !u!1 &4158547703550707787
 GameObject:
   m_ObjectHideFlags: 0

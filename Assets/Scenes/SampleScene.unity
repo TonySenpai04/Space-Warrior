@@ -7565,9 +7565,9 @@ MonoBehaviour:
   player: {fileID: 4917314582061901178}
   distanceSpawn: 20
   enemiesPrefab:
-  - {fileID: 5414006764511330575, guid: 95cbea1a392648247885258424072c7a, type: 3}
-  - {fileID: -4201976231002765778, guid: 03af634ec171b63478050f2204966f9a, type: 3}
-  - {fileID: 8949383347868461450, guid: fb30aeff376c9db4184fbb9ea62583c4, type: 3}
+  - {fileID: -7658518504680995560, guid: 95cbea1a392648247885258424072c7a, type: 3}
+  - {fileID: -1926480682190753649, guid: 03af634ec171b63478050f2204966f9a, type: 3}
+  - {fileID: 5400428279637511001, guid: fb30aeff376c9db4184fbb9ea62583c4, type: 3}
   poolEnemiesPos: {fileID: 977153616}
   poolEnemies: []
 --- !u!4 &485007927

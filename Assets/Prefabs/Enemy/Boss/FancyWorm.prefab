@@ -501,8 +501,8 @@ GameObject:
   - component: {fileID: 7548624238423395818}
   - component: {fileID: -2909027381540580980}
   - component: {fileID: -4684969871357321864}
-  - component: {fileID: 8949383347868461450}
   - component: {fileID: -7709713876275384916}
+  - component: {fileID: 5400428279637511001}
   m_Layer: 3
   m_Name: FancyWorm
   m_TagString: Untagged
@@ -631,28 +631,6 @@ MonoBehaviour:
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
   offsetFloatingtext: {x: 0, y: 5, z: 0}
---- !u!114 &8949383347868461450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6350121553969662078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c1e486dbea13c40a3b23b1fb2c68d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Head: {fileID: 3563727722825040179}
-  headSprites:
-  - {fileID: -7252215782646672311, guid: cda079f11e5e8864fb3ab173a481dce6, type: 3}
-  - {fileID: 5617316583316421107, guid: cda079f11e5e8864fb3ab173a481dce6, type: 3}
-  - {fileID: -1381065623766834176, guid: cda079f11e5e8864fb3ab173a481dce6, type: 3}
-  animator: {fileID: 0}
-  health: 150
-  currentHealth: 0
-  body: {fileID: 5246448938162929145}
-  enemyType: 1
 --- !u!50 &-7709713876275384916
 Rigidbody2D:
   serializedVersion: 4
@@ -680,6 +658,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!114 &5400428279637511001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6350121553969662078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296e06ac9112fca40ab2d016a3e91a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Head: {fileID: 3563727722825040179}
+  headSprites:
+  - {fileID: -7252215782646672311, guid: cda079f11e5e8864fb3ab173a481dce6, type: 3}
+  - {fileID: 5617316583316421107, guid: cda079f11e5e8864fb3ab173a481dce6, type: 3}
+  - {fileID: -1381065623766834176, guid: cda079f11e5e8864fb3ab173a481dce6, type: 3}
+  animator: {fileID: 0}
+  health: 150
+  currentHealth: 0
+  body: {fileID: 5246448938162929145}
+  enemyType: 1
 --- !u!1 &7332046206899634841
 GameObject:
   m_ObjectHideFlags: 0

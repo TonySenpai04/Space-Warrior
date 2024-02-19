@@ -298,8 +298,8 @@ GameObject:
   - component: {fileID: 6777448529538245217}
   - component: {fileID: -4829807079837808024}
   - component: {fileID: -4734236876353574183}
-  - component: {fileID: 7080581934473344624}
   - component: {fileID: -2692550418799198960}
+  - component: {fileID: -4533170096539401250}
   m_Layer: 3
   m_Name: WinterOgre
   m_TagString: Untagged
@@ -428,28 +428,6 @@ MonoBehaviour:
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
   offsetFloatingtext: {x: 0, y: 5, z: 0}
---- !u!114 &7080581934473344624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3293320546048097956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c1e486dbea13c40a3b23b1fb2c68d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Head: {fileID: 2702836493117373600}
-  headSprites:
-  - {fileID: -1828946549344447192, guid: 649e66efda2257a4da8ab5325f7b5ea1, type: 3}
-  - {fileID: -7252215782646672311, guid: 649e66efda2257a4da8ab5325f7b5ea1, type: 3}
-  - {fileID: -1381065623766834176, guid: 649e66efda2257a4da8ab5325f7b5ea1, type: 3}
-  animator: {fileID: 0}
-  health: 150
-  currentHealth: 0
-  body: {fileID: 9026738145387418279}
-  enemyType: 1
 --- !u!50 &-2692550418799198960
 Rigidbody2D:
   serializedVersion: 4
@@ -477,6 +455,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!114 &-4533170096539401250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3293320546048097956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7e61644cd86f14dbc75c6c5cda6b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Head: {fileID: 2702836493117373600}
+  headSprites:
+  - {fileID: -1828946549344447192, guid: 649e66efda2257a4da8ab5325f7b5ea1, type: 3}
+  - {fileID: -7252215782646672311, guid: 649e66efda2257a4da8ab5325f7b5ea1, type: 3}
+  - {fileID: -1381065623766834176, guid: 649e66efda2257a4da8ab5325f7b5ea1, type: 3}
+  animator: {fileID: 0}
+  health: 150
+  currentHealth: 0
+  body: {fileID: 9026738145387418279}
+  enemyType: 1
 --- !u!1 &3342058206738828310
 GameObject:
   m_ObjectHideFlags: 0

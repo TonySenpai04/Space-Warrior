@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : Enemy
+public class Juggernaut : Boss
 {
-
-    public void ActiveSkill()
+    public override void ActiveSkill()
     {
 
     }

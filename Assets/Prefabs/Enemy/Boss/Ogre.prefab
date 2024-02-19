@@ -873,8 +873,8 @@ GameObject:
   - component: {fileID: 4266990864576645453}
   - component: {fileID: 7019931500213048936}
   - component: {fileID: -4566147565314855440}
-  - component: {fileID: -3813122966962346611}
   - component: {fileID: 6041942457720175478}
+  - component: {fileID: -1478907338042452544}
   m_Layer: 3
   m_Name: Ogre
   m_TagString: Untagged
@@ -1003,28 +1003,6 @@ MonoBehaviour:
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
   offsetFloatingtext: {x: 0, y: 5, z: 0}
---- !u!114 &-3813122966962346611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9153910784247894675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c1e486dbea13c40a3b23b1fb2c68d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Head: {fileID: 4694885259622957286}
-  headSprites:
-  - {fileID: -1828946549344447192, guid: 41a194c6b4849624a95e349a5a46fef5, type: 3}
-  - {fileID: -7252215782646672311, guid: 41a194c6b4849624a95e349a5a46fef5, type: 3}
-  - {fileID: -1381065623766834176, guid: 41a194c6b4849624a95e349a5a46fef5, type: 3}
-  animator: {fileID: 0}
-  health: 150
-  currentHealth: 0
-  body: {fileID: 2367990282875672618}
-  enemyType: 1
 --- !u!50 &6041942457720175478
 Rigidbody2D:
   serializedVersion: 4
@@ -1052,3 +1030,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!114 &-1478907338042452544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9153910784247894675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96fe5acc6a28b07428fb3267a89eb05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Head: {fileID: 4694885259622957286}
+  headSprites:
+  - {fileID: -1828946549344447192, guid: 41a194c6b4849624a95e349a5a46fef5, type: 3}
+  - {fileID: -7252215782646672311, guid: 41a194c6b4849624a95e349a5a46fef5, type: 3}
+  - {fileID: -1381065623766834176, guid: 41a194c6b4849624a95e349a5a46fef5, type: 3}
+  animator: {fileID: 0}
+  health: 150
+  currentHealth: 0
+  body: {fileID: 2367990282875672618}
+  enemyType: 1
