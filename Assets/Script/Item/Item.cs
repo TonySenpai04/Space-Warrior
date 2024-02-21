@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Item:MonoBehaviour
@@ -15,12 +16,12 @@ public abstract class Item:MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite=sprite;
     }
-    public void PlayBurstAnimation()
+    public virtual void PlayBurstAnimation()
     {
         StartCoroutine(BurstAnimation());
     }
 
-    private IEnumerator BurstAnimation()
+    public virtual IEnumerator BurstAnimation()
     {
         float elapsedTime = 0f;
         Vector3 originalScale = transform.localScale;
@@ -34,5 +35,10 @@ public abstract class Item:MonoBehaviour
         }
 
         transform.localScale = originalScale;
+    }
+    public virtual void OnMouseDown()
+    {
+        ItemManager.instance.AddItem(typeItem, count);
+        Destroy(gameObject);
     }
 }

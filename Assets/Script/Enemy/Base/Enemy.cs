@@ -36,6 +36,7 @@ public abstract class Enemy : MonoBehaviour
     public virtual void Die()
     {
         animator.SetTrigger("Death");
+        StartCoroutine(Death());
     }
 
     public virtual void Update()
@@ -51,6 +52,24 @@ public abstract class Enemy : MonoBehaviour
         {
             Head.sprite = headSprites[index];
         }
+    }
+    public virtual void TakeDamage(float dam)
+    {
+        currentHealth -= dam;
+        if (currentHealth <= 0)
+        {
+            Die();
+           
+        }
+    }
+    public virtual IEnumerator Death()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (GetComponent<DropItem>())
+        {
+            GetComponent<DropItem>().CreateItem(this.transform.position);
+        }
+        gameObject.SetActive(false);
     }
 
 }

@@ -26,12 +26,5 @@ public abstract class EnemyControllerBase : MonoBehaviour
     {
         move.Move();
     }
-    public virtual void TakeDamage(float dam)
-    {
-        
-    }
-    public virtual IEnumerator Death()
-    {
-       return null;
-    }
+   
 }

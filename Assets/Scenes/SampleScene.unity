@@ -20230,7 +20230,7 @@ MonoBehaviour:
   movementController: {fileID: 51358255}
   shootingController: {fileID: 993313216}
   animationController: {fileID: 221141724607878888}
-  damage: 10
+  damage: 12
   detectionRadius: 9.1
   mask:
     serializedVersion: 2

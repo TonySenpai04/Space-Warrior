@@ -427,6 +427,10 @@ MonoBehaviour:
   currentHealth: 0
   body: {fileID: 4109710012576678932}
   enemyType: 1
+  minionPrefab: {fileID: -4482750854060982476, guid: 0a8c2829da5a43d419bf7ce7da1a5bb3, type: 3}
+  timer: 0
+  skillCooldown: 4
+  minionInstance: {fileID: 0}
 --- !u!1 &6238766863195614410
 GameObject:
   m_ObjectHideFlags: 0
