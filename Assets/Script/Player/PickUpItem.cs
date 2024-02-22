@@ -11,8 +11,7 @@ public class PickUpItem : MonoBehaviour
 
         if (item != null)
         {
-            ItemManager.instance.AddItem(item.typeItem, item.count);
-            Destroy(item.gameObject);
+            item.TriggerItem();
         }
     }
 

@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5916843968473633480
 Transform:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   LeftHandId: 0
   RightHandId: 2
   weaponType: 1
-  force: 5000
+  force: 3000
   FXSocket: {fileID: 5784288145391977735}
   ShellSocket: {fileID: 303531456017063658}
   MuzzleFlash: {fileID: 4000010238639982, guid: c8f97677291220442b8f00b42c9b520d, type: 3}
@@ -205,8 +205,8 @@ MonoBehaviour:
   Shell: {fileID: 4000011218590730, guid: ca31063a8dfa29848b644d743a77e607, type: 3}
   Smoke: {fileID: 4000013190636638, guid: 32b1e4eabf82eb649af19cde876a42e0, type: 3}
   BarrelSpark: {fileID: 4000013190636638, guid: 8c69106a15076d04ebffda84e37c80be, type: 3}
-  Damage: 0
-  FireRate: 0
+  DamageRate: 1.2
+  FireRate: 0.5
   colliders: []
 --- !u!114 &7844335118310159189
 MonoBehaviour:

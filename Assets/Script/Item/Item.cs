@@ -11,8 +11,11 @@ public abstract class Item:MonoBehaviour
     public int count;
     public float burstDuration = 0.3f;
     public ItemManager.ItemType typeItem;
+    public float speedMove=5f;
+    bool isMove;
+    public GameObject target;
 
-    public virtual void Start()
+   public virtual void Start()
     {
         GetComponent<SpriteRenderer>().sprite=sprite;
     }
@@ -38,7 +41,21 @@ public abstract class Item:MonoBehaviour
     }
     public virtual void OnMouseDown()
     {
-        ItemManager.instance.AddItem(typeItem, count);
-        Destroy(gameObject);
+        TriggerItem();
     }
+    public virtual void Update()
+    {
+        if(isMove)
+        {
+            transform.position=Vector3.Lerp(transform.position,target.transform.position,speedMove*Time.deltaTime);
+        }
+    }
+    public virtual void TriggerItem()
+    {
+        ItemManager.instance.AddItem(typeItem, count);
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        isMove = true;
+        Destroy(gameObject,3f);
+    }
+
 }

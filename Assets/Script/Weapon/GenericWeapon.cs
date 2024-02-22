@@ -36,8 +36,9 @@ public class GenericWeapon : MonoBehaviour
     public Transform BarrelSpark;
 
     [Header("Weapon Settings")]
-    public float DamageRate;
-    public float FireRate;
+
+    [SerializeField][Range(1f, 3f)]  public float DamageRate;
+    [SerializeField][Range(0.1f,1f)] public float FireRate;
 
 
     [SerializeField]protected Collider2D[] colliders;

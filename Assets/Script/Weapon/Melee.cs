@@ -12,8 +12,6 @@ public class Melee : GenericWeapon
     public override void Awake()
     {
         base.Awake();
-        FireRate = 0.33f;
-        DamageRate = 1.1f;
 
 
     }

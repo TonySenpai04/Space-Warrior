@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class Soul : Item
 {
-    
+    public override void Start()
+    {
+        base.Start();
+        target = GameObject.Find("ToSoul");
+    }
 }

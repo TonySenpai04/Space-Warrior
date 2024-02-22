@@ -1273,7 +1273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1332935674080603819
 Transform:
   m_ObjectHideFlags: 0
@@ -1340,8 +1340,8 @@ MonoBehaviour:
   Shell: {fileID: 4000011218590730, guid: f3d7a49b2eaee0640bb0ce2f56b6af54, type: 3}
   Smoke: {fileID: 4000013190636638, guid: 27d88b28ec2c56a45aa5909999736c42, type: 3}
   BarrelSpark: {fileID: 4000013190636638, guid: fd647ffe292106f4fbf6d7f62657fe96, type: 3}
-  Damage: 0
-  FireRate: 0
+  DamageRate: 2
+  FireRate: 0.5
   colliders: []
 --- !u!114 &9037222226747567967
 MonoBehaviour:
