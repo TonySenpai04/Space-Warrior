@@ -627,7 +627,7 @@ MonoBehaviour:
   Shell: {fileID: 4000011218590730, guid: 2c349f97f7a7d0e4da544ce116fe869b, type: 3}
   Smoke: {fileID: 4000013190636638, guid: 244b4da1298feeb4cabd2d2b90efb991, type: 3}
   BarrelSpark: {fileID: 4000013260740416, guid: b9c1122899a4cc14a99477224b3ef051, type: 3}
-  DamageRate: 0
+  DamageRate: 1
   FireRate: 0.5
   colliders: []
 --- !u!114 &7935896590905107384

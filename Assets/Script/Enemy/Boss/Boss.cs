@@ -11,6 +11,7 @@ public class Boss : Enemy
     }
     public override void Update()
     {
+        base.Update();
         ActiveSkill();
     }
 }

@@ -42,7 +42,7 @@ public abstract class Enemy : MonoBehaviour
     public virtual void Update()
     {
         float gameTime = Time.time;
-        health = 100 + 0.5f * gameTime;
+        health = 100 + 0.1f * gameTime;
     }
     public virtual void SetHead(int index)
     {
