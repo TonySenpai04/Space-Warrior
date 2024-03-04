@@ -11,6 +11,7 @@ public abstract class Enemy : MonoBehaviour
     public float currentHealth;
     public Transform body;
     public EnemyType enemyType;
+ 
     public enum EnemyType
     {
         Fly,
@@ -42,7 +43,7 @@ public abstract class Enemy : MonoBehaviour
     public virtual void Update()
     {
         float gameTime = Time.time;
-        health = 100 + 0.1f * gameTime;
+        health = 100 + 0.3f * gameTime;
     }
     public virtual void SetHead(int index)
     {
@@ -58,6 +59,7 @@ public abstract class Enemy : MonoBehaviour
         currentHealth -= dam;
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             Die();
            
         }
