@@ -281,6 +281,9 @@ MonoBehaviour:
   healthText: {fileID: 299210050394784457}
   enemyData: {fileID: 0}
   fontSize: 60
+  parent: {fileID: 0}
+  floatingText: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+  offSet: {x: 0, y: 0, z: 0}
 --- !u!1 &4822590775961211988
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,10 +609,15 @@ MonoBehaviour:
   - {fileID: 5617316583316421107, guid: 28442bc4b10fa97458fc47dc13e9dd68, type: 3}
   - {fileID: -1381065623766834176, guid: 28442bc4b10fa97458fc47dc13e9dd68, type: 3}
   animator: {fileID: 0}
-  health: 150
-  currentHealth: 0
   body: {fileID: 4109710012576678932}
   enemyType: 1
+  levelController: {fileID: 0}
+  healthUI: {fileID: 0}
+  health: 150
+  currentHealth: 0
+  baseExperience: 5
+  experienceIncreaseRate: 1.1
+  baseHealth: 0
   minionPrefab: {fileID: -4482750854060982476, guid: 0a8c2829da5a43d419bf7ce7da1a5bb3, type: 3}
   skillCooldown: 4
 --- !u!1 &5875311269282363143

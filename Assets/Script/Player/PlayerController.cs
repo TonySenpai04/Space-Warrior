@@ -5,14 +5,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]private MovementControllerBase movementController;
-    [SerializeField]private ShootingControllerBase shootingController;
+    [Header("Controller")]
+    [SerializeField] private MovementControllerBase movementController;
+    [SerializeField] private ShootingControllerBase shootingController;
     [SerializeField] private AnimationControllerBase animationController;
-    [SerializeField] private float damage=5f;
-    public static PlayerController instance;
+    [Space]
+    [Header("Info")]
+    [SerializeField] private float damage=10f;
     [SerializeField] private float detectionRadius = 5f;
     [SerializeField] private LayerMask mask;
-    public float Damage { get => damage;}
+
+    public static PlayerController instance;
+    public float Damage { get => damage; set => damage = value; }
     private void Start()
     {
         instance=this;

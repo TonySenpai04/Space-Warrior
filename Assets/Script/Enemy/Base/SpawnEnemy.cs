@@ -10,6 +10,7 @@ public class SpawnEnemy : ISpawn,ICanSpawn
     protected bool canSpawn = true;
     protected List<Enemy> poolMonsters;
     protected Enemy currentEnemy;
+    float timer;
     public SpawnEnemy(Transform player, float distanceSpawn, List<Enemy> poolMonsters)
     {
         this.player = player;
@@ -19,6 +20,7 @@ public class SpawnEnemy : ISpawn,ICanSpawn
     }
     public virtual void Spawn()
     {
+        timer = Time.time;
         if (player.position.x - currentTransform.x > distanceSpawn && canSpawn)
         {
             currentEnemy = poolMonsters[Random.Range(0, poolMonsters.Count)];
@@ -41,12 +43,10 @@ public class SpawnEnemy : ISpawn,ICanSpawn
     {
         enemy.body.rotation = Quaternion.Euler(0, 0, 0);
         enemy.Head.transform.rotation = Quaternion.Euler(0, 0, 0);
-        enemy.gameObject.SetActive(true);
 
-        if (enemy.currentHealth <= 0)
-        {
-            enemy.currentHealth = enemy.health;
-        }
+        enemy.health = enemy.baseHealth + 0.3f * timer;
+        enemy.currentHealth = enemy.health;
+        enemy.gameObject.SetActive(true);
 
         enemy.Walk();
     }

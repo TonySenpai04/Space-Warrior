@@ -658,6 +658,9 @@ MonoBehaviour:
   healthText: {fileID: 1855684632446283298}
   enemyData: {fileID: 0}
   fontSize: 60
+  parent: {fileID: 0}
+  floatingText: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+  offSet: {x: 0, y: 0, z: 0}
 --- !u!1 &4946621082271713317
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,10 +936,15 @@ MonoBehaviour:
   - {fileID: -7252215782646672311, guid: 8a1c4d69137ae914180463f6c152b1b4, type: 3}
   - {fileID: -1381065623766834176, guid: 8a1c4d69137ae914180463f6c152b1b4, type: 3}
   animator: {fileID: 0}
-  health: 150
-  currentHealth: 0
   body: {fileID: 5575829078632414306}
   enemyType: 1
+  levelController: {fileID: 0}
+  healthUI: {fileID: 0}
+  health: 150
+  currentHealth: 0
+  baseExperience: 5
+  experienceIncreaseRate: 1.1
+  baseHealth: 0
 --- !u!1 &6089847288421411046
 GameObject:
   m_ObjectHideFlags: 0

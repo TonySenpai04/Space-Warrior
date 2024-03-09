@@ -1,17 +1,24 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    [Header("Components")]
     public SpriteRenderer Head;
     public List<Sprite> headSprites;
     public Animator animator;
-    public float health = 100;
-    public float currentHealth;
     public Transform body;
     public EnemyType enemyType;
- 
+    public LevelController levelController;
+    public EnemyHealthUIBase healthUI;
+    [Space]
+    [Header("Info")]
+    public float health;
+    public float currentHealth;
+    public int baseExperience = 5;
+    public float experienceIncreaseRate = 1.1f;
+    public float baseHealth;
     public enum EnemyType
     {
         Fly,
@@ -21,8 +28,11 @@ public abstract class Enemy : MonoBehaviour
     {
         currentHealth = health;
         animator = GetComponent<Animator>();
-
+        levelController=FindAnyObjectByType<LevelController>();
+        baseHealth = health;
+        healthUI=GetComponentInChildren<EnemyHealthUIBase>();
     }
+    
     public virtual void Walk()
     {
         SetHead(0);
@@ -42,8 +52,8 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Update()
     {
-        float gameTime = Time.time;
-        health = 100 + 0.3f * gameTime;
+        //float gameTime = Time.time;
+        //health =  baseHealth + 0.3f * gameTime;
     }
     public virtual void SetHead(int index)
     {
@@ -57,12 +67,15 @@ public abstract class Enemy : MonoBehaviour
     public virtual void TakeDamage(float dam)
     {
         currentHealth -= dam;
+        healthUI.TakeDamageUI(dam);
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             Die();
            
         }
+        
+        
     }
     public virtual IEnumerator Death()
     {
@@ -70,6 +83,11 @@ public abstract class Enemy : MonoBehaviour
         if (GetComponent<DropItem>())
         {
             GetComponent<DropItem>().CreateItem(this.transform.position);
+        }
+        if (levelController != null)
+        {
+            int experienceGained = Mathf.RoundToInt(baseExperience * Mathf.Pow(experienceIncreaseRate, levelController.Level - 1));
+            levelController.GainExperience(experienceGained);
         }
         gameObject.SetActive(false);
     }

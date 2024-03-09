@@ -35,6 +35,7 @@ public abstract class EnemySpawnControllerBase : MonoBehaviour
     public virtual void Update()
     {
         Spawn();
+        
     }
     public virtual void Spawn()
     {

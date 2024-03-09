@@ -7,7 +7,6 @@ public class Minion:Enemy
     [SerializeField] private float speed;
     [SerializeField] private bool movingForward = true;
     [SerializeField] private Transform owner;
-    [SerializeField] private float moveDistance = 3f;
     public override void  Awake()
      {
         base.Awake();

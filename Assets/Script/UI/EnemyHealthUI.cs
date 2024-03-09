@@ -1,36 +1,60 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class EnemyHealthUI : MonoBehaviour
+public class EnemyHealthUI : EnemyHealthUIBase
 {
-    [SerializeField] private TextMeshProUGUI healthText;
-    [SerializeField] private Enemy enemyData;
-    [SerializeField] private float fontSize=60;
-    [SerializeField] private Transform parent;
 
-    private void Start()
+
+    public override void Start()
     {
-        enemyData = GetComponentInParent<Enemy>();
-        healthText.fontSize = fontSize;
-        healthText.text =((int)enemyData.currentHealth).ToString();
-        parent= enemyData.transform;
-        if (healthText == null)
-        {
-            Debug.LogError("Health Text reference is not set!");
-        }
+      base.Start();
     }
-    private void FixedUpdate()
+    public override void FixedUpdate()
     {
-        UpdateHealthText();
+       base.FixedUpdate();
     }
-    public void UpdateHealthText()
+    public override void UpdateHealthText()
     {
         if (parent.transform.localScale.x < 0)
         {
             healthText.rectTransform.localScale = new Vector3(-0.01f,0.01f,1);
         }
         healthText.text = ((int)enemyData.currentHealth).ToString();
+    }
+    public override void TakeDamageUI(float dam)
+    {
+       StartCoroutine( DisplayAndRiseText(dam));
+    }
+    private IEnumerator DisplayAndRiseText(float damage)
+    {
+        // Tạo một thể hiện mới của văn bản nổi
+        GameObject floatingTextInstance = Instantiate(floatingText, transform.position + Vector3.up * 2f, Quaternion.identity);
+
+        // Đặt văn bản cho văn bản nổi vừa tạo
+        TextMesh textMesh = floatingTextInstance.GetComponent<TextMesh>();
+        if (textMesh != null)
+        {
+            textMesh.text = ((int)damage).ToString(); // Chỉ hiển thị số nguyên
+        }
+
+        // Hiển thị văn bản trong một khoảng thời gian
+        yield return new WaitForSeconds(0f);
+
+        // Di chuyển văn bản lên trên
+        float startY = floatingTextInstance.transform.position.y;
+        float targetY = startY + 0.5f;
+        if (floatingTextInstance != null)
+        {
+            while (floatingTextInstance.transform.position.y < targetY)
+            {
+                float newY = floatingTextInstance.transform.position.y + 1f * Time.deltaTime;
+                floatingTextInstance.transform.position = new Vector3(floatingTextInstance.transform.position.x, newY, floatingTextInstance.transform.position.z);
+                yield return null;
+            }
+        }
+        
+
     }
 }
