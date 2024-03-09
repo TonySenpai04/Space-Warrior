@@ -11,10 +11,13 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        cameraFollow = new CameraFollow(this.player, this.gameObject,this.offset);
+        InitializeVariables();
     }
+    public void InitializeVariables()
+    {
+        cameraFollow = new CameraFollow(this.player, this.gameObject, this.offset);
 
-    // Update is called once per frame
+    }
     void Update()
     {
         cameraFollow.FollowPlayer();

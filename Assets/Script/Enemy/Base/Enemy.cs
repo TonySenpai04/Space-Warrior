@@ -26,13 +26,20 @@ public abstract class Enemy : MonoBehaviour
     }
     public virtual void Awake()
     {
-        currentHealth = health;
-        animator = GetComponent<Animator>();
-        levelController=FindAnyObjectByType<LevelController>();
-        baseHealth = health;
-        healthUI=GetComponentInChildren<EnemyHealthUIBase>();
+        InitializeVariables();
+        InitializeComponents();
     }
-    
+    public virtual void InitializeVariables()
+    {
+        currentHealth = health;
+        baseHealth = health;
+    }
+    public virtual void InitializeComponents()
+    {
+        animator = GetComponent<Animator>();
+        levelController = FindAnyObjectByType<LevelController>();
+        healthUI = GetComponentInChildren<EnemyHealthUIBase>();
+    }
     public virtual void Walk()
     {
         SetHead(0);

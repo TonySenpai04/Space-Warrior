@@ -30,9 +30,14 @@ public class CharacterAvatar : MonoBehaviour
     //
     private void Awake()
     {
+        InitializeVariables();
+    }
+    public void InitializeVariables()
+    {
         _shootingController = FindAnyObjectByType<ShootingController>();
         if (RandomizeAtStart) CharacterId = UnityEngine.Random.Range(0, 6);
         SwitchCharacter(CharacterId);
+
     }
 
     private void SwitchCharacter(int id)

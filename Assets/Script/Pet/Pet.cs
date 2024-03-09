@@ -10,6 +10,7 @@ public abstract class Pet : MonoBehaviour
     {
 
     }
+  
     public virtual void ActivateSkill()
     {
 

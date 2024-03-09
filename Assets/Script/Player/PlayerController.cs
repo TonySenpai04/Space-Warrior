@@ -23,50 +23,72 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        HandleShooting();
+        HandleEnemyDetection();
+    }
+
+    private void HandleShooting()
+    {
         shootingController.Shoot();
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius,mask);
-        if (hitColliders.Length > 0 )
+    }
+
+    private void HandleEnemyDetection()
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, mask);
+
+        if (hitColliders.Length > 0)
         {
-            Enemy firstEnemy = null;
-            foreach (var item in hitColliders)
-            {
-                var enemy = item.GetComponent<Enemy>();
-                if (enemy!=null)
-                {
-                    if (enemy.currentHealth>=0)
-                    {
-                        firstEnemy = enemy;
-                        break;
-                    }
-                   
-                }
-
-            }
-            if (firstEnemy != null)
-            {
-                if (firstEnemy.enemyType == Enemy.EnemyType.Fly)
-                {
-                    shootingController.LookAtMonster(new Vector3(firstEnemy.transform.position.x, transform.position.y + 1.25f, transform.position.z));
-                }
-                else
-                {
-                    shootingController.LookAtMonster(firstEnemy.transform.position);
-                }
-                movementController.StopMove();
-                animationController.Idle();
-                shootingController.StartShooting();
-                return;
-            }
-
+            HandleEnemyFound(hitColliders);
         }
         else
         {
-            movementController.CanMove();
-            shootingController.StopShooting();
-            animationController.Move();
-            shootingController.StopShooting();
+            HandleNoEnemy();
         }
     }
+
+    private void HandleEnemyFound(Collider2D[] hitColliders)
+    {
+        Enemy firstEnemy = null;
+        foreach (var item in hitColliders)
+        {
+            var enemy = item.GetComponent<Enemy>();
+            if (enemy != null && enemy.currentHealth >= 0)
+            {
+                firstEnemy = enemy;
+                break;
+            }
+        }
+
+        if (firstEnemy != null)
+        {
+            LookAtEnemy(firstEnemy);
+            HandleEnemyEngagement();
+        }
+    }
+
+    private void LookAtEnemy(Enemy enemy)
+    {
+        Vector3 targetPosition = (enemy.enemyType == Enemy.EnemyType.Fly) ?
+            new Vector3(enemy.transform.position.x, transform.position.y + 1.25f, transform.position.z) :
+            enemy.transform.position;
+
+        shootingController.LookAtMonster(targetPosition);
+    }
+    private void HandleEnemyEngagement()
+    {
+        movementController.StopMove();
+        animationController.Idle();
+        shootingController.StartShooting();
+    }
+
+    private void HandleNoEnemy()
+    {
+        movementController.CanMove();
+        shootingController.StopShooting();
+        animationController.Move();
+        shootingController.StopShooting();
+    }
+
     private void FixedUpdate()
     {
         movementController.Move();

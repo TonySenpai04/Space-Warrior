@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class LineController : MonoBehaviour
 {
-    [SerializeField]private LineRenderer lineRenderer;
+    [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private Texture[] textures;
     [SerializeField] private float fps=60;
     [SerializeField] private float fpsCouter;
     [SerializeField] private int animationStep;
     [SerializeField] private Vector3 target;
+    private float damage;
     EdgeCollider2D edgeCollider;
     private float damageTimer = 0f;
     private float damageInterval = 0.5f;
@@ -46,12 +47,11 @@ public class LineController : MonoBehaviour
         edgeCollider.SetPoints(edges);
     }
 
-
-    void LateUpdate()
+    public void SetDamage(float dam)
     {
+        damage = dam;
+    } 
 
-        
-    }
     public void AssignTarget(Vector3 startPos, Vector3 newTarget)
     {
         lineRenderer.positionCount = 2;
@@ -65,7 +65,7 @@ public class LineController : MonoBehaviour
         {
             if (damageTimer >= damageInterval)
             {
-                collision.GetComponent<Enemy>().TakeDamage(1);
+                collision.GetComponent<Enemy>().TakeDamage(damage);
                 damageTimer = 0f;
             }
             

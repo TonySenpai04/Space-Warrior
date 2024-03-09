@@ -13,7 +13,7 @@ public abstract class EnemySpawnControllerBase : MonoBehaviour
     public ISpawn spawnEnemy;
     public virtual  void Start()
     {
-        poolEnemies = new List<Enemy>();
+       
         InitializeEnemyPool();
         InitializeEnemySpawn();
     }
@@ -23,6 +23,7 @@ public abstract class EnemySpawnControllerBase : MonoBehaviour
     }
     public virtual void InitializeEnemyPool()
     {
+        poolEnemies = new List<Enemy>();
         foreach (var item in enemiesPrefab)
         {
             var enemy = Instantiate(item, poolEnemiesPos.position, Quaternion.identity);
