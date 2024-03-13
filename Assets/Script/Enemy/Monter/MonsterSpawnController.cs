@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MonsterSpawnController :EnemySpawnControllerBase
 {
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
     }
     public override void InitializeEnemySpawn()
     {

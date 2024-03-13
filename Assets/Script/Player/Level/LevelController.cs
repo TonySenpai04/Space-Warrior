@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -31,5 +28,6 @@ public class LevelController : MonoBehaviour
         PlayerController.instance.Damage+=5;
         experience = experience- experienceNeededForNextLevel ;
         experienceNeededForNextLevel += (int)(experienceNeededForNextLevel * 0.1f); 
+        MonsterSpawnManager.instance.SetLevelSpawn(Level);
     }
 }

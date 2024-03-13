@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
 
 public abstract class EnemySpawnControllerBase : MonoBehaviour
@@ -11,7 +9,7 @@ public abstract class EnemySpawnControllerBase : MonoBehaviour
     [SerializeField] public Transform poolEnemiesPos;
     [SerializeField] public List<Enemy> poolEnemies;
     public ISpawn spawnEnemy;
-    public virtual  void Start()
+    public virtual  void Awake()
     {
        
         InitializeEnemyPool();

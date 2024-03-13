@@ -41,7 +41,10 @@ public class SpawnEnemy : ISpawn,ICanSpawn
     }
     public virtual void SetupEnemy(Enemy enemy)
     {
-        enemy.body.rotation = Quaternion.Euler(0, 0, 0);
+        if (enemy.body != null)
+        {
+            enemy.body.rotation = Quaternion.Euler(0, 0, 0);
+        }
         enemy.Head.transform.rotation = Quaternion.Euler(0, 0, 0);
 
         enemy.health = enemy.baseHealth + 0.3f * timer;

@@ -39,6 +39,7 @@ public abstract class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         levelController = FindAnyObjectByType<LevelController>();
         healthUI = GetComponentInChildren<EnemyHealthUIBase>();
+        SetHead(0);
     }
     public virtual void Walk()
     {
