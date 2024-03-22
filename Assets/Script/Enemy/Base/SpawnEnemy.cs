@@ -10,7 +10,7 @@ public class SpawnEnemy : ISpawn,ICanSpawn
     protected bool canSpawn = true;
     protected List<Enemy> poolMonsters;
     protected Enemy currentEnemy;
-    float timer;
+    protected float timer;
     public SpawnEnemy(Transform player, float distanceSpawn, List<Enemy> poolMonsters)
     {
         this.player = player;
@@ -47,7 +47,7 @@ public class SpawnEnemy : ISpawn,ICanSpawn
         }
         enemy.Head.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        enemy.health = enemy.baseHealth + 0.3f * timer;
+        enemy.health = enemy.baseHealth + 0.7f * timer;
         enemy.currentHealth = enemy.health;
         enemy.gameObject.SetActive(true);
 

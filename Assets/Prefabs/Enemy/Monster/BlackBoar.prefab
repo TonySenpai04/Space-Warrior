@@ -394,7 +394,7 @@ MonoBehaviour:
   enemyType: 1
   levelController: {fileID: 0}
   healthUI: {fileID: 0}
-  health: 30
+  health: 50
   currentHealth: 0
   baseExperience: 5
   experienceIncreaseRate: 1.1

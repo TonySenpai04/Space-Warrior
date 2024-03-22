@@ -32,7 +32,7 @@ public class DeathScytheGreenPet : Pet
     }
     public void SetDamge()
     {
-        this.damage = player.Damage/ damageIncreasePerLevel;
+        this.damage = Mathf.Ceil (player.Damage/ damageIncreasePerLevel);
         line.SetDamage(this.damage);
     }
     public override void ActivateSkill()

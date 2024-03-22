@@ -10,6 +10,7 @@ internal class spawnBoss : SpawnEnemy
     }
     public override  void Spawn()
     {
+        timer = Time.time;
         if (player.position.x - currentTransform.x > distanceSpawn && canSpawn)
         {
             currentEnemy = poolMonsters[nextMonsterIndex];
