@@ -9,8 +9,8 @@ public class SpawnBeam : ISpawn
     private Transform poolProjectile;
     private Transform FXSocket;
     private MonoBehaviour monoBehaviour;
-    private ShootingController.WeaponType weaponType;
-    public SpawnBeam(Transform projectilePrefab, Transform poolProjectile, Transform fXSocket, MonoBehaviour monoBehaviour, ShootingController.WeaponType weaponType)
+    private WeaponController.WeaponType weaponType;
+    public SpawnBeam(Transform projectilePrefab, Transform poolProjectile, Transform fXSocket, MonoBehaviour monoBehaviour, WeaponController.WeaponType weaponType)
     {
         this.projectilePrefab = projectilePrefab;
         this.poolProjectile = poolProjectile;

@@ -11,7 +11,7 @@ public class CharacterAvatar : MonoBehaviour
     public SpriteRenderer Body;
 
     //
-    private ShootingController _shootingController;
+    private WeaponController _shootingController;
 
     //
     [Serializable]
@@ -34,7 +34,7 @@ public class CharacterAvatar : MonoBehaviour
     }
     public void InitializeVariables()
     {
-        _shootingController = FindAnyObjectByType<ShootingController>();
+        _shootingController = FindAnyObjectByType<WeaponController>();
         if (RandomizeAtStart) CharacterId = UnityEngine.Random.Range(0, 6);
         SwitchCharacter(CharacterId);
 

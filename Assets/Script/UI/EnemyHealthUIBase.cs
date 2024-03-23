@@ -30,7 +30,7 @@ public  abstract class EnemyHealthUIBase:MonoBehaviour
     {
         
     }
-    public virtual void TakeDamageUI(float dam)
+    public virtual void TakeDamageUI(float dam,Color color)
     {
     }
 

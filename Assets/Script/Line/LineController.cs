@@ -65,7 +65,7 @@ public class LineController : MonoBehaviour
         {
             if (damageTimer >= damageInterval)
             {
-                collision.GetComponent<Enemy>().TakeDamage(damage);
+                collision.GetComponent<Enemy>().TakeDamage(damage,Color.green);
                 damageTimer = 0f;
             }
             

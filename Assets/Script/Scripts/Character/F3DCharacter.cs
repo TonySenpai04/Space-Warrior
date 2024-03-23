@@ -8,7 +8,7 @@ public class F3DCharacter : MonoBehaviour
     private int hitTriggerCounter;
     private float _hitTriggerTimer;
     private Rigidbody2D rBody;
-    private ShootingController shootingController;
+    private WeaponController shootingController;
     private bool isDead;
 
     // Use this for initialization
@@ -16,7 +16,7 @@ public class F3DCharacter : MonoBehaviour
     {
         rBody = GetComponent<Rigidbody2D>();
      
-        shootingController = GetComponent<ShootingController>();
+        shootingController = GetComponent<WeaponController>();
     }
 
     public void OnDamage(int damageAmount)

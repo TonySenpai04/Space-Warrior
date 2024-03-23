@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Controller")]
     [SerializeField] private MovementControllerBase movementController;
-    [SerializeField] private ShootingControllerBase shootingController;
+    [SerializeField] private WeaponControllerBase weaponController;
     [SerializeField] private AnimationControllerBase animationController;
     [Space]
     [Header("Info")]
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleShooting()
     {
-        shootingController.Shoot();
+        weaponController.Shoot();
     }
 
     private void HandleEnemyDetection()
@@ -72,21 +72,21 @@ public class PlayerController : MonoBehaviour
             new Vector3(enemy.transform.position.x, transform.position.y + 1.25f, transform.position.z) :
             enemy.transform.position;
 
-        shootingController.LookAtMonster(targetPosition);
+        weaponController.LookAtMonster(targetPosition);
     }
     private void HandleEnemyEngagement()
     {
         movementController.StopMove();
         animationController.Idle();
-        shootingController.StartShooting();
+        weaponController.StartShooting();
     }
 
     private void HandleNoEnemy()
     {
         movementController.CanMove();
-        shootingController.StopShooting();
+        weaponController.StopShooting();
         animationController.Move();
-        shootingController.StopShooting();
+        weaponController.StopShooting();
     }
 
     private void FixedUpdate()

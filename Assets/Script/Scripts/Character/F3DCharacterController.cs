@@ -37,7 +37,7 @@ public class F3DCharacterController : MonoBehaviour
     private Rigidbody2D _rb2D;
 
     private F3DPlatform _platform;
-    private ShootingController _weaponController;
+    private WeaponController _weaponController;
     private F3DCharacter _character;
     private F3DCharacterAudio _audio;
 
@@ -68,7 +68,7 @@ public class F3DCharacterController : MonoBehaviour
     private void Awake()
     {
         _character = GetComponent<F3DCharacter>();
-        _weaponController = GetComponent<ShootingController>();
+        _weaponController = GetComponent<WeaponController>();
         _rb2D = GetComponent<Rigidbody2D>();
         _audio = GetComponent<F3DCharacterAudio>();
         _speed = MaxSpeed;
@@ -272,7 +272,7 @@ public class F3DCharacterController : MonoBehaviour
 
         // Weapon socket to FX Socket offset
         var currentWeapon = _weaponController.GetCurrentWeapon();
-        if (currentWeapon.weaponType == ShootingController.WeaponType.Melee)
+        if (currentWeapon.weaponType == WeaponController.WeaponType.Melee)
         {
             WeaponSocket.rotation = Quaternion.identity;
         }

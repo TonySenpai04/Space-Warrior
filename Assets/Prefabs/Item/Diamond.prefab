@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -2031098337
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 789367575633925369, guid: 7673c8e831655a34194d840ef6c0562d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dc9bac3698ba7eb469f0ee2f8498d090, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -152,7 +152,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.22, y: 1.26}
+    oldSize: {x: 1.81, y: 1.72}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -207,9 +207,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ec6ad932c1c41419d87cc5d0b564d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 789367575633925369, guid: 7673c8e831655a34194d840ef6c0562d, type: 3}
+  sprite: {fileID: 21300000, guid: dc9bac3698ba7eb469f0ee2f8498d090, type: 3}
   lootName: Diamond
   dropChange: 100
   count: 10
   burstDuration: 0.3
   typeItem: 2
+  speedMove: 5
+  target: {fileID: 0}

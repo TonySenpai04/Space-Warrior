@@ -72,10 +72,10 @@ public abstract class Enemy : MonoBehaviour
             Head.sprite = headSprites[index];
         }
     }
-    public virtual void TakeDamage(float dam)
+    public virtual void TakeDamage(float dam,Color color)
     {
         currentHealth -= dam;
-        healthUI.TakeDamageUI(dam);
+        healthUI.TakeDamageUI(dam, color);
         if (currentHealth <= 0)
         {
             currentHealth = 0;

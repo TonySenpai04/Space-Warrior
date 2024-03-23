@@ -23,26 +23,23 @@ public class EnemyHealthUI : EnemyHealthUIBase
         }
         healthText.text = ((int)enemyData.currentHealth).ToString();
     }
-    public override void TakeDamageUI(float dam)
+    public override void TakeDamageUI(float dam, Color color)
     {
-       StartCoroutine( DisplayAndRiseText(dam));
+       StartCoroutine( DisplayAndRiseText(dam,color));
     }
-    private IEnumerator DisplayAndRiseText(float damage)
+    private IEnumerator DisplayAndRiseText(float damage,Color color)
     {
-        // Tạo một thể hiện mới của văn bản nổi
         GameObject floatingTextInstance = Instantiate(floatingText, transform.position + Vector3.up * 2f, Quaternion.identity);
 
-        // Đặt văn bản cho văn bản nổi vừa tạo
+
         TextMesh textMesh = floatingTextInstance.GetComponent<TextMesh>();
         if (textMesh != null)
         {
-            textMesh.text = ((int)damage).ToString(); // Chỉ hiển thị số nguyên
+            textMesh.text = ((int)damage).ToString();
+            textMesh.color = color;
         }
 
-        // Hiển thị văn bản trong một khoảng thời gian
         yield return new WaitForSeconds(0f);
-
-        // Di chuyển văn bản lên trên
         float startY = floatingTextInstance.transform.position.y;
         float targetY = startY + 0.5f;
         if (floatingTextInstance != null)

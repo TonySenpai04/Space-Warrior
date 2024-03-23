@@ -9,9 +9,9 @@ public class SpawnProjectile : ISpawn
     private Transform poolProjectile;
     private Transform FXSocket;
     private MonoBehaviour monoBehaviour;
-    public ShootingController.WeaponType weaponType;
+    public WeaponController.WeaponType weaponType;
     public float force;
-    public SpawnProjectile(Transform projectile, Transform poolProjectile, Transform fXSocket, MonoBehaviour monoBehaviour, ShootingController.WeaponType weaponType, float force)
+    public SpawnProjectile(Transform projectile, Transform poolProjectile, Transform fXSocket, MonoBehaviour monoBehaviour, WeaponController.WeaponType weaponType, float force)
     {
         Projectile = projectile;
         this.poolProjectile = poolProjectile;
@@ -34,7 +34,7 @@ public class SpawnProjectile : ISpawn
         var projRb = projectile.GetComponent<Rigidbody2D>();
         // Launch  
         //   projRb.AddForce(projectile.transform.right * force, ForceMode2D.Force);
-        var currentWeapon = ShootingController.instance.GetCurrentWeapon();
+        var currentWeapon = WeaponController.instance.GetCurrentWeapon();
         projRb.AddForce(currentWeapon.transform.right * force, ForceMode2D.Force);
     }
 }

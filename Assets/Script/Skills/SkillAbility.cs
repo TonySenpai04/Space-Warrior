@@ -12,8 +12,9 @@ public class    SkillAbility : MonoBehaviour
     public TextMeshProUGUI abilityText1;
     public KeyCode ability1Key;
     public float ability1Cooldown;
-    private bool isAbility1Cooldown = false;
+   // private bool isAbility1Cooldown = false;
     public float currentAbility1Cooldown;
+    public SkillBase skill1;
     [Header("Skill2")]
     public Image abilityImage2;
     public TextMeshProUGUI abilityText2;
@@ -35,9 +36,12 @@ public class    SkillAbility : MonoBehaviour
         abilityImage1.fillAmount = 0;
         abilityImage2.fillAmount = 0;
         abilityImage3.fillAmount = 0;
+
         abilityText1.text = "";
         abilityText2.text = "";
         abilityText3.text = "";
+
+        ability1Cooldown = skill1.countdown;
 
 
     }
@@ -46,16 +50,16 @@ public class    SkillAbility : MonoBehaviour
         Ability1Input();
         Ability2Input();
         Ability3Input();
-        AbilityCooldown(ref currentAbility1Cooldown, ability1Cooldown, ref isAbility1Cooldown, abilityImage1, abilityText1);
+        AbilityCooldown(ref currentAbility1Cooldown, ability1Cooldown, ref skill1.isAbilityCooldown, abilityImage1, abilityText1);
         AbilityCooldown(ref currentAbility2Cooldown, ability2Cooldown, ref isAbility2Cooldown, abilityImage2, abilityText2);
         AbilityCooldown(ref currentAbility3Cooldown, ability3Cooldown, ref isAbility3Cooldown, abilityImage3, abilityText3);
        
     }
     private void Ability1Input()
     {
-        if ((Input.GetKey(ability1Key) && !isAbility1Cooldown))
+        if ((Input.GetKey(ability1Key) && !skill1.isAbilityCooldown))
         {
-            isAbility1Cooldown = true;
+            skill1.isAbilityCooldown = true;
             currentAbility1Cooldown = ability1Cooldown;
             
         }

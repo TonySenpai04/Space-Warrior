@@ -18,7 +18,7 @@ public class GenericWeapon : MonoBehaviour
 
     // Weapon 
     [Header("Weapon")]
-    public ShootingController.WeaponType weaponType;
+    public WeaponController.WeaponType weaponType;
     public float force;
 
     // Sockets
@@ -108,11 +108,11 @@ public class GenericWeapon : MonoBehaviour
     // WEAPON
     protected virtual void OnFire()
     {
-        if (weaponType == ShootingController.WeaponType.Knife) return;
+        if (weaponType == WeaponController.WeaponType.Knife) return;
 
         spawnShell.Spawn();
         spawnMuzzleFlash.Spawn();
-        if (this.weaponType == ShootingController.WeaponType.Beam)
+        if (this.weaponType == WeaponController.WeaponType.Beam)
             spawnBeam.Spawn();
         else
             spawnProjectile.Spawn();

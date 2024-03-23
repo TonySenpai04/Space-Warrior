@@ -8,7 +8,7 @@ public class GenericProjectile : MonoBehaviour
     private Collider2D _collider;
     private ParticleSystem _pSystem;
     public AudioSource Audio;
-    public ShootingController.WeaponType WeaponType;
+    public WeaponController.WeaponType WeaponType;
 
     //
     protected Vector3 _origin;
@@ -44,8 +44,8 @@ public class GenericProjectile : MonoBehaviour
         if (monster != null)
         {
             gameObject.SetActive(false);
-            var currentWeapon = ShootingController.instance.GetCurrentWeapon();
-            monster.TakeDamage(currentWeapon.DamageRate*PlayerController.instance.Damage);
+            var currentWeapon = WeaponController.instance.GetCurrentWeapon();
+            monster.TakeDamage(currentWeapon.DamageRate*PlayerController.instance.Damage,Color.red);
         }
 
 
