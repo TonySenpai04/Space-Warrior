@@ -5,7 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class DeathScytheGreenPet : Pet
 {
-    [SerializeField] private PlayerController player;
+  
     [SerializeField] private float detectionRadius;
     [SerializeField] private LayerMask mask;
     [SerializeField] private LineController linePrefab;
@@ -22,7 +22,7 @@ public class DeathScytheGreenPet : Pet
  
         line = Instantiate(linePrefab);
         line.gameObject.SetActive(false);
-        player = FindAnyObjectByType<PlayerController>();
+
  
     }
     private void Update()
@@ -32,7 +32,7 @@ public class DeathScytheGreenPet : Pet
     }
     public void SetDamge()
     {
-        this.damage = Mathf.Ceil (player.Damage/ damageIncreasePerLevel);
+        this.damage = Mathf.Ceil (CharacterStats.instance.damage.GetDam()/ damageIncreasePerLevel);
         line.SetDamage(this.damage);
     }
     public override void ActivateSkill()

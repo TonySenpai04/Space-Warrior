@@ -11,16 +11,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AnimationControllerBase animationController;
     [Space]
     [Header("Info")]
-    [SerializeField] private float damage=10f;
     [SerializeField] private float detectionRadius = 5f;
     [SerializeField] private LayerMask mask;
 
-    public static PlayerController instance;
-    public float Damage { get => damage; set => damage = value; }
+
     private void Start()
     {
-        instance=this;
+        
+       
     }
+    
     private void Update()
     {
         HandleShooting();

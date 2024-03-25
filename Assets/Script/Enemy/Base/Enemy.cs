@@ -10,7 +10,6 @@ public abstract class Enemy : MonoBehaviour
     public Animator animator;
     public Transform body;
     public EnemyType enemyType;
-    public LevelController levelController;
     public EnemyHealthUIBase healthUI;
     [Space]
     [Header("Info")]
@@ -37,7 +36,6 @@ public abstract class Enemy : MonoBehaviour
     public virtual void InitializeComponents()
     {
         animator = GetComponent<Animator>();
-        levelController = FindAnyObjectByType<LevelController>();
         healthUI = GetComponentInChildren<EnemyHealthUIBase>();
         SetHead(0);
     }
@@ -92,11 +90,10 @@ public abstract class Enemy : MonoBehaviour
         {
             GetComponent<DropItem>().CreateItem(this.transform.position);
         }
-        if (levelController != null)
-        {
-            int experienceGained = Mathf.RoundToInt(baseExperience * Mathf.Pow(experienceIncreaseRate, levelController.Level - 1));
-            levelController.GainExperience(experienceGained);
-        }
+        
+        int experienceGained = Mathf.RoundToInt(baseExperience * Mathf.Pow(experienceIncreaseRate, CharacterStats.instance.level.GetLevel() - 1));
+        CharacterStats.instance.level.GainExperience(experienceGained);
+        
         gameObject.SetActive(false);
     }
 

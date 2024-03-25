@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemQuantityUI : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class ItemQuantityUI : MonoBehaviour
 
         public ItemManager.ItemType itemType;
 
-        public TextMeshProUGUI quantityText;
+        public Text quantityText;
     }
 
     [SerializeField] private UIItem[] items;    

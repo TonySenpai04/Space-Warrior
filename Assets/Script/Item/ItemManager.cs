@@ -6,9 +6,9 @@ public class ItemManager : MonoBehaviour
     public static ItemManager instance;
     public enum ItemType
     {
-        Gold,
+        Coin,
         Soul,
-        Diamond
+        Gem
     }
 
     [System.Serializable]
