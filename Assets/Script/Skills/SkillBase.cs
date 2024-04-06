@@ -6,6 +6,7 @@ public  abstract class SkillBase : MonoBehaviour
 {
     public float countdown;
     public bool isAbilityCooldown = false;
+    public int manaConsumption;
     public virtual void Start()
     {
         

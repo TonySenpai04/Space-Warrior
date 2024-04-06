@@ -51,6 +51,6 @@ public class SpawnEnemy : ISpawn,ICanSpawn
         enemy.currentHealth = enemy.health;
         enemy.gameObject.SetActive(true);
 
-        enemy.Walk();
+        enemy.WalkAnim();
     }
 }

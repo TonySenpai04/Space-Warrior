@@ -15,7 +15,7 @@ public class BurningSkill : SkillBase
     [SerializeField] private float timerSkill;
     public override void Update()
     {
-        CheckSkillActivation();
+      //  CheckSkillActivation();
 
         if (isBurning && isAbilityCooldown)
         {
@@ -24,13 +24,13 @@ public class BurningSkill : SkillBase
     }
 
     
-    private void CheckSkillActivation()
-    {
-        if (Input.GetKey(KeyCode.A))
-        {
-            ActivateSkill();
-        }
-    }
+    //private void CheckSkillActivation()
+    //{
+    //    if (Input.GetKey(KeyCode.A))
+    //    {
+    //        ActivateSkill();
+    //    }
+    //}
     private void ResetTimer()
     {
         timerSkill = 0f;
@@ -82,6 +82,8 @@ public class BurningSkill : SkillBase
     public override void ActivateSkill()
     {
         isBurning = true;
+ 
+        CharacterStats.instance.mana.UseMana(manaConsumption);
     }
 
 }

@@ -59,6 +59,7 @@ public class    SkillAbility : MonoBehaviour
     {
         if ((Input.GetKey(ability1Key) && !skill1.isAbilityCooldown))
         {
+            skill1.ActivateSkill();
             skill1.isAbilityCooldown = true;
             currentAbility1Cooldown = ability1Cooldown;
             

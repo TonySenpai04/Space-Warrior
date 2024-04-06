@@ -18,6 +18,7 @@ public abstract class Enemy : MonoBehaviour
     public int baseExperience = 5;
     public float experienceIncreaseRate = 1.1f;
     public float baseHealth;
+
     public enum EnemyType
     {
         Fly,
@@ -39,18 +40,19 @@ public abstract class Enemy : MonoBehaviour
         healthUI = GetComponentInChildren<EnemyHealthUIBase>();
         SetHead(0);
     }
-    public virtual void Walk()
+    public virtual void WalkAnim()
     {
         SetHead(0);
         animator.SetBool("Walk", true);
     }
-    public virtual void Attack()
+    public virtual void AttackAnim()
     {
+        animator.SetBool("Walk", false);
         animator.SetTrigger("Attack");
     }
 
     // Play Die animation.
-    public virtual void Die()
+    public virtual void DieAnim()
     {
         animator.SetTrigger("Death");
         StartCoroutine(Death());
@@ -77,7 +79,7 @@ public abstract class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            Die();
+            DieAnim();
            
         }
         

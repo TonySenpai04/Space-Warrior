@@ -19,7 +19,7 @@ public abstract class EnemyControllerBase : MonoBehaviour
     {
         enemyData = GetComponent<Enemy>();
         player = FindAnyObjectByType<PlayerController>().transform;
-        enemyData.Walk();
+        enemyData.WalkAnim();
         move = new EnemyMove(speed, this.gameObject);
 
     }
@@ -30,6 +30,10 @@ public abstract class EnemyControllerBase : MonoBehaviour
     public virtual void Move()
     {
         move.Move();
+    }
+    public virtual void Attack()
+    {
+
     }
    
 }

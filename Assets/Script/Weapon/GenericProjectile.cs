@@ -38,7 +38,7 @@ public class GenericProjectile : MonoBehaviour
        
     //}
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         Enemy monster = collision.gameObject.GetComponent<Enemy>();
         if (monster != null)
