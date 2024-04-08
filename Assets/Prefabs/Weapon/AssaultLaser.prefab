@@ -299,16 +299,20 @@ MonoBehaviour:
   Animator: {fileID: 6740622397530633684}
   Bone: {fileID: 7661533272776879566}
   PowerUp: {fileID: 4000011377284404, guid: 7c6b77d46fb0dbe4b8a038203f6fc4ac, type: 3}
+  weaponSprite: {fileID: 1669953062257054456}
+  IsInfiniteAmmo: 0
+  AmmoCount: 25
+  CurrentAmmo: 25
   LeftHand: {fileID: 4329288139125562336}
   RightHand: {fileID: 8192920553513432599}
   LeftHandId: 0
   RightHandId: 2
   weaponType: 1
-  force: 5000
+  force: 3000
   FXSocket: {fileID: 8290534489321064460}
   ShellSocket: {fileID: 7575750975108183144}
   MuzzleFlash: {fileID: 4000012883924136, guid: 07a859312ddeaef4597e8a0ade44d808, type: 3}
-  Projectile: {fileID: 4000013655879204, guid: 7d0a566457e4db44fb061d1c469d1485, type: 3}
+  Projectile: {fileID: 4000011112682238, guid: 58883ecbd6532df4e87697c65364c4a3, type: 3}
   Shell: {fileID: 4000011218590730, guid: ca31063a8dfa29848b644d743a77e607, type: 3}
   Smoke: {fileID: 4000013190636638, guid: 32b1e4eabf82eb649af19cde876a42e0, type: 3}
   BarrelSpark: {fileID: 4000010522800416, guid: 6367420a16cafbe43b12bb7c02846d4c, type: 3}

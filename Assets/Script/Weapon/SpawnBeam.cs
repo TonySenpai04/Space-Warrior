@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class SpawnBeam : ISpawn
 {
-    private Transform projectilePrefab;
+    private Transform Beam;
     private Transform poolProjectile;
     private Transform FXSocket;
     private MonoBehaviour monoBehaviour;
     private WeaponController.WeaponType weaponType;
-    public SpawnBeam(Transform projectilePrefab, Transform poolProjectile, Transform fXSocket, MonoBehaviour monoBehaviour, WeaponController.WeaponType weaponType)
+    public SpawnBeam(Transform beam, Transform poolProjectile, Transform fXSocket, MonoBehaviour monoBehaviour, WeaponController.WeaponType weaponType)
     {
-        this.projectilePrefab = projectilePrefab;
+        this.Beam = beam;
         this.poolProjectile = poolProjectile;
         this. FXSocket = fXSocket;
         this.monoBehaviour = monoBehaviour;
@@ -21,8 +21,16 @@ public class SpawnBeam : ISpawn
 
     public void Spawn()
     {
-        Transform beam = PoolObjectManager.Instance.GetObjectFromPool(projectilePrefab, FXSocket, null);
-        beam.transform.SetParent(projectilePrefab);
+        if (Beam == null) return;
+        var currentWeapon = WeaponController.instance.GetCurrentWeapon();
+        if (!currentWeapon.IsInfiniteAmmo && currentWeapon.CurrentAmmo <= 0)
+        {
+            Debug.Log("Out of ammo!");
+            return;
+        }
+        Transform beam = PoolObjectManager.Instance.GetObjectFromPool(Beam, FXSocket, null);
+        if (beam == null) return;
+        beam.transform.SetParent(Beam);
         // Set Weapon Type
         var projectileObject = beam.GetComponent<Pulse>();
         projectileObject.WeaponType = weaponType;

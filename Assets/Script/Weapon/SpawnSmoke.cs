@@ -21,7 +21,15 @@ public class SpawnSmoke : ISpawn
     }
     public void Spawn()
     {
+        if (Smoke == null) return; 
+        var currentWeapon = WeaponController.instance.GetCurrentWeapon();
+        if (!currentWeapon.IsInfiniteAmmo && currentWeapon.CurrentAmmo <= 0)
+        {
+            Debug.Log("Out of ammo!");
+            return;
+        }
         Transform smoke = PoolObjectManager.Instance.GetObjectFromPool(Smoke, FXSocket, null);
+        if (smoke == null) return;
         smokeEffects.Add(smoke.transform);
         smoke.transform.SetParent(poolProjectile);
          monoBehaviour.StartCoroutine(DelayedDespawn(smoke, 0.5f));

@@ -283,6 +283,9 @@ MonoBehaviour:
   Animator: {fileID: 8277037042256562263}
   Bone: {fileID: 8364973983776494788}
   PowerUp: {fileID: 4000011189308172, guid: b8e775a78c633404383c513340fad8ab, type: 3}
+  weaponSprite: {fileID: 7466059253864492829}
+  InfiniteAmmo: 0
+  AmmoCount: 30
   LeftHand: {fileID: 9060642743178639863}
   RightHand: {fileID: 1644764437736015892}
   LeftHandId: 0

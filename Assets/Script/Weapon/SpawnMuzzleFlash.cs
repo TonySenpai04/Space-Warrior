@@ -22,9 +22,15 @@ public class SpawnMuzzleFlash : ISpawn
     public void Spawn()
     {
         if (MuzzleFlash == null) return;
+        var currentWeapon = WeaponController.instance.GetCurrentWeapon();
+        if (!currentWeapon.IsInfiniteAmmo && currentWeapon.CurrentAmmo <= 0)
+        {
+            Debug.Log("Out of ammo!");
+            return;
+        }
         // var muzzleFlash = Instantiate(MuzzleFlash.gameObject, FXSocket.transform.position, Quaternion.identity, FXSocket);
         Transform muzzleFlash = PoolObjectManager.Instance.GetObjectFromPool(MuzzleFlash, FXSocket, FXSocket);
-
+        if(muzzleFlash ==null) return;
         barrelEffects.Add(muzzleFlash.transform);
         muzzleFlash.transform.SetParent(poolProjectile);
         // Despawn

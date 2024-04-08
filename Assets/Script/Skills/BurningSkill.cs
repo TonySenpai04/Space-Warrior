@@ -1,7 +1,9 @@
+﻿using NUnit.Framework.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BurningSkill : SkillBase
 {
@@ -13,45 +15,79 @@ public class BurningSkill : SkillBase
     [SerializeField] private float timer = 0f; 
     [SerializeField] private Enemy targetEnemy;
     [SerializeField] private float timerSkill;
+
+    public bool isSelectingTarget = false;
+    public Image targetIcon;
+    public override void Start()
+    {
+        base.Start();
+        targetIcon.gameObject.SetActive(false);
+    }
     public override void Update()
     {
-      //  CheckSkillActivation();
+      
 
-        if (isBurning && isAbilityCooldown)
+        if (isBurning && isAbilityCooldown )
         {
+            
             HandleBurningSkill();
         }
+        if (isSelectingTarget)
+        {
+            MoveTargetIconWithMouse();
+            HandleBurningSkill();
+
+        }
+
     }
 
-    
-    //private void CheckSkillActivation()
-    //{
-    //    if (Input.GetKey(KeyCode.A))
-    //    {
-    //        ActivateSkill();
-    //    }
-    //}
+    public override void StartSelectTarget()
+    {
+        isSelectingTarget = true;
+        Time.timeScale = 0f;
+        targetIcon.gameObject.SetActive( true );
+    }
     private void ResetTimer()
     {
         timerSkill = 0f;
         timer = 0f;
     }
-    
+    private void MoveTargetIconWithMouse()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = 10f;
+        targetIcon.transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
+    }
+    private void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        isSelectingTarget = false;
+        targetIcon.gameObject.SetActive(false);
+    }
+
+
     private void HandleBurningSkill()
     {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        if (hit.collider != null)
-        {
-            if (hit.collider.GetComponent<Enemy>())
-            {
-                targetEnemy = hit.collider.gameObject.GetComponent<Enemy>();
 
+        // RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit.collider != null)
+            {
+                if (hit.collider.GetComponent<Enemy>())
+                {
+                    targetEnemy = hit.collider.gameObject.GetComponent<Enemy>();
+                    
+                }
             }
         }
-
+      
         if (targetEnemy != null)
         {
+            ResumeGame();
             UpdateTimers();
+            isBurning = true;
         }
 
         if (timer >= tickRate)
@@ -81,7 +117,7 @@ public class BurningSkill : SkillBase
 
     public override void ActivateSkill()
     {
-        isBurning = true;
+        
  
         CharacterStats.instance.mana.UseMana(manaConsumption);
     }

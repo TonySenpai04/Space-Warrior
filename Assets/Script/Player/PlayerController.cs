@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
+        if(Input.GetKeyUp(KeyCode.T))
+        {
+            Time.timeScale = 10.0f;
+        }
         HandleShooting();
         HandleEnemyDetection();
     }

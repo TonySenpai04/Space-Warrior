@@ -16,5 +16,9 @@ public  abstract class SkillBase : MonoBehaviour
 
     }
     public abstract void ActivateSkill();
+    public virtual void StartSelectTarget()
+    {
+       
+    }
 
 }

@@ -20,7 +20,14 @@ public class SpawnShell : ISpawn
     public void Spawn()
     {
         if (Shell == null) return;
+        var currentWeapon = WeaponController.instance.GetCurrentWeapon();
+        if (!currentWeapon.IsInfiniteAmmo && currentWeapon.CurrentAmmo <= 0)
+        {
+            Debug.Log("Out of ammo!");
+            return;
+        }
         Transform shell = PoolObjectManager.Instance.GetObjectFromPool(Shell, FXSocket, null);
+        if(shell == null) return;
         shell.transform.SetParent(poolProjectile);
 
         // Despawn

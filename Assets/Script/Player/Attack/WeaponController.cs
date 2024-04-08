@@ -23,19 +23,7 @@ public class WeaponController : WeaponControllerBase
     public static WeaponController instance;
     //
 
-    [Serializable]
-    public class WeaponSlot
-    {
-        [SerializeField] public List<GenericWeapon> Weapons;
-        public int WeaponSlotCounter = 1;
-
-        public void Forward()
-        {
-            WeaponSlotCounter++;
-            if (WeaponSlotCounter >= Weapons.Count)
-                WeaponSlotCounter = 0;
-        }
-    }
+  
 
     public enum WeaponType
     {
@@ -87,6 +75,11 @@ public class WeaponController : WeaponControllerBase
             {
 
                 Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
+                if (!GetCurrentWeapon().IsInfiniteAmmo && GetCurrentWeapon().CurrentAmmo <= 0)
+                {
+                    
+                    return;
+                }
                 SetTrigger("FireTrigger");
                 nextFireTime = 0;
             }
@@ -135,10 +128,34 @@ public class WeaponController : WeaponControllerBase
     {
         Slots[EquippedSlot].Weapons[EquippedWeapon].Animator.SetTrigger(var);
     }
-    private void ActivateWeapon(int slot, int weapon)
+    public override Tuple<int,int> GetWeaponIndex(GenericWeapon weapon)
     {
+        int index = 0;
+        int slot=0;
+        for(int i = 0;i< Slots.Count; i++)
+        {
+            for(int j= 0;j< Slots[i].Weapons.Count;j++)
+            {
+                if (Slots[i].Weapons[j] == weapon)
+                {
+                    index = i;
+                    slot = j;
+                    break;
+                }
+            }
+        }
+        return Tuple.Create(index,slot);
+    }
+    public override GenericWeapon GetWeapon(int slot, int weapon)
+    {
+        return Slots[slot].Weapons[weapon];
+    }
+    public override void ActivateWeapon(int slot, int weapon)
+    {
+        Slots[slot].WeaponSlotCounter = weapon;
         EquippedSlot = slot;
         EquippedWeapon = weapon;
+
         for (var i = 0; i < Slots.Count; i++)
         {
             for (var y = 0; y < Slots[i].Weapons.Count; y++)
@@ -148,11 +165,12 @@ public class WeaponController : WeaponControllerBase
 
             }
         }
+        
         fireRate = Slots[slot].Weapons[weapon].FireRate;
         UpdateCharacterHands(avatar.Characters[avatar.CharacterId]);
     }
 
-    public GenericWeapon GetCurrentWeapon()
+    public override GenericWeapon GetCurrentWeapon()
     {
         return Slots[EquippedSlot].Weapons[EquippedWeapon];
     }

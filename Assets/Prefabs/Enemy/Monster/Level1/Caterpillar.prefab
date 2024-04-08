@@ -151,7 +151,7 @@ MonoBehaviour:
   health: 30
   currentHealth: 0
   baseExperience: 5
-  experienceIncreaseRate: 1.1
+  experienceIncreaseRate: 1.5
   baseHealth: 0
 --- !u!210 &7164551578751133421
 SortingGroup:

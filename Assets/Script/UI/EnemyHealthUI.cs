@@ -44,10 +44,14 @@ public class EnemyHealthUI : EnemyHealthUIBase
         float targetY = startY + 0.5f;
         if (floatingTextInstance != null)
         {
-            while (floatingTextInstance.transform.position.y < targetY)
+            while (floatingTextInstance.transform.position.y < targetY && floatingTextInstance != null)
             {
-                float newY = floatingTextInstance.transform.position.y + 1f * Time.deltaTime;
-                floatingTextInstance.transform.position = new Vector3(floatingTextInstance.transform.position.x, newY, floatingTextInstance.transform.position.z);
+                if (floatingTextInstance != null)
+                {
+                    float newY = floatingTextInstance.transform.position.y + 1f * Time.deltaTime;
+
+                    floatingTextInstance.transform.position = new Vector3(floatingTextInstance.transform.position.x, newY, floatingTextInstance.transform.position.z);
+                }
                 yield return null;
             }
         }

@@ -19,7 +19,15 @@ public class SpawnBarrelSpark : ISpawn
 
     public void Spawn()
     {
+        if (BarrelSpark == null) return;
+        var currentWeapon = WeaponController.instance.GetCurrentWeapon();
+        if (!currentWeapon.IsInfiniteAmmo && currentWeapon.CurrentAmmo <= 0)
+        {
+            Debug.Log("Out of ammo!");
+            return;
+        }
         Transform barrelSpark = PoolObjectManager.Instance.GetObjectFromPool(BarrelSpark, FXSocket, null);
+        if (barrelSpark == null) return;
         barrelSpark.transform.SetParent(poolProjectile);
         monoBehaviour.StartCoroutine(DelayedDespawn(barrelSpark, 0.5f));
     }

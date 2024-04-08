@@ -25,25 +25,19 @@ internal class SlugQueenAbility : ISkillBoss
             if (timer >= skillCooldown)
             {
                 minionInstance =Object.Instantiate(minionPrefab.gameObject);
-
+                minionInstance.GetComponent<Minion>().owner = this.owner;
+                minionInstance.GetComponent<Enemy>().health=owner.GetComponent<Enemy>().health/20;
+                minionInstance.GetComponent<Enemy>().currentHealth = minionInstance.GetComponent<Enemy>().health;
                 minionInstance.transform.SetParent(owner.transform);
                 minionInstance.transform.position = new Vector3(owner.transform.position.x - 2, owner.transform.position.y, owner.transform.position.z);
                 timer = 0;
             }
-            if (minionInstance != null)
-            {
-                if (minionInstance.transform.position.x >= owner.transform.position.x)
-                {
-
-                    Object.Destroy(minionInstance);
-                   owner.GetComponent<Enemy>().currentHealth += 100;
-                }
-
-            }
-            else
+            if (minionInstance == null)
             {
                 timer += Time.deltaTime;
+
             }
+            
         }
     }
 }

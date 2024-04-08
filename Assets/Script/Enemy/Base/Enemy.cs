@@ -16,7 +16,7 @@ public abstract class Enemy : MonoBehaviour
     public float health;
     public float currentHealth;
     public int baseExperience = 5;
-    public float experienceIncreaseRate = 1.1f;
+    public float experienceIncreaseRate = 3.0f;
     public float baseHealth;
 
     public enum EnemyType

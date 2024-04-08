@@ -25,16 +25,23 @@ public class SpawnProjectile : ISpawn
     {
         if (Projectile == null)
             return;
-   
+        var currentWeapon = WeaponController.instance.GetCurrentWeapon();
+        if (!currentWeapon.IsInfiniteAmmo && currentWeapon.CurrentAmmo <= 0)
+        {
+            Debug.Log("Out of ammo!"); 
+            return;
+        }
+
         Transform projectile = PoolObjectManager.Instance.GetObjectFromPool(Projectile, FXSocket, null);
         projectile.transform.SetParent(poolProjectile);
         // Set Weapon Type
         var projectileObject = projectile.GetComponent<GenericProjectile>();
         projectileObject.WeaponType = weaponType;
         var projRb = projectile.GetComponent<Rigidbody2D>();
-        // Launch  
-        //   projRb.AddForce(projectile.transform.right * force, ForceMode2D.Force);
-        var currentWeapon = WeaponController.instance.GetCurrentWeapon();
+        if (!currentWeapon.IsInfiniteAmmo)
+            currentWeapon.CurrentAmmo--;
+
+        //var currentWeapon = WeaponController.instance.GetCurrentWeapon();
         projRb.AddForce(currentWeapon.transform.right * force, ForceMode2D.Force);
     }
 }

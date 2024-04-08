@@ -6,9 +6,14 @@ using Random = UnityEngine.Random;
 
 public class GenericWeapon : MonoBehaviour
 {
-    [Header("General")] public Animator Animator;
+    [Header("General")] 
+    public Animator Animator;
     public Transform Bone;
     public Transform PowerUp;
+    public SpriteRenderer weaponSprite;
+    public bool IsInfiniteAmmo; 
+    public int AmmoCount;
+    public int CurrentAmmo;
 
     // Hands
     public SpriteRenderer LeftHand;
@@ -29,7 +34,6 @@ public class GenericWeapon : MonoBehaviour
     // Prefabs
     [Header("Prefabs")] 
     public Transform MuzzleFlash;
-
     public Transform Projectile;
     public Transform Shell;
     public Transform Smoke;
@@ -54,19 +58,25 @@ public class GenericWeapon : MonoBehaviour
     private PoolObjectManager poolObjectManager;
     public virtual void Awake()
     {
+        InitializeVariables();
+    }
+    public virtual void InitializeVariables()
+    {
         Animator = GetComponent<Animator>();
         colliders = transform.root.GetComponentsInChildren<Collider2D>();
-        poolObjectManager= FindAnyObjectByType<PoolObjectManager>();
+        poolObjectManager = FindAnyObjectByType<PoolObjectManager>();
         Transform poolProjectile = poolObjectManager.gameObject.transform;
+        //Spawn
         spawnShell = new SpawnShell(Shell, poolProjectile, FXSocket, this);
         spawnProjectile = new SpawnProjectile(Projectile, poolProjectile, FXSocket,
             this, weaponType, force);
-        spawnMuzzleFlash = new SpawnMuzzleFlash(MuzzleFlash, poolProjectile, FXSocket, this,barrelEffects);
-        spawnSmoke=new SpawnSmoke(Smoke, poolProjectile, FXSocket, this,smokeEffects);
-        spawnBarrelSpark=new SpawnBarrelSpark(BarrelSpark, poolProjectile, FXSocket, this);
-        spawnBeam=new SpawnBeam(poolProjectile, poolProjectile, FXSocket, this,weaponType);
-    }
+        spawnMuzzleFlash = new SpawnMuzzleFlash(MuzzleFlash, poolProjectile, FXSocket, this, barrelEffects);
+        spawnSmoke = new SpawnSmoke(Smoke, poolProjectile, FXSocket, this, smokeEffects);
+        spawnBarrelSpark = new SpawnBarrelSpark(BarrelSpark, poolProjectile, FXSocket, this);
+        spawnBeam = new SpawnBeam(poolProjectile, poolProjectile, FXSocket, this, weaponType);
 
+        CurrentAmmo = AmmoCount;
+    }
     public void OnEnable()
     {
         if (Bone != null)
@@ -119,7 +129,7 @@ public class GenericWeapon : MonoBehaviour
         spawnSmoke.Spawn();
         spawnBarrelSpark.Spawn();
 
-       
+
     }
 
  
