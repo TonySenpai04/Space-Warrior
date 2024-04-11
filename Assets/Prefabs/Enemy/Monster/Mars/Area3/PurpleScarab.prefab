@@ -228,6 +228,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   floatingText: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
   offSet: {x: 0, y: 0, z: 0}
+  hit: {fileID: 4000012108150988, guid: 95d294d51813f6647a44ffabd2129820, type: 3}
 --- !u!1 &1462636202300041978
 GameObject:
   m_ObjectHideFlags: 0

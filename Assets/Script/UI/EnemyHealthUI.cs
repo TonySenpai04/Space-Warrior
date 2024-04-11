@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyHealthUI : EnemyHealthUIBase
 {
-
+    public Transform hit;
 
     public override void Start()
     {
@@ -25,7 +25,24 @@ public class EnemyHealthUI : EnemyHealthUIBase
     }
     public override void TakeDamageUI(float dam, Color color)
     {
+        SpawnHit();
        StartCoroutine( DisplayAndRiseText(dam,color));
+    }
+    private void SpawnHit()
+    {
+        if (hit == null) return;
+        if (enemyData.enemyType == Enemy.EnemyType.Ground)
+        {
+            //var normalOffset = contactNormal * Random.Range(HitNormalOffset.x, HitNormalOffset.y);
+            var Hit = Instantiate(hit.gameObject, transform.position + Vector3.up * 0.5f, Quaternion.identity, parent.transform);
+            Destroy(Hit, 0.5f);
+        }
+        else
+        {
+            var Hit = Instantiate(hit.gameObject, transform.position + Vector3.up * 0.9f, Quaternion.identity, parent.transform);
+            Destroy(Hit, 0.5f);
+        }
+       
     }
     private IEnumerator DisplayAndRiseText(float damage,Color color)
     {

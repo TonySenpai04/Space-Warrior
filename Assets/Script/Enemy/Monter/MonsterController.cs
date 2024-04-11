@@ -36,6 +36,7 @@ public class MonsterController : EnemyControllerBase
         var projRb = MonsterProjectile.GetComponent<Rigidbody2D>();
         Vector2 leftForce = new Vector2(-1, 0) * projectileForce;
         projRb.AddForce(leftForce, ForceMode2D.Force);
+        Destroy(MonsterProjectile.gameObject, 1f);
     }
 
 
