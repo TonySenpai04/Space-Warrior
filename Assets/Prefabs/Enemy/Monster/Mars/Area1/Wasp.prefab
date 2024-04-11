@@ -312,6 +312,7 @@ MonoBehaviour:
   body: {fileID: 2856297587403111918}
   enemyType: 0
   healthUI: {fileID: 0}
+  hit: {fileID: 4000012108150988, guid: 95d294d51813f6647a44ffabd2129820, type: 3}
   health: 30
   currentHealth: 0
   baseExperience: 5

@@ -11,6 +11,7 @@ public abstract class Enemy : MonoBehaviour
     public Transform body;
     public EnemyType enemyType;
     public EnemyHealthUIBase healthUI;
+    public Transform hit;
     [Space]
     [Header("Info")]
     public float health;
@@ -76,11 +77,12 @@ public abstract class Enemy : MonoBehaviour
     {
         currentHealth -= dam;
         healthUI.TakeDamageUI(dam, color);
+        SpawnHit();
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             DieAnim();
-           
+
         }
         
         
@@ -103,6 +105,13 @@ public abstract class Enemy : MonoBehaviour
             CharacterStats.instance.level.GainExperience(experienceGained);
         }
         gameObject.SetActive(false);
+    }
+    private void SpawnHit()
+    {
+        if (hit == null) return;
+        //var normalOffset = contactNormal * Random.Range(HitNormalOffset.x, HitNormalOffset.y);
+        var Hit = Instantiate(hit.gameObject, transform.position + Vector3.up * 0.5f, Quaternion.identity,transform);
+        Destroy(Hit, 0.5f);
     }
 
 }
