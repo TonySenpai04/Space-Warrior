@@ -31,6 +31,7 @@ public class MonsterController : EnemyControllerBase
     }
     public override void Attack()
     {
+        if (projectile == null || pointatk == null) return;
         var MonsterProjectile = Instantiate(projectile.gameObject, pointatk.position, pointatk.rotation);
         var projRb = MonsterProjectile.GetComponent<Rigidbody2D>();
         Vector2 leftForce = new Vector2(-1, 0) * projectileForce;

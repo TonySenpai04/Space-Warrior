@@ -16,7 +16,7 @@ public abstract class Enemy : MonoBehaviour
     public float health;
     public float currentHealth;
     public int baseExperience = 5;
-    public float experienceIncreaseRate = 3.0f;
+    public float experienceIncreaseRate = 1.5f;
     public float baseHealth;
 
     public enum EnemyType
@@ -92,10 +92,16 @@ public abstract class Enemy : MonoBehaviour
         {
             GetComponent<DropItem>().CreateItem(this.transform.position);
         }
-        
-        int experienceGained = Mathf.RoundToInt(baseExperience * Mathf.Pow(experienceIncreaseRate, CharacterStats.instance.level.GetLevel() - 1));
-        CharacterStats.instance.level.GainExperience(experienceGained);
-        
+        if (CharacterStats.instance.level.GetLevel() < 10)
+        {
+            int experienceGained = Mathf.RoundToInt(baseExperience * Mathf.Pow(experienceIncreaseRate, CharacterStats.instance.level.GetLevel() - 1));
+            CharacterStats.instance.level.GainExperience(experienceGained);
+        }
+        else
+        {
+            int experienceGained = Mathf.RoundToInt(baseExperience * Mathf.Pow(experienceIncreaseRate-0.4f, CharacterStats.instance.level.GetLevel() - 1));
+            CharacterStats.instance.level.GainExperience(experienceGained);
+        }
         gameObject.SetActive(false);
     }
 

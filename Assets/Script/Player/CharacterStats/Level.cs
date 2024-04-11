@@ -26,7 +26,7 @@ public class Level : ILevel
         CharacterStats.instance.damage.IncreaseDamage(5);
         currentExperience -= experienceNeededForNextLevel ;
         experienceNeededForNextLevel =(int) Mathf.RoundToInt(baseExp * Mathf.Pow(level, experienceMultiplier));
-        MonsterSpawnManager.instance.SetLevelSpawn(level);
+  
     }
 
     public float GetCurrentExp()
