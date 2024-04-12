@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.U2D.Animation;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +10,9 @@ public class CharacterSelection : MonoBehaviour
     [SerializeField] private ChacracterData characterData;
     [SerializeField] private CharacterStats characterStats;
     [SerializeField] private List<CharacterButton> characterButtons;
+    [SerializeField] private GameObject charcterSelection;
+    [SerializeField] private Button nextPageBtn;
+    [SerializeField] private GameObject weaponSelection;
 
     private void Start()
     {
@@ -20,6 +22,8 @@ public class CharacterSelection : MonoBehaviour
             this.characterButtons.Add(CharacterButtons[i]);
             this.characterButtons[i].SetIndex(i);
         }
+        characterButtons[0].SelectCharacter();
+        nextPageBtn.onClick.AddListener(NextPage);
     }
     public void SetCharacterIndex(int index)
     {
@@ -39,11 +43,14 @@ public class CharacterSelection : MonoBehaviour
         avatar.SetCharacter(selectedCharacterIndex);
     }
 
-    //private CharacterData GetCharacterData(int index)
-    //{
-    //    // Thực hiện logic để lấy dữ liệu của nhân vật từ nguồn dữ liệu của bạn
-    //    // Ví dụ:
-    //     return characterDataArray[index];
-    //}
+    public void NextPage()
+    {
+        if(characterData != null)
+        {
+            this.weaponSelection.SetActive(true);
+            this.charcterSelection.SetActive(false);
+            SelectCharacter();
+        }
+    }
 
 }

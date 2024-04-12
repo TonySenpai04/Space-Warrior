@@ -18,6 +18,7 @@ public class BurningSkill : SkillBase
 
     public bool isSelectingTarget = false;
     public Image targetIcon;
+    public GameObject tartgetPanel;
     public override void Start()
     {
         base.Start();
@@ -45,7 +46,9 @@ public class BurningSkill : SkillBase
     {
         isSelectingTarget = true;
         Time.timeScale = 0f;
+        tartgetPanel.gameObject.SetActive(true);
         targetIcon.gameObject.SetActive( true );
+
     }
     private void ResetTimer()
     {
@@ -63,6 +66,7 @@ public class BurningSkill : SkillBase
         Time.timeScale = 1f;
         isSelectingTarget = false;
         targetIcon.gameObject.SetActive(false);
+        tartgetPanel.gameObject.SetActive(false);
     }
 
 

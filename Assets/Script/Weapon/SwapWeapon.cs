@@ -10,33 +10,71 @@ public class SwapWeapon : MonoBehaviour
     [SerializeField] private int weaponIndex;
     [SerializeField] private Button button;
     [SerializeField] private WeaponControllerBase weaponController;
+    [SerializeField] WeaponSelection weaponSelection;
     [Header("UI")]
     [SerializeField] private Text currentAmmoTxt;
     [SerializeField] private Text ammoCountTxt;
     [SerializeField] private Sprite nomarlWeapon;
     [SerializeField] private Sprite selectedWeapon;
     [SerializeField] private Image weaponImage;
-  
-  
+
+
     private void Start()
     {
-        weaponController=FindAnyObjectByType<WeaponControllerBase>();
+        InitializeComponents();
+        SetupButtonListener();
+        SetupWeaponInfo();
+    }
+
+    private void InitializeComponents()
+    {
+        weaponController = FindAnyObjectByType<WeaponControllerBase>();
         button = GetComponent<Button>();
+    }
+
+    private void SetupButtonListener()
+    {
         button.onClick.AddListener(ActivateWeapon);
-        if (GetWeapon() != null)
+    }
+
+    private void SetupWeaponInfo()
+    {
+        GenericWeapon weapon = GetWeapon();
+        if (weapon != null)
         {
-            
-            weaponImage.sprite = weaponController.GetWeapon(slotIndex, weaponIndex).weaponSprite.sprite;
-            if (!GetWeapon().IsInfiniteAmmo) {
-                ammoCountTxt.text = " /" + GetWeapon().AmmoCount.ToString();
-                currentAmmoTxt.text = GetWeapon().AmmoCount.ToString();
-               
-            }
-            else {
-                currentAmmoTxt.text = "";
-                ammoCountTxt.text = "";
-            }
+            UpdateWeaponImage();
+            UpdateAmmoInfo(weapon);
         }
+    }
+
+
+    private void UpdateWeaponImage()
+    {
+        if(weaponSelection!=null)
+        weaponImage.sprite = weaponSelection.weaponSelectedImage.sprite;
+    }
+
+    private void UpdateAmmoInfo(GenericWeapon weapon)
+    {
+        if (!weapon.IsInfiniteAmmo)
+        {
+            ammoCountTxt.text = " /" + weapon.AmmoCount.ToString();
+            currentAmmoTxt.text = weapon.AmmoCount.ToString();
+        }
+        else
+        {
+            currentAmmoTxt.text = "";
+            ammoCountTxt.text = "";
+        }
+    }
+    public void SetWeaponSelected(WeaponSelection weaponSelection)
+    {
+        this.weaponSelection = weaponSelection;
+    }
+    public void SetSlot(int slotIndex, int weaponIndex)
+    {
+        this.slotIndex= slotIndex;
+        this.weaponIndex= weaponIndex;
     }
     private void FixedUpdate()
     {
@@ -68,16 +106,8 @@ public class SwapWeapon : MonoBehaviour
     {
         if (GetWeapon() != null)
         {
-            //GenericWeapon weapon = WeaponController.instance.GetCurrentWeapon();
-            //int newSlotIndex = weaponController.GetWeaponIndex(weapon).Item1;
-            //int newWeaponIndex = weaponController.GetWeaponIndex(weapon).Item2;
-            //Debug.Log(newSlotIndex + "-" + newWeaponIndex);
 
             weaponController.ActivateWeapon(slotIndex, weaponIndex);
-   
-            //slotIndex = newSlotIndex;
-            //weaponIndex = newWeaponIndex;
-            // weaponImage.sprite = weaponController.GetWeapon(slotIndex, weaponIndex).weaponSprite.sprite;
         }
          
     }

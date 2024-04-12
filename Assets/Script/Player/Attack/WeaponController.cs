@@ -63,8 +63,17 @@ public class WeaponController : WeaponControllerBase
         isShooting=false;
         SetBool("Fire", false);
     }
+    public override void SetWeapon(int slot,int weaponIndex)
+    {
+        this.EquippedSlot=slot;
+        this.EquippedWeapon=weaponIndex;
+    }
     public override void Start() {
        
+    }
+    public override List<WeaponSlot> GetSlotListCopy()
+    {
+        return new List<WeaponSlot>(Slots);
     }
     public override void Shoot()
     {
@@ -90,20 +99,20 @@ public class WeaponController : WeaponControllerBase
     {
 
         // Switch Weapon Slot
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            ActivateSlot(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            ActivateSlot(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            ActivateSlot(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-            ActivateSlot(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-            ActivateSlot(4);
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-            ActivateSlot(5);
-        if (Input.GetKeyDown(KeyCode.F))
-            ActivateSlot(6);
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //    ActivateSlot(0);
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //    ActivateSlot(1);
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //    ActivateSlot(2);
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //    ActivateSlot(3);
+        //if (Input.GetKeyDown(KeyCode.Alpha5))
+        //    ActivateSlot(4);
+        //if (Input.GetKeyDown(KeyCode.Alpha6))
+        //    ActivateSlot(5);
+        //if (Input.GetKeyDown(KeyCode.F))
+        //    ActivateSlot(6);
     }
 
     private void ActivateSlot(int slot)
