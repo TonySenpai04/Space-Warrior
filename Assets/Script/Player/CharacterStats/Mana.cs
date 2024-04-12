@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Mana : IMana
 {
-    public float mana;
-    public float currentMana;
+    private float mana;
+    private float currentMana;
+    private float baseMana;
 
     public Mana(float mana)
     {
         this.mana = mana;
         this.currentMana = mana;
+        this.baseMana = mana;
     }
     public void UseMana(int amount)
     {
@@ -39,10 +41,16 @@ public class Mana : IMana
     public void SetMana(float value)
     {
         mana= value;
+        currentMana= value;
     }
 
     public void IncreaseMana(float amount)
     {
         mana += amount;
+    }
+
+    public float GetBaseMana()
+    {
+       return baseMana;
     }
 }

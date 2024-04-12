@@ -7,4 +7,5 @@
 
     public void Heal(int amount);
     public void Increasehealth(float amount);
+    public float GetBaseHealth();
 }

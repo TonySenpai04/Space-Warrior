@@ -6,4 +6,5 @@
     public void UseMana(int amount);
     public void RestoreMana(float mana);
     public void IncreaseMana(float amount);
+    public float GetBaseMana();
 }

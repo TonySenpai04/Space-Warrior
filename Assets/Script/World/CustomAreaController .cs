@@ -23,7 +23,7 @@ public class CustomAreaController : MonoBehaviour
         for (int i=0;i<list.Length;i++)
         {
             areaList.Add(list[i]);
-            list[i].index = i;
+            list[i].SetIndex(i);
         }
  
     }

@@ -2,12 +2,14 @@
 
 public class Health : IHealth
 {
-    public float health;
-    public float currentHealth;
+    private float health;
+    private float currentHealth;
+    private float baseHealth;
     public Health(float health)
     {
         this.health = health;
         currentHealth = health;
+        baseHealth = health;
     }
 
     public void TakeDamage(int damage)
@@ -37,11 +39,17 @@ public class Health : IHealth
     public void SetHealth(float value)
     {
        health=value;
+       currentHealth = health;
     }
 
     public void Increasehealth(float amount)
     {
         health += amount;
+    }
+
+    public float GetBaseHealth()
+    {
+        return baseHealth;
     }
 }
 

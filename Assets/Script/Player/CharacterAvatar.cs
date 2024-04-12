@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CharacterAvatar : MonoBehaviour
 {
@@ -9,9 +10,9 @@ public class CharacterAvatar : MonoBehaviour
     public int CharacterId;
     public SpriteRenderer Head;
     public SpriteRenderer Body;
-
+    public Image avatar;
     //
-    private WeaponController _shootingController;
+    private WeaponController weaponController;
 
     //
     [Serializable]
@@ -31,23 +32,37 @@ public class CharacterAvatar : MonoBehaviour
     private void Awake()
     {
         InitializeVariables();
+        SwitchCharacter();
     }
     public void InitializeVariables()
     {
-        _shootingController = FindAnyObjectByType<WeaponController>();
+        weaponController = FindAnyObjectByType<WeaponController>();
         if (RandomizeAtStart) CharacterId = UnityEngine.Random.Range(0, 6);
         SwitchCharacter(CharacterId);
 
     }
-
-    private void SwitchCharacter(int id)
+    public void SetCharacter(int index)
+    {
+        this.CharacterId = index;
+    }
+    public void SwitchCharacter()
+    {
+        if (Head == null) return;
+        if (Body == null) return;
+        if (Characters == null || CharacterId >= Characters.Length || CharacterId < 0) return;
+        Head.sprite = Characters[CharacterId].Head;
+        Body.sprite = Characters[CharacterId].Body;
+        avatar.sprite = Characters[CharacterId].Head;
+        weaponController.UpdateCharacterHands(Characters[CharacterId]);
+    }
+    public void SwitchCharacter(int id)
     {
         if (Head == null) return;
         if (Body == null) return;
         if (Characters == null || id >= Characters.Length || id < 0) return;
         Head.sprite = Characters[CharacterId].Head;
         Body.sprite = Characters[CharacterId].Body;
-        _shootingController.UpdateCharacterHands(Characters[CharacterId]);
+        weaponController.UpdateCharacterHands(Characters[CharacterId]);
     }
 
     private void Update()
@@ -56,7 +71,7 @@ public class CharacterAvatar : MonoBehaviour
         if (Body == null) return;
      
         // Debug
-        DebugSwitchCharacter();
+       // DebugSwitchCharacter();
     }
 
     // DEBUG 

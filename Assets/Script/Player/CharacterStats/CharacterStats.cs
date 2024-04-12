@@ -15,11 +15,19 @@ public class CharacterStats : MonoBehaviour
     void Awake()
     {
         instance= this;
+        //health = new Health(chacracterData.health);
+        //mana = new Mana(chacracterData.mana);
+        //damage = new Damage(chacracterData.damage);
+        //level = new Level();
+ 
+    }
+    public void SetData(ChacracterData chacracterData)
+    {
+        this.chacracterData = chacracterData;
         health = new Health(chacracterData.health);
         mana = new Mana(chacracterData.mana);
         damage = new Damage(chacracterData.damage);
         level = new Level();
- 
     }
 
 }

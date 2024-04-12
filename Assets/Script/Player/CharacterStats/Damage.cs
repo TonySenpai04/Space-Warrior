@@ -6,11 +6,19 @@ public class Damage: IDamage
 {
   
     public float damage;
+    public float baseDamge;
 
     public Damage(float damage)
     {
-        this.damage = damage;   
+        this.damage = damage;
+        this.baseDamge = damage;
     }
+
+    public float GetBaseDamage()
+    {
+        return this.baseDamge;
+    }
+
     public float GetDam()
     {
         return damage;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CustomArea  : MonoBehaviour
 {
     [SerializeField] private bool isUnlock;
-    [SerializeField] public int index;
+    [SerializeField] private int index;
     [SerializeField] private GameObject mapSelection;
     [SerializeField] private GameObject levelSelection;
     [SerializeField] private GameObject loading;
@@ -29,6 +29,10 @@ public class CustomArea  : MonoBehaviour
                 starList.Add(toggle);
             }
         }
+    }
+    public void SetIndex(int index)
+    {
+        this.index= index;
     }
     public void Unlock()
     {
