@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class SwapWeapon : MonoBehaviour
 {
     [Header("Generic")]
-    [SerializeField] private int slotIndex;
-    [SerializeField] private int weaponIndex;
+    [SerializeField] private int slotIndex=-1;
+    [SerializeField] private int weaponIndex=-1;
     [SerializeField] private Button button;
     [SerializeField] private WeaponControllerBase weaponController;
     [SerializeField] WeaponSelection weaponSelection;
@@ -45,6 +45,11 @@ public class SwapWeapon : MonoBehaviour
             UpdateWeaponImage();
             UpdateAmmoInfo(weapon);
         }
+        else
+        {
+            weaponImage.enabled=false;
+            UpdateAmmoInfo(weapon);
+        }
     }
 
 
@@ -56,16 +61,25 @@ public class SwapWeapon : MonoBehaviour
 
     private void UpdateAmmoInfo(GenericWeapon weapon)
     {
-        if (!weapon.IsInfiniteAmmo)
+        if (weapon != null)
         {
-            ammoCountTxt.text = " /" + weapon.AmmoCount.ToString();
-            currentAmmoTxt.text = weapon.AmmoCount.ToString();
+            if (!weapon.IsInfiniteAmmo)
+            {
+                ammoCountTxt.text = " /" + weapon.AmmoCount.ToString();
+                currentAmmoTxt.text = weapon.AmmoCount.ToString();
+            }
+            else
+            {
+                currentAmmoTxt.text = "";
+                ammoCountTxt.text = "";
+            }
         }
         else
         {
             currentAmmoTxt.text = "";
             ammoCountTxt.text = "";
         }
+
     }
     public void SetWeaponSelected(WeaponSelection weaponSelection)
     {
@@ -113,6 +127,8 @@ public class SwapWeapon : MonoBehaviour
     }
     public GenericWeapon GetWeapon()
     {
+        if(slotIndex >=0 && weaponIndex>=0)
         return weaponController.GetWeapon(slotIndex, weaponIndex);
+        else return null;
     }
 }

@@ -6,6 +6,7 @@ public class CustomAreaController : MonoBehaviour
 {
     [SerializeField] private List<CustomArea > areaList;
     [SerializeField] private Planet planet;
+    [SerializeField] private GameObject map;
     void Start()
     {
      
@@ -29,9 +30,9 @@ public class CustomAreaController : MonoBehaviour
     }
     public void SetArea(int index)
     {
-        
+        map.SetActive(true);
         planet.gameObject.SetActive(true);
-        planet.SetActiveSpawnMonster(index);
+        planet.SetActiveArea(index);
     }
     public void UnlockArea(int index)
     {

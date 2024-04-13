@@ -13,8 +13,8 @@ public class BossSpawnController : EnemySpawnControllerBase
         spawnEnemy = new spawnBoss(player, distanceSpawn, poolEnemies);
     }
 
-    public override void Update()
-    {
-        base.Update();
-    }
+    //public override void Update()
+    //{
+    //    base.Update();
+    //}
 }

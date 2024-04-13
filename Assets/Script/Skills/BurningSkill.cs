@@ -12,7 +12,7 @@ public class BurningSkill : SkillBase
     [SerializeField] private float duration = 3f;
 
     [SerializeField] private bool isBurning = false; 
-    [SerializeField] private float timer = 0f; 
+    [SerializeField] private float timer ; 
     [SerializeField] private Enemy targetEnemy;
     [SerializeField] private float timerSkill;
 
@@ -22,6 +22,7 @@ public class BurningSkill : SkillBase
     public override void Start()
     {
         base.Start();
+        timer = tickRate;
         targetIcon.gameObject.SetActive(false);
     }
     public override void Update()
@@ -53,7 +54,7 @@ public class BurningSkill : SkillBase
     private void ResetTimer()
     {
         timerSkill = 0f;
-        timer = 0f;
+        timer = tickRate;
     }
     private void MoveTargetIconWithMouse()
     {

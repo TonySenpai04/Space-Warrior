@@ -31,8 +31,11 @@ public class PlayerController : MonoBehaviour
         {
             Time.timeScale = 1.0f;
         }
-        HandleShooting();
-        HandleEnemyDetection();
+        if (!PlanetManager.instance.IsAreaFinish())
+        {
+            HandleShooting();
+            HandleEnemyDetection();
+        }
     }
 
     private void HandleShooting()
@@ -99,7 +102,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movementController.Move();
+        if (!PlanetManager.instance.IsAreaFinish())
+        {
+            movementController.Move();
+        }
+       
     }
     void OnDrawGizmos()
     {

@@ -157,6 +157,7 @@ public class WeaponController : WeaponControllerBase
     }
     public override GenericWeapon GetWeapon(int slot, int weapon)
     {
+        
         return Slots[slot].Weapons[weapon];
     }
     public override void ActivateWeapon(int slot, int weapon)

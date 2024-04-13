@@ -13,9 +13,9 @@ public class MonsterSpawnController :EnemySpawnControllerBase
         spawnEnemy = new SpawnMonster(player, distanceSpawn, poolEnemies);
     }
 
-    public override void Update()
-    {
-        base.Update();
-    }
+    //public override void Update()
+    //{
+    //    base.Update();
+    //}
 
 }

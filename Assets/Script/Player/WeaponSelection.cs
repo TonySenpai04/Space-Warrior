@@ -10,6 +10,8 @@ public class WeaponSelection : MonoBehaviour
     public GenericWeapon weaponSelectedGenericWeapon;
     public int slot;
     public int weaponIndex;
+    public Button removeWeaponBtn;
+    public WeaponSelectionManager weaponSelectionManager;
     private void Start()
     {
         CheckWeaponSelection();
@@ -19,6 +21,8 @@ public class WeaponSelection : MonoBehaviour
         if (weaponSelectedGenericWeapon == null)
         {
             DisableWeaponImage();
+            removeWeaponBtn.gameObject.SetActive(false);
+            removeWeaponBtn.onClick.AddListener(RemoveWeapon);
         }
     }
     private void DisableWeaponImage()
@@ -32,9 +36,14 @@ public class WeaponSelection : MonoBehaviour
         weaponSelectedImage.sprite = weaponSprite;
         this.slot = slot;   
         this.weaponIndex = index;
+        removeWeaponBtn.gameObject.SetActive(true);
+
     }
-    public void RemoteWeapon()
+    public void RemoveWeapon()
     {
+      
+        weaponSelectionManager.RemoveWeapon(this.slot, this.weaponIndex);
+        removeWeaponBtn.gameObject.SetActive(false);
         DisableWeaponImage();
         weaponSelectedGenericWeapon = null;
     }

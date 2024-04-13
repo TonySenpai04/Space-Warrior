@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemy : ISpawn,ICanSpawn
+public class SpawnEnemy : ISpawn,ICanSpawn,IGetCurentEnemy
 {
     protected Transform player;
     protected float distanceSpawn;
@@ -17,6 +17,10 @@ public class SpawnEnemy : ISpawn,ICanSpawn
         this.distanceSpawn = distanceSpawn;
         this.poolMonsters = poolMonsters;
         currentTransform=player.transform.position;
+    }
+    public virtual Enemy GetCurrentEnemy()
+    {
+        return currentEnemy;
     }
     public virtual void Spawn()
     {

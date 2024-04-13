@@ -4,42 +4,45 @@ using UnityEngine;
 
 public abstract class Planet : MonoBehaviour
 {
-    [SerializeField] protected List<EnemySpawnControllerBase> spawnMonsters;
+    [SerializeField] protected List<Area> areas;
     [SerializeField] protected int index = 0;
-   public virtual void Start()
-   {
-        if (spawnMonsters == null)
-        {
-            InitializeSpawnMonsterPool();
-        }
-   }
+    [SerializeField] protected bool isFinish;
+    public virtual void Start()
+    {
+        if(areas == null)
+            InitializeAreas();
+    }
+    public bool IsFinish()
+    {
+        return areas[index].IsFinish();
+    }
     public virtual void Reset()
     {
-        InitializeSpawnMonsterPool();
+        InitializeAreas();
     }
-    protected void InitializeSpawnMonsterPool()
+    protected void InitializeAreas()
     {
-        EnemySpawnControllerBase[] spawnMonstersBase = GetComponentsInChildren<EnemySpawnControllerBase>();
-        foreach(var  spawnMonster in spawnMonstersBase)
+        Area[] areas = GetComponentsInChildren<Area>();
+        foreach(var area in areas)
         {
-            spawnMonsters.Add(spawnMonster);
+            this.areas.Add(area);
         }
     }
-    public void SetActiveSpawnMonster(int index)
+    public void SetActiveArea(int index)
     {
-        if (spawnMonsters == null)
+        if (areas == null)
         {
-            InitializeSpawnMonsterPool();
+            InitializeAreas();
         }
         this.index=index;
-        foreach (EnemySpawnControllerBase spawnMonster in spawnMonsters)
+        foreach (var area in areas)
         {
-            spawnMonster.gameObject.SetActive(false);
+            area.gameObject.SetActive(false);
         }
         
-        if (this.index >= 0 && this.index < spawnMonsters.Count)
+        if (this.index >= 0 && this.index < areas.Count)
         {
-            spawnMonsters[this.index].gameObject.SetActive(true);
+            areas[this.index].gameObject.SetActive(true);
         }
         else
         {

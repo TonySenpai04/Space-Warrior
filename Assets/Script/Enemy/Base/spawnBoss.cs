@@ -4,6 +4,7 @@ using UnityEngine;
 internal class spawnBoss : SpawnEnemy
 {
     private int nextMonsterIndex=0;
+   
     public spawnBoss(Transform player, float distanceSpawn, List<Enemy> poolMonsters) : base(player, distanceSpawn, poolMonsters)
     {
        
@@ -15,7 +16,7 @@ internal class spawnBoss : SpawnEnemy
         {
             currentEnemy = poolMonsters[nextMonsterIndex];
             SetupEnemy(currentEnemy);
-            currentEnemy.transform.position = new Vector3(player.position.x + 15, player.position.y, player.position.z);
+            currentEnemy.transform.position = new Vector3(player.position.x + 25, player.position.y, player.position.z);
             nextMonsterIndex = (nextMonsterIndex + 1) % poolMonsters.Count;
             currentTransform = player.position;
             canSpawn=!canSpawn; 

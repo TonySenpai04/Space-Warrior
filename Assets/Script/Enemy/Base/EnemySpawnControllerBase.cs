@@ -19,6 +19,11 @@ public abstract class EnemySpawnControllerBase : MonoBehaviour
     {
        
     }
+    public virtual Enemy GetCurrentEnemy()
+    {
+        IGetCurentEnemy getCurentEnemy = (IGetCurentEnemy)spawnEnemy;
+        return getCurentEnemy.GetCurrentEnemy();
+    }
     public virtual void InitializeEnemyPool()
     {
         poolEnemies = new List<Enemy>();
@@ -31,11 +36,11 @@ public abstract class EnemySpawnControllerBase : MonoBehaviour
 
         }
     }
-    public virtual void Update()
-    {
-        Spawn();
+    //public virtual void Update()
+    //{
+    //  //  Spawn();
         
-    }
+    //}
     public virtual void Spawn()
     {
         spawnEnemy.Spawn();

@@ -1753,6 +1753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warning_V2Cyan
       objectReference: {fileID: 0}
+    - target: {fileID: 5646586301912176016, guid: 24248a610e8059f478e27ad586793caa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6901884329118670445, guid: 24248a610e8059f478e27ad586793caa, type: 3}
       propertyPath: m_Pivot.x
       value: 0

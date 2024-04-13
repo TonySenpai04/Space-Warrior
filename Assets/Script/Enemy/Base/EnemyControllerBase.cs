@@ -9,11 +9,16 @@ public abstract class EnemyControllerBase : MonoBehaviour
     [SerializeField] protected float speed;
     [SerializeField] protected GameObject floatingTextPrefab;
     protected IMove move;
+    [SerializeField] protected bool isDead;
     [SerializeField] protected Vector3 offsetFloatingtext;
     public virtual void Start()
     {
         InitializeVariables();
 
+    }
+    public virtual bool IsDead()
+    {
+        return isDead;
     }
     public virtual void InitializeVariables()
     {

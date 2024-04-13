@@ -13,7 +13,11 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        totalTimeInSeconds += Time.deltaTime;
+        if (!PlanetManager.instance.IsAreaFinish())
+        {
+            totalTimeInSeconds += Time.deltaTime;
+        }
+       
     }
 
     // Lấy thời gian dưới dạng chuỗi "giờ:phút:giây"
