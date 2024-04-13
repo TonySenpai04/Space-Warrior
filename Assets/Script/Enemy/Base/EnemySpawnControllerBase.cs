@@ -39,8 +39,18 @@ public abstract class EnemySpawnControllerBase : MonoBehaviour
     //public virtual void Update()
     //{
     //  //  Spawn();
-        
+
     //}
+    public virtual void Restart()
+    {
+        if (GetCurrentEnemy() != null)
+        {
+           GetCurrentEnemy().gameObject.SetActive(false);
+        }
+        IGetCurentEnemy getCurentEnemy = (IGetCurentEnemy)spawnEnemy;
+         getCurentEnemy.Restart();
+
+    }
     public virtual void Spawn()
     {
         spawnEnemy.Spawn();
@@ -51,4 +61,5 @@ public abstract class EnemySpawnControllerBase : MonoBehaviour
         ICanSpawn canSpawn = (ICanSpawn)spawnEnemy;
         canSpawn.CanSpawn();
     }
+ 
 }

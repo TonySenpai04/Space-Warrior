@@ -5,22 +5,24 @@ using UnityEngine.UI;
 
 public class CustomArea  : MonoBehaviour
 {
-    [SerializeField] private bool isUnlock;
+    [SerializeField] private Area area;
     [SerializeField] private int index;
     [SerializeField] private GameObject mapSelection;
     [SerializeField] private GameObject levelSelection;
     [SerializeField] private GameObject loading;
+
     [Header("UI")]
     [SerializeField] private Button button;
     [SerializeField] private Button btnLock; 
     [SerializeField] private List<Toggle> starList;
+
 
     private void Start()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(Active);
 
-        if (isUnlock)
+        if (area.GetUnlock())
         {
             btnLock.gameObject.SetActive(false);
             Toggle[] toggles = GetComponentsInChildren<Toggle>();
@@ -30,17 +32,25 @@ public class CustomArea  : MonoBehaviour
             }
         }
     }
+    private void FixedUpdate()
+    {
+        if (area.GetUnlock())
+        {
+            btnLock.gameObject.SetActive(false);
+        }
+    }
+    public void SetArea(Area area)
+    {
+        this.area = area;
+    }
     public void SetIndex(int index)
     {
         this.index= index;
     }
-    public void Unlock()
-    {
-        isUnlock = true;
-    }
+
     public void Active()
     {
-        if (isUnlock)
+        if (area.GetUnlock())
         {
             CustomAreaController controller = GetComponentInParent<CustomAreaController>();
             loading.gameObject.SetActive(true);

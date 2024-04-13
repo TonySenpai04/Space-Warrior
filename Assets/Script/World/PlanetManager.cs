@@ -6,7 +6,7 @@ public class PlanetManager : MonoBehaviour
     [SerializeField] private List<Planet> planets;
     public static PlanetManager instance;
     [SerializeField] private int planetsIndex = 0;
-   
+    
     void Start()
     {
         instance = this;
@@ -23,7 +23,18 @@ public class PlanetManager : MonoBehaviour
     {
         return planets[planetsIndex].IsFinish();
     }
+    public Area GetCurrentArea()
+    {
+        return planets[planetsIndex].GetCurrentArea(); ;
+    }
+    public void UnlockNextArea()
+    {
+        planets[planetsIndex].UnlockNextArea();
+    }
+    public void NextArea()
+    {
+        planets[planetsIndex].NextArea();
+    }
 
-  
 
 }

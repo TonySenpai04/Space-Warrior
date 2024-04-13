@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Area : MonoBehaviour
+public class Area : MonoBehaviour, IObserver
 {
     [SerializeField] protected EnemySpawnControllerBase spawnMonsters;
     [SerializeField] protected EnemySpawnControllerBase spawnBoss;
@@ -11,12 +12,26 @@ public class Area : MonoBehaviour
     [SerializeField] private bool isBoss;
     [SerializeField] private GameObject bossNotification;
     [SerializeField] private bool isShowbossNotification = true;
+    [SerializeField] private bool isShowVictoryPanel = true;
+    [SerializeField] private bool isUnlock;
+    [SerializeField] private GameObject victoryPanel;
+    [SerializeField] public bool isRun=false;
+
     public virtual void Start()
     {
+
         if (spawnMonsters == null)
         {
             InitializeSpawnMonsterPool();
         }
+    }
+    public bool GetUnlock()
+    {
+        return this.isUnlock;
+    }
+    public void Unlock()
+    {
+        this.isUnlock = true;
     }
     public bool IsFinish()
     {
@@ -36,31 +51,54 @@ public class Area : MonoBehaviour
 
     public  void Update()
     {
-        if (!isFinish)
+        if (isUnlock && isRun)
         {
-            if (!isBoss)
+            if (!isFinish)
             {
-                spawnMonsters.Spawn();
-                spawnBoss.Spawn();
-                if (spawnBoss.GetCurrentEnemy() != null)
+                if (!isBoss)
                 {
-                    isBoss = true;
+                    spawnMonsters.Spawn();
+                    spawnBoss.Spawn();
+                    if (spawnBoss.GetCurrentEnemy() != null)
+                    {
+                        isBoss = true;
+                    }
+                }
+                else
+                {
+
+                    StartCoroutine(ShowBossNotification());
+                    if (spawnBoss.GetCurrentEnemy() != null)
+                    {
+                        if (spawnBoss.GetCurrentEnemy().GetComponent<EnemyControllerBase>().IsDead())
+                            isFinish = true;
+                    }
+
+
                 }
             }
             else
             {
-
-                StartCoroutine(ShowBossNotification());
-                if (spawnBoss.GetCurrentEnemy() != null)
+                if (isShowVictoryPanel)
                 {
-                    if (spawnBoss.GetCurrentEnemy().GetComponent<EnemyControllerBase>().IsDead())
-                        isFinish = true;
+                    victoryPanel.SetActive(true);
                 }
-
-
             }
         }
+        else
+        {
+            
+                victoryPanel.SetActive(false);
+            
+        }
 
+    }
+    public void Active()
+    {
+        this.gameObject.SetActive(true);
+        spawnMonsters.gameObject.SetActive(true);
+        spawnBoss.gameObject.SetActive(true);
+        isRun = true;
     }
     private IEnumerator ShowBossNotification()
     {
@@ -72,6 +110,17 @@ public class Area : MonoBehaviour
         isShowbossNotification = false;
         bossNotification.SetActive(false);
     }
+    public void Restart()
+    {
+        spawnMonsters.Restart();
+        spawnBoss.Restart();
+        isFinish = false;
+        isBoss = false;
+        
+    }
 
-
+    public void UpdateObserver()
+    {
+        Restart();
+    }
 }

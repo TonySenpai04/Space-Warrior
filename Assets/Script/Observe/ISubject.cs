@@ -4,8 +4,11 @@ using UnityEngine;
 
 public interface ISubject 
 {
-    void Attach(IObserver observer, string key);
-    void Detach(string key);
-    void NotifyObserver(string key);
+
+    public void RegisterObserver(IObserver observer);
+
+    public void UnregisterObserver(IObserver observer);
+
+    public void NotifyObservers();
 }
 

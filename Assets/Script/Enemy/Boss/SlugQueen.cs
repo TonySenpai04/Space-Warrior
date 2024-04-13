@@ -7,12 +7,13 @@ public class SlugQueen : Boss
     [Header("Skill")]
     [SerializeField] private Enemy minionPrefab;
     [SerializeField] private float skillCooldown;
+    [SerializeField] private Transform player;
     private ISkillBoss skill;
     public override void Awake()
     {
         base.Awake();
-
-        skill = new SlugQueenAbility(minionPrefab, skillCooldown, this.transform);
+        player=FindAnyObjectByType<EnemySpawnControllerBase>().player;
+        skill = new SlugQueenAbility(minionPrefab, skillCooldown, this.transform, player);
     }
 
     public override void ActiveSkill()

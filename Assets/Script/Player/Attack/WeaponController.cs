@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random;
@@ -128,7 +129,18 @@ public class WeaponController : WeaponControllerBase
     {
         Slots[EquippedSlot].Weapons[EquippedWeapon].Animator.SetBool(var, value);
     }
+    public override void Resstart()
+    {
+        for (int i = 0; i < Slots.Count; i++)
+        {
+            for (int j = 0; j < Slots[i].Weapons.Count; j++)
+            {
+                Slots[i].Weapons[j].CurrentAmmo = Slots[i].Weapons[j].AmmoCount;
 
+
+            }
+        }
+    }
     public void SetFloat(string var, float value)
     {
         Slots[EquippedSlot].Weapons[EquippedWeapon].Animator.SetFloat(var, value);

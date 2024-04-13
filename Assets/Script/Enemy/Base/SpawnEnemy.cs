@@ -11,12 +11,16 @@ public class SpawnEnemy : ISpawn,ICanSpawn,IGetCurentEnemy
     protected List<Enemy> poolMonsters;
     protected Enemy currentEnemy;
     protected float timer;
+    protected Vector3 startPos;
+    protected float startTime;
     public SpawnEnemy(Transform player, float distanceSpawn, List<Enemy> poolMonsters)
     {
         this.player = player;
         this.distanceSpawn = distanceSpawn;
         this.poolMonsters = poolMonsters;
-        currentTransform=player.transform.position;
+        currentTransform = player.transform.position;
+        startPos=player.transform.position;
+        startTime=Time.time;
     }
     public virtual Enemy GetCurrentEnemy()
     {
@@ -24,7 +28,7 @@ public class SpawnEnemy : ISpawn,ICanSpawn,IGetCurentEnemy
     }
     public virtual void Spawn()
     {
-        timer = Time.time;
+        timer = Time.time-startTime;
         if (player.position.x - currentTransform.x > distanceSpawn && canSpawn)
         {
             currentEnemy = poolMonsters[Random.Range(0, poolMonsters.Count)];
@@ -56,5 +60,13 @@ public class SpawnEnemy : ISpawn,ICanSpawn,IGetCurentEnemy
         enemy.gameObject.SetActive(true);
 
         enemy.WalkAnim();
+    }
+    public virtual void Restart()
+    {
+        currentTransform = startPos;
+        canSpawn = true;
+        currentEnemy = null;
+        timer = 0f;
+       
     }
 }

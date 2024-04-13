@@ -4,27 +4,23 @@ using UnityEngine;
 
 public class ConcreteSubject :ISubject
 {
-    public ConcreteSubject() { }
-    private Dictionary<string, IObserver> observers = new Dictionary<string, IObserver>();
+    private List<IObserver> observers = new List<IObserver>();
 
-    public void Attach(IObserver observer, string key)
+    public void RegisterObserver(IObserver observer)
     {
-        observers[key] = observer;
+        observers.Add(observer);
     }
 
-    public void Detach(string key)
+    public void UnregisterObserver(IObserver observer)
     {
-        if (observers.ContainsKey(key))
-        {
-            observers.Remove(key);
-        }
+        observers.Remove(observer);
     }
 
-    public void NotifyObserver(string key)
+    public void NotifyObservers()
     {
-        if (observers.ContainsKey(key))
+        foreach (var observer in observers)
         {
-            observers[key].Update();
+            observer.UpdateObserver();
         }
     }
 }

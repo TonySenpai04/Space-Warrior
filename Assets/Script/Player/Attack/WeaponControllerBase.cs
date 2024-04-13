@@ -19,6 +19,10 @@ public abstract class WeaponControllerBase : MonoBehaviour
                 WeaponSlotCounter = 0;
         }
     }
+    public virtual void Resstart()
+    {
+       
+    }
     public virtual List<WeaponSlot> GetSlotListCopy()
     {
         return new List<WeaponSlot>();

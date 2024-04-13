@@ -9,10 +9,10 @@ internal class SlugQueenAbility : ISkillBoss
     private Transform player;
     private Transform owner;
     public SlugQueenAbility(Enemy minionPrefab,
-        float skillCooldown, Transform owner)
+        float skillCooldown, Transform owner, Transform player)
     {
         this.minionPrefab = minionPrefab;
-        player =Object.FindAnyObjectByType<PlayerController>().transform;
+        this.player = player;
         this.skillCooldown = skillCooldown;
         this.owner = owner;
     }

@@ -12,7 +12,11 @@ public class MonsterSpawnController :EnemySpawnControllerBase
     {
         spawnEnemy = new SpawnMonster(player, distanceSpawn, poolEnemies);
     }
-
+    public override void Restart()
+    {
+        base.Restart();
+       
+    }
     //public override void Update()
     //{
     //    base.Update();
