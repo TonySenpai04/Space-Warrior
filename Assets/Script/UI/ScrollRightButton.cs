@@ -7,20 +7,33 @@ public class ScrollRightButton : MonoBehaviour
     public ScrollRect scrollView;
     public float scrollSpeed = 1f;
     public List<Toggle> toggles;
-    private int currentToggleIndex = 0;
+    public int currentToggleIndex = 0;
 
     private void Start()
     {
         Button button = GetComponent<Button>();
         button.onClick.AddListener(ScrollRight);
     }
-
+  
     private void ScrollRight()
     {
-        if (scrollView != null && currentToggleIndex < toggles.Count-1)
+        if (scrollView != null && currentToggleIndex < toggles.Count)
         {
-            scrollView.normalizedPosition += new Vector2(scrollSpeed, 0f);
+            if (currentToggleIndex != toggles.Count - 1)
+            {
+                scrollView.normalizedPosition += new Vector2(scrollSpeed, 0f);
+            }
             UpdateToggles();
+        }
+    }
+    private void FixedUpdate()
+    {
+        for (int i = 0; i < toggles.Count; i++)
+        {
+            if (toggles[i].isOn)
+            {
+                currentToggleIndex = i;
+            }
         }
     }
     private void UpdateToggles()

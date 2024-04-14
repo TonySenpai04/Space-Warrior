@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class MovementController : MovementControllerBase
 {
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip clip;
     protected override void Start()
     {
         base.Start();
-        move = new Move(rigidbody2d, speed);
+        move = new Move(rigidbody2d, speed,clip,audioSource);
     }
     public override void Move()
     {

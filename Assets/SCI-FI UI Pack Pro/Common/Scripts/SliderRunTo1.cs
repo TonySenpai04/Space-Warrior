@@ -34,6 +34,7 @@ public class SliderRunTo1 : MonoBehaviour
                 loading.SetActive(false);
                 this.main.SetActive(true);
 				panelControl.SetActive(true);
+				time = 0;
 			}
 		}
 	}

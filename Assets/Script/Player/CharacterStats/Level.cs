@@ -11,6 +11,7 @@ public class Level : ILevel
     public Level() {
         this.baseExp = experienceNeededForNextLevel;
     }
+  
     public  void GainExperience(int amount)
     {
         currentExperience += amount;
@@ -19,7 +20,13 @@ public class Level : ILevel
             LevelUp();
         }
     }
-
+    public void Restart()
+    {
+        level = 1;
+        experienceNeededForNextLevel = 20;
+        currentExperience = 0;
+        baseExp = experienceNeededForNextLevel;
+    }
     void LevelUp()
     {
         level++;

@@ -21,15 +21,15 @@ public class CustomArea  : MonoBehaviour
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(Active);
-
+        Toggle[] toggles = GetComponentsInChildren<Toggle>();
+        foreach (Toggle toggle in toggles)
+        {
+            starList.Add(toggle);
+        }
         if (area.GetUnlock())
         {
             btnLock.gameObject.SetActive(false);
-            Toggle[] toggles = GetComponentsInChildren<Toggle>();
-            foreach(Toggle toggle in toggles)
-            {
-                starList.Add(toggle);
-            }
+            
         }
     }
     private void FixedUpdate()
@@ -37,6 +37,15 @@ public class CustomArea  : MonoBehaviour
         if (area.GetUnlock())
         {
             btnLock.gameObject.SetActive(false);
+            SetStars();
+
+        }
+    }
+    public void SetStars()
+    {
+        for(int i = 0; i < area.GetStar(); i++)
+        {
+            this.starList[i].isOn = true;
         }
     }
     public void SetArea(Area area)

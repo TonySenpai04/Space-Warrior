@@ -14,12 +14,15 @@ public class Area : MonoBehaviour, IObserver
     [SerializeField] private bool isShowbossNotification = true;
     [SerializeField] private bool isShowVictoryPanel = true;
     [SerializeField] private bool isUnlock;
-    [SerializeField] private GameObject victoryPanel;
+    [SerializeField] private Victory victoryPanel;
     [SerializeField] public bool isRun=false;
+    [SerializeField] private Timer timer;
+    [SerializeField] private int stars;
+    [SerializeField] private Planet planet;
 
     public virtual void Start()
     {
-
+        planet=GetComponentInParent<Planet>();  
         if (spawnMonsters == null)
         {
             InitializeSpawnMonsterPool();
@@ -47,50 +50,63 @@ public class Area : MonoBehaviour, IObserver
         spawnMonsters = enemySpawnControllers[0];
         spawnBoss = enemySpawnControllers[1];
     }
-
-
-    public  void Update()
+    public int GetStar()
     {
-        if (isUnlock && isRun)
-        {
-            if (!isFinish)
+        return this.stars;
+    }
+
+    public  void FixedUpdate()
+    {
+        
+            if (isUnlock && isRun)
             {
-                if (!isBoss)
+                if (!isFinish)
                 {
-                    spawnMonsters.Spawn();
-                    spawnBoss.Spawn();
-                    if (spawnBoss.GetCurrentEnemy() != null)
+                    if (!isBoss)
                     {
-                        isBoss = true;
+                        spawnMonsters.Spawn();
+                        spawnBoss.Spawn();
+                        if (spawnBoss.GetCurrentEnemy() != null)
+                        {
+                            isBoss = true;
+                        }
+                    }
+                    else
+                    {
+
+                        StartCoroutine(ShowBossNotification());
+                        if (spawnBoss.GetCurrentEnemy() != null)
+                        {
+                            if (spawnBoss.GetCurrentEnemy().GetComponent<EnemyControllerBase>().IsDead())
+                                isFinish = true;
+                        }
+
+
                     }
                 }
                 else
                 {
-
-                    StartCoroutine(ShowBossNotification());
-                    if (spawnBoss.GetCurrentEnemy() != null)
+                    if (isShowVictoryPanel)
                     {
-                        if (spawnBoss.GetCurrentEnemy().GetComponent<EnemyControllerBase>().IsDead())
-                            isFinish = true;
-                    }
+                        victoryPanel.gameObject.SetActive(true);
 
+
+                        if (timer.GetTimer() < 600)
+                        {
+                            stars = 3;
+                        }
+                        victoryPanel.SetStar(stars);
+
+                    }
 
                 }
             }
             else
             {
-                if (isShowVictoryPanel)
-                {
-                    victoryPanel.SetActive(true);
-                }
+
+                victoryPanel.gameObject.SetActive(false);
+
             }
-        }
-        else
-        {
-            
-                victoryPanel.SetActive(false);
-            
-        }
 
     }
     public void Active()
@@ -116,7 +132,9 @@ public class Area : MonoBehaviour, IObserver
         spawnBoss.Restart();
         isFinish = false;
         isBoss = false;
-        
+        SkillManager.instance.Restart();
+
+
     }
 
     public void UpdateObserver()

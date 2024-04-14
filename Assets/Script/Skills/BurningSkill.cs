@@ -16,9 +16,9 @@ public class BurningSkill : SkillBase
     [SerializeField] private Enemy targetEnemy;
     [SerializeField] private float timerSkill;
 
-    public bool isSelectingTarget = false;
-    public Image targetIcon;
-    public GameObject tartgetPanel;
+    [SerializeField] private bool isSelectingTarget = false;
+    [SerializeField] private Image targetIcon;
+    [SerializeField] private GameObject tartgetPanel;
     public override void Start()
     {
         base.Start();
@@ -51,10 +51,21 @@ public class BurningSkill : SkillBase
         targetIcon.gameObject.SetActive( true );
 
     }
-    private void ResetTimer()
+    public  void ResetTimer()
     {
         timerSkill = 0f;
         timer = tickRate;
+       
+    }
+    public override void Restart()
+    {
+        base.Restart();
+        isAbilityCooldown = false;
+        currentAbilityCooldown = 0f;
+        timerSkill = 0f;
+        timer = tickRate;
+        targetEnemy = null;
+
     }
     private void MoveTargetIconWithMouse()
     {
@@ -73,8 +84,6 @@ public class BurningSkill : SkillBase
 
     private void HandleBurningSkill()
     {
-
-        // RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -85,6 +94,11 @@ public class BurningSkill : SkillBase
                     targetEnemy = hit.collider.gameObject.GetComponent<Enemy>();
                     
                 }
+            }
+            else
+            {
+                ResumeGame();
+                SkillManager.instance.skillAbility.RestartAbility1();
             }
         }
       

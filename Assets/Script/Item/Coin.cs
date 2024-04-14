@@ -8,6 +8,7 @@ public class Coin : Item
     {
         base.Start();
         target = GameObject.Find("ToGold");
+        StartCoroutine(TriggerAfterDelay(1f));
     }
 
 }

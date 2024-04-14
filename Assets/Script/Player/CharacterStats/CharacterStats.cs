@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStats : MonoBehaviour
+public class CharacterStats : MonoBehaviour,IObserver
 {
     public IHealth health;
     public IMana mana;
@@ -11,6 +11,8 @@ public class CharacterStats : MonoBehaviour
 
     public ChacracterData chacracterData;
     public static CharacterStats instance;
+
+    public  bool isDead = false;
 
     void Awake()
     {
@@ -21,6 +23,11 @@ public class CharacterStats : MonoBehaviour
         //level = new Level();
  
     }
+    public void Replay()
+    {
+        isDead = false;
+        Restart();
+    }
     public void SetData(ChacracterData chacracterData)
     {
         this.chacracterData = chacracterData;
@@ -29,5 +36,16 @@ public class CharacterStats : MonoBehaviour
         damage = new Damage(chacracterData.damage);
         level = new Level();
     }
+    public void Restart()
+    {
+        health.SetHealth(chacracterData.health);
+        mana.SetMana(chacracterData.mana);
+        damage.SetDam(chacracterData.damage);
+        level.Restart();
 
+    }
+    public void UpdateObserver()
+    {
+        Restart();
+    }
 }

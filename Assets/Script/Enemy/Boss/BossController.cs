@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BossController : EnemyControllerBase
 {
-   
+
+    protected float distance;
+    private bool isAttacking = false;
     public override void Start()
     {
         base.Start();
@@ -12,11 +14,12 @@ public class BossController : EnemyControllerBase
     }
     public override void Update()
     {
-        float distance = transform.position.x - player.transform.position.x;
+         distance = transform.position.x - player.transform.position.x;
         if (distance >= 8f)
         {
             Move();
         }
+       
         if (enemyData.currentHealth <= 0)
         {
             isDead = true;
@@ -24,4 +27,5 @@ public class BossController : EnemyControllerBase
         }
     }
    
+
 }

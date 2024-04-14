@@ -5,5 +5,6 @@
     public float GetExperience();
     public void SetExperience(int experience);
     public int GetLevel();
+    public void Restart();
 
 }

@@ -10,6 +10,7 @@ public abstract class Planet : MonoBehaviour
     [SerializeField] protected bool isFinish;
     [SerializeField] protected  Timer timer;
     [SerializeField] protected WeaponControllerBase weaponController;
+    [SerializeField] protected CharacterStats characterStats;
     public virtual void Start()
     {
         if(areas == null)
@@ -67,8 +68,12 @@ public abstract class Planet : MonoBehaviour
         if (areas[index].IsFinish())
         {
             areas[index].isRun = false;
-            index++;
-            areas[index].Unlock();
+            characterStats.Restart();
+            if (index < areas.Count-1)
+            {
+                index++;
+                areas[index].Unlock();
+            }
 
         }
     }
@@ -78,6 +83,7 @@ public abstract class Planet : MonoBehaviour
         timer.Restart();
         weaponController.Resstart();
         SetActiveArea(index);
+        SkillManager.instance.Restart();
     }
     public void RePlayArea()
     {
@@ -86,6 +92,7 @@ public abstract class Planet : MonoBehaviour
         SetActiveArea(index);
         weaponController.Resstart();
         timer.Restart();
+        SkillManager.instance.Restart();
     }
     public virtual void Update()
     {

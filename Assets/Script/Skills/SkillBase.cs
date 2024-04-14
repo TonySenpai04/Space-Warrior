@@ -7,11 +7,18 @@ public  abstract class SkillBase : MonoBehaviour
     public float countdown;
     public bool isAbilityCooldown = false;
     public int manaConsumption;
+    public float currentAbilityCooldown;
     public virtual void Start()
     {
+        isAbilityCooldown = false;
         
     }
+ 
     public virtual void Update()
+    {
+
+    }
+    public virtual void Restart()
     {
 
     }

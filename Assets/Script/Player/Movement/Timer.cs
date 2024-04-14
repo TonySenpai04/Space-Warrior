@@ -23,7 +23,6 @@ public class Timer : MonoBehaviour,IObserver
        
     }
 
-    // Lấy thời gian dưới dạng chuỗi "giờ:phút:giây"
     public string GetTime()
     {
         int minutes = (int)(totalTimeInSeconds / 60);
@@ -35,6 +34,10 @@ public class Timer : MonoBehaviour,IObserver
     public void UpdateObserver()
     {
         Restart();
+    }
+    public float GetTimer()
+    {
+        return this.totalTimeInSeconds;
     }
 }
 

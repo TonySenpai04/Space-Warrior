@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class    SkillAbility : MonoBehaviour
+public class    SkillAbility : MonoBehaviour,IObserver
 {
     public static SkillAbility instance;
     [Header("Skill1")]
@@ -13,7 +13,7 @@ public class    SkillAbility : MonoBehaviour
     public KeyCode ability1Key;
     public float ability1Cooldown;
    // private bool isAbility1Cooldown = false;
-    public float currentAbility1Cooldown;
+    //public float currentAbility1Cooldown;
     public SkillBase skill1;
     [Header("Skill2")]
     public Image abilityImage2;
@@ -47,10 +47,12 @@ public class    SkillAbility : MonoBehaviour
     }
     void Update()
     {
+        
+
         Ability1Input();
         Ability2Input();
         Ability3Input();
-        AbilityCooldown(ref currentAbility1Cooldown, ability1Cooldown, ref skill1.isAbilityCooldown, abilityImage1, abilityText1);
+        AbilityCooldown(ref skill1.currentAbilityCooldown, ability1Cooldown, ref skill1.isAbilityCooldown, abilityImage1, abilityText1);
         AbilityCooldown(ref currentAbility2Cooldown, ability2Cooldown, ref isAbility2Cooldown, abilityImage2, abilityText2);
         AbilityCooldown(ref currentAbility3Cooldown, ability3Cooldown, ref isAbility3Cooldown, abilityImage3, abilityText3);
        
@@ -62,7 +64,7 @@ public class    SkillAbility : MonoBehaviour
             skill1.StartSelectTarget();
             skill1.ActivateSkill();
             skill1.isAbilityCooldown = true;
-            currentAbility1Cooldown = ability1Cooldown;
+            skill1.currentAbilityCooldown = ability1Cooldown;
             
         }
     }
@@ -116,5 +118,51 @@ public class    SkillAbility : MonoBehaviour
             }
 
         }
+    }
+    public void RestartAbility1()
+    {
+        skill1.currentAbilityCooldown = 0f;
+        skill1.isAbilityCooldown = false;
+        skill1.Restart();
+        ResetUI(abilityImage1, abilityText1);
+    }
+
+    public void RestartAbility2()
+    {
+        isAbility2Cooldown = false;
+        currentAbility2Cooldown = 0f;
+        ResetUI(abilityImage2, abilityText2);
+    }
+
+    public void RestartAbility3()
+    {
+        isAbility3Cooldown = false;
+        currentAbility3Cooldown = 0f;
+        ResetUI(abilityImage3, abilityText3);
+    }
+
+    public void RestartAllAbilities()
+    {
+        RestartAbility1();
+        RestartAbility2();
+        RestartAbility3();
+    }
+
+
+    private void ResetUI(Image image, TextMeshProUGUI text)
+    {
+        if (image != null)
+        {
+            image.fillAmount = 0f;
+        }
+        if (text != null)
+        {
+            text.text = "";
+        }
+    }
+
+    public void UpdateObserver()
+    {
+        RestartAllAbilities();
     }
 }

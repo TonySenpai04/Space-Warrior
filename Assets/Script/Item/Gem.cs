@@ -8,5 +8,6 @@ public class Gem : Item
     {
         base.Start();
         target = GameObject.Find("ToDiamond");
+        StartCoroutine(TriggerAfterDelay(1f));
     }
 }

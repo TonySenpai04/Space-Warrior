@@ -8,5 +8,6 @@ public class Soul : Item
     {
         base.Start();
         target = GameObject.Find("ToSoul");
+        StartCoroutine(TriggerAfterDelay(1f));
     }
 }

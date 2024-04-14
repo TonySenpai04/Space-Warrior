@@ -11,18 +11,31 @@ internal class spawnBoss : SpawnEnemy
     }
     public override  void Spawn()
     {
-        timer = Time.time;
-        if (player.position.x - currentTransform.x > distanceSpawn && canSpawn)
+        if (!player.GetComponentInChildren<CharacterStats>().isDead)
         {
-            currentEnemy = poolMonsters[nextMonsterIndex];
-            SetupEnemy(currentEnemy);
-            currentEnemy.transform.position = new Vector3(player.position.x + 25, player.position.y, player.position.z);
-            nextMonsterIndex = (nextMonsterIndex + 1) % poolMonsters.Count;
-            currentTransform = player.position;
-            canSpawn=!canSpawn; 
-          
+            timer = Time.time;
+            if (player.position.x - currentTransform.x > distanceSpawn && canSpawn)
+            {
+                currentEnemy = poolMonsters[nextMonsterIndex];
+                SetupEnemy(currentEnemy);
+                currentEnemy.transform.position = new Vector3(player.position.x + 25, player.position.y, player.position.z);
+                nextMonsterIndex = (nextMonsterIndex + 1) % poolMonsters.Count;
+                currentTransform = player.position;
+                canSpawn = !canSpawn;
+
+            }
+            CanSpawn();
         }
-        CanSpawn();
+        else
+        {
+            if (currentEnemy != null)
+            {
+                currentEnemy.gameObject.SetActive(false);
+            }
+            currentEnemy = null;
+
+        }
+       
     }
 
 }

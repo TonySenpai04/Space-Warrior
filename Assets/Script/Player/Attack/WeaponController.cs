@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random;
 public class WeaponController : WeaponControllerBase
@@ -12,7 +13,7 @@ public class WeaponController : WeaponControllerBase
     [SerializeField] private int EquippedSlot;
     [SerializeField] private int EquippedWeapon;
     [SerializeField] private List<WeaponSlot> Slots;
-    [SerializeField] private bool isShooting;
+    [SerializeField] private bool canShooting;
     //
     [SerializeField] private CharacterAvatar avatar;
     [SerializeField] private float fireRate;
@@ -23,8 +24,10 @@ public class WeaponController : WeaponControllerBase
     //
     public static WeaponController instance;
     //
-
-  
+    [SerializeField] private Button btnShot;
+    [SerializeField] private bool isShoot;
+    [SerializeField] private AudioClip shootAudio;
+    [SerializeField] private AudioSource shootAudioSource;
 
     public enum WeaponType
     {
@@ -42,26 +45,45 @@ public class WeaponController : WeaponControllerBase
         Knife,
         Melee
     }
-
+    
     public override void Awake()
     {
         avatar = FindAnyObjectByType<CharacterAvatar>();
         instance = this;
-        if (RandomWeaponAtStart)
-        {
-            EquippedSlot = UnityEngine.Random.Range(0, 5);
-            EquippedWeapon = UnityEngine.Random.Range(0, 3);
-        }
-
+        //if (RandomWeaponAtStart)
+        //{
+        //    EquippedSlot = UnityEngine.Random.Range(0, 5);
+        //    EquippedWeapon = UnityEngine.Random.Range(0, 3);
+        //}
+ 
         ActivateWeapon(EquippedSlot, EquippedWeapon);
+        btnShot.onClick.AddListener(OnShoting);
+    }
+    public void OnShoting()
+    {
+        if (canShooting)
+        {
+            if (isShoot)
+            {
+                Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
+                if (!GetCurrentWeapon().IsInfiniteAmmo && GetCurrentWeapon().CurrentAmmo <= 0)
+                {
+
+                    return;
+                }
+                shootAudioSource.PlayOneShot(Slots[EquippedSlot].Weapons[EquippedWeapon].audioShoot);
+                SetTrigger("FireTrigger");
+                nextFireTime = 0;
+            }
+        }
     }
     public override void StartShooting()
     {
-        isShooting=true;
+        canShooting=true;
     }
     public override void StopShooting()
     {
-        isShooting=false;
+        canShooting=false;
         SetBool("Fire", false);
     }
     public override void SetWeapon(int slot,int weaponIndex)
@@ -78,23 +100,31 @@ public class WeaponController : WeaponControllerBase
     }
     public override void Shoot()
     {
-        if (isShooting)
+        if (canShooting)
         {
             nextFireTime += Time.deltaTime;
             if (nextFireTime >= fireRate)
             {
+                isShoot = true;
+                //if (isShoot)
+                //{
+                //    Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
+                //    if (!GetCurrentWeapon().IsInfiniteAmmo && GetCurrentWeapon().CurrentAmmo <= 0)
+                //    {
 
-                Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
-                if (!GetCurrentWeapon().IsInfiniteAmmo && GetCurrentWeapon().CurrentAmmo <= 0)
-                {
-                    
-                    return;
-                }
-                SetTrigger("FireTrigger");
-                nextFireTime = 0;
+                //        return;
+                //    }
+                //    SetTrigger("FireTrigger");
+                //    nextFireTime = 0;
+                //}
+            }
+            else
+            {
+                isShoot=false;
             }
         }
     }
+    
 
     public override void Update()
     {

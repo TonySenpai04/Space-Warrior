@@ -14,6 +14,7 @@ public class GenericWeapon : MonoBehaviour
     public bool IsInfiniteAmmo; 
     public int AmmoCount;
     public int CurrentAmmo;
+    public AudioClip audioShoot;
 
     // Hands
     public SpriteRenderer LeftHand;

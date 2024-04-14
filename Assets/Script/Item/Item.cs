@@ -12,12 +12,15 @@ public abstract class Item:MonoBehaviour
     public float burstDuration = 0.3f;
     public ItemManager.ItemType typeItem;
     public float speedMove=5f;
-    bool isMove;
+    bool isMove=true;
     public GameObject target;
 
    public virtual void Start()
     {
+
         GetComponent<SpriteRenderer>().sprite=sprite;
+       
+
     }
     public virtual void PlayBurstAnimation()
     {
@@ -49,6 +52,11 @@ public abstract class Item:MonoBehaviour
         {
             transform.position=Vector3.Lerp(transform.position,target.transform.position,speedMove*Time.deltaTime);
         }
+    }
+    public virtual IEnumerator TriggerAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        TriggerItem();
     }
     public virtual void TriggerItem()
     {

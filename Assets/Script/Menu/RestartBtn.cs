@@ -5,28 +5,31 @@ using UnityEngine.UI;
 
 public class RestartBtn : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    public ISubject subject;
-    public Timer timer;
-    public WeaponControllerBase weaponController;
+    [SerializeField]private GameObject pauseMenu;
+    [SerializeField] private ISubject subject;
+    [SerializeField] private Timer timer;
+    [SerializeField] private WeaponControllerBase weaponController;
+    [SerializeField] private CharacterStats characterStats;
+    [SerializeField] private SkillAbility skill;
     void Start()
     {
         subject = new ConcreteSubject();
         subject.RegisterObserver(timer);
+        subject.RegisterObserver(characterStats);
+        subject.RegisterObserver(PlanetManager.instance.GetCurrentArea());
+        subject.RegisterObserver(GridManager.instance.GetCurrentGrid());
+
         GetComponent<Button>().onClick.AddListener(Restart);
     }
 
  
     public void Restart()
     {
-        subject.RegisterObserver(PlanetManager.instance.GetCurrentArea());
-        subject.RegisterObserver(GridManager.instance.GetCurrentGrid());
+        subject.RegisterObserver(skill);
         subject.NotifyObservers();
         weaponController.Resstart();
         Time.timeScale = 1.0f;
         pauseMenu.gameObject.SetActive(false);
-        //gridController.Restart();
-        //PlanetManager.instance.Restart();
 
     }
 

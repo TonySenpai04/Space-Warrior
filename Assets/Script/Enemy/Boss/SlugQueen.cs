@@ -22,5 +22,10 @@ public class SlugQueen : Boss
         skill.ActiveSkill();
         
     }
+    public override void Update()
+    {
+        base.Update();
+        ActiveSkill();
+    }
 
 }

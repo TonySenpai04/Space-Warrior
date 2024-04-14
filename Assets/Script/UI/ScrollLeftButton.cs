@@ -7,7 +7,7 @@ public class ScrollLeftButton : MonoBehaviour
     public ScrollRect scrollView;
     public float scrollSpeed = 1f;
     public List<Toggle> toggles;
-    private int currentToggleIndex = 0;
+    public int currentToggleIndex = 0;
 
     private void Start()
     {
@@ -17,10 +17,25 @@ public class ScrollLeftButton : MonoBehaviour
 
     private void ScrollLeft()
     {
-        if (scrollView != null && currentToggleIndex > 0)
+        if (scrollView != null && currentToggleIndex >0)
         {
-            scrollView.normalizedPosition -= new Vector2(scrollSpeed, 0f);
+            if (currentToggleIndex != 0)
+            {
+                scrollView.normalizedPosition -= new Vector2(scrollSpeed, 0f);
+            }
+           
             UpdateToggles();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        for (int i = 0; i < toggles.Count; i++)
+        {
+            if (toggles[i].isOn)
+            {
+                currentToggleIndex = i;
+            }
         }
     }
     private void UpdateToggles()
@@ -32,7 +47,7 @@ public class ScrollLeftButton : MonoBehaviour
                 currentToggleIndex = i;
             }
         }
-        if (currentToggleIndex < toggles.Count && currentToggleIndex > 0)
+        if (currentToggleIndex > 0)
         {
             currentToggleIndex--;
         }

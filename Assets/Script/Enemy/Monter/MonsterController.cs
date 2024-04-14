@@ -8,6 +8,7 @@ public class MonsterController : EnemyControllerBase
     [SerializeField]private Transform pointatk;
     [SerializeField]private GenericProjectile projectile;
     [SerializeField] private float projectileForce;
+  
     public override void Start()
     {
         base.Start();

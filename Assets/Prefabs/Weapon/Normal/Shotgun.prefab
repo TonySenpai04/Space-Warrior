@@ -616,8 +616,10 @@ MonoBehaviour:
   Bone: {fileID: 8997292989680660591}
   PowerUp: {fileID: 4000011076239226, guid: a08049b392cbfc6458845f8aa4c40293, type: 3}
   weaponSprite: {fileID: 3560471139082791302}
-  InfiniteAmmo: 0
-  AmmoCount: 10
+  IsInfiniteAmmo: 0
+  AmmoCount: 40
+  CurrentAmmo: 40
+  audioShoot: {fileID: 8300000, guid: f5edee16a01f5db469cac2b3b64c58be, type: 3}
   LeftHand: {fileID: 3138247514150783381}
   RightHand: {fileID: 1063781097633627881}
   LeftHandId: 0

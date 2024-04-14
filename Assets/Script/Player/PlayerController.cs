@@ -23,18 +23,14 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.T))
+        if (!CharacterStats.instance.isDead)
         {
-            Time.timeScale = 10.0f;
-        }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            Time.timeScale = 1.0f;
-        }
-        if (!PlanetManager.instance.IsAreaFinish())
-        {
-            HandleShooting();
-            HandleEnemyDetection();
+            if (!PlanetManager.instance.IsAreaFinish())
+            {
+
+                HandleShooting();
+                HandleEnemyDetection();
+            }
         }
     }
 
@@ -102,9 +98,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!PlanetManager.instance.IsAreaFinish())
+        if (!CharacterStats.instance.isDead)
         {
-            movementController.Move();
+            if (!PlanetManager.instance.IsAreaFinish())
+            {
+                movementController.Move();
+            }
         }
        
     }

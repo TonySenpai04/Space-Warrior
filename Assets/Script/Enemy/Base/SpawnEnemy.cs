@@ -28,17 +28,29 @@ public class SpawnEnemy : ISpawn,ICanSpawn,IGetCurentEnemy
     }
     public virtual void Spawn()
     {
-        timer = Time.time-startTime;
-        if (player.position.x - currentTransform.x > distanceSpawn && canSpawn)
+        if (!player.GetComponentInChildren<CharacterStats>().isDead)
         {
-            currentEnemy = poolMonsters[Random.Range(0, poolMonsters.Count)];
-            SetupEnemy(currentEnemy);
-            currentEnemy.transform.position = new Vector3(player.position.x + 15, player.position.y, player.position.z);
-            currentTransform = player.position;
-            canSpawn = !canSpawn;
+            timer = Time.time - startTime;
+            if (player.position.x - currentTransform.x > distanceSpawn && canSpawn)
+            {
+                currentEnemy = poolMonsters[Random.Range(0, poolMonsters.Count)];
+                SetupEnemy(currentEnemy);
+                currentEnemy.transform.position = new Vector3(player.position.x + 15, player.position.y, player.position.z);
+                currentTransform = player.position;
+                canSpawn = !canSpawn;
+
+            }
+            CanSpawn();
+        }
+        else
+        {
+            if (currentEnemy != null)
+            {
+                currentEnemy.gameObject.SetActive(false);
+            }
+            currentEnemy = null;
 
         }
-        CanSpawn();
     }
     public virtual void CanSpawn()
     {
@@ -67,6 +79,6 @@ public class SpawnEnemy : ISpawn,ICanSpawn,IGetCurentEnemy
         canSpawn = true;
         currentEnemy = null;
         timer = 0f;
-       
+        startTime = Time.time;
     }
 }

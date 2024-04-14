@@ -20,8 +20,8 @@ public class Minion:Enemy
         var player = collision.GetComponent<PlayerController>();
         if (player)
         {
-            CharacterStats.instance.health.TakeDamage(10);
-            owner.GetComponent<Enemy>().currentHealth += 50;
+            CharacterStats.instance.health.TakeDamage((int)CharacterStats.instance.health.GetHealth()/10);
+            owner.GetComponent<Enemy>().currentHealth += owner.GetComponent<Enemy>().health/10;
             if (owner.GetComponent<Enemy>().currentHealth>owner.GetComponent<Enemy>().health)
                 owner.GetComponent<Enemy>().currentHealth=owner.GetComponent<Enemy>().health;
             

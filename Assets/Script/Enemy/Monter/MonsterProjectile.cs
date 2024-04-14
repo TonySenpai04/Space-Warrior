@@ -61,7 +61,7 @@ public class MonsterProjectile : GenericProjectile
         {
             Debug.Log(player.name);
             gameObject.SetActive(false);
-            player.GetComponentInChildren<CharacterStats>().health.TakeDamage(2);
+            player.GetComponentInChildren<CharacterStats>().health.TakeDamage(2 * player.GetComponentInChildren<CharacterStats>().level.GetLevel());
            
         }
     }
