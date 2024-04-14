@@ -22,7 +22,10 @@ public abstract class EnemySpawnControllerBase : MonoBehaviour
     public virtual Enemy GetCurrentEnemy()
     {
         IGetCurentEnemy getCurentEnemy = (IGetCurentEnemy)spawnEnemy;
-        return getCurentEnemy.GetCurrentEnemy();
+        if (getCurentEnemy.GetCurrentEnemy() != null)
+            return getCurentEnemy.GetCurrentEnemy();
+        else
+            return null;
     }
     public virtual void InitializeEnemyPool()
     {

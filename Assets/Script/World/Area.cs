@@ -91,11 +91,9 @@ public class Area : MonoBehaviour, IObserver
                         victoryPanel.gameObject.SetActive(true);
 
 
-                        if (timer.GetTimer() < 600)
-                        {
-                            stars = 3;
-                        }
-                        victoryPanel.SetStar(stars);
+                    stars = timer.GetTimer() < 600 ? 3 : timer.GetTimer() < 900 ? 2 : 1;
+
+                    victoryPanel.SetStar(stars);
 
                     }
 
@@ -133,6 +131,8 @@ public class Area : MonoBehaviour, IObserver
         isFinish = false;
         isBoss = false;
         SkillManager.instance.Restart();
+        isShowbossNotification = true;
+        isShowVictoryPanel = true;
 
 
     }
