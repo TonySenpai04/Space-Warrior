@@ -19,11 +19,15 @@ public class BurningSkill : SkillBase
     [SerializeField] private bool isSelectingTarget = false;
     [SerializeField] private Image targetIcon;
     [SerializeField] private GameObject tartgetPanel;
+    [SerializeField] private  GameObject flameEffect;
+    [SerializeField] private GameObject flameEffectPrefab;
     public override void Start()
     {
         base.Start();
         timer = tickRate;
         targetIcon.gameObject.SetActive(false);
+        flameEffect= Instantiate(flameEffectPrefab);
+        flameEffect.gameObject.SetActive(false);
     }
     public override void Update()
     {
@@ -106,6 +110,8 @@ public class BurningSkill : SkillBase
         {
             ResumeGame();
             UpdateTimers();
+            flameEffect.transform.position = new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y + 2, targetEnemy.transform.position.z) ;
+            flameEffect.gameObject.SetActive(true);
             isBurning = true;
         }
 
@@ -125,6 +131,7 @@ public class BurningSkill : SkillBase
             isBurning = false;
             ResetTimer();
             targetEnemy = null;
+            flameEffect.gameObject.SetActive(false);
         }
     }
 

@@ -59,10 +59,13 @@ public class MonsterProjectile : GenericProjectile
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
         if (player != null)
         {
-            Debug.Log(player.name);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
             player.GetComponentInChildren<CharacterStats>().health.TakeDamage(2 * player.GetComponentInChildren<CharacterStats>().level.GetLevel());
            
+        }
+        if(collision.CompareTag("Shield"))
+        {
+            Destroy(gameObject);
         }
     }
 

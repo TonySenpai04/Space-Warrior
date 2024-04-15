@@ -28,6 +28,7 @@ public class WeaponController : WeaponControllerBase
     [SerializeField] private bool isShoot;
     [SerializeField] private AudioClip shootAudio;
     [SerializeField] private AudioSource shootAudioSource;
+    public bool isTest=false;
 
     public enum WeaponType
     {
@@ -100,23 +101,40 @@ public class WeaponController : WeaponControllerBase
     }
     public override void Shoot()
     {
+        if (Input.GetKey(KeyCode.T))
+        {
+            isTest = true;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            isTest = false;
+            Time.timeScale = 1f;
+        }
+        if (isTest)
+        {
+            Time.timeScale = 10f;
+
+        }
+        
+       
+
         if (canShooting)
         {
             nextFireTime += Time.deltaTime;
             if (nextFireTime >= fireRate)
             {
                 isShoot = true;
-                //if (isShoot)
-                //{
-                //    Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
-                //    if (!GetCurrentWeapon().IsInfiniteAmmo && GetCurrentWeapon().CurrentAmmo <= 0)
-                //    {
+                if (isTest)
+                {
+                    Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
+                    if (!GetCurrentWeapon().IsInfiniteAmmo && GetCurrentWeapon().CurrentAmmo <= 0)
+                    {
 
-                //        return;
-                //    }
-                //    SetTrigger("FireTrigger");
-                //    nextFireTime = 0;
-                //}
+                        return;
+                    }
+                    SetTrigger("FireTrigger");
+                    nextFireTime = 0;
+                }
             }
             else
             {

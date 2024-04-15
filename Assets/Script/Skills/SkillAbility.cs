@@ -19,9 +19,10 @@ public class    SkillAbility : MonoBehaviour,IObserver
     public Image abilityImage2;
     public TextMeshProUGUI abilityText2;
     public KeyCode ability2Key;
-    public float ability2Cooldown = 8;
-    private bool isAbility2Cooldown = false;
-    public float currentAbility2Cooldown;
+    public float ability2Cooldown;
+  //  private bool isAbility2Cooldown = false;
+   // public float currentAbility2Cooldown;
+    public SkillBase skill2;
     [Header("Skill3")]
     public Image abilityImage3;
     public TextMeshProUGUI abilityText3;
@@ -41,6 +42,7 @@ public class    SkillAbility : MonoBehaviour,IObserver
         abilityText2.text = "";
         abilityText3.text = "";
 
+        ability2Cooldown = skill2.countdown;
         ability1Cooldown = skill1.countdown;
 
 
@@ -53,7 +55,7 @@ public class    SkillAbility : MonoBehaviour,IObserver
         Ability2Input();
         Ability3Input();
         AbilityCooldown(ref skill1.currentAbilityCooldown, ability1Cooldown, ref skill1.isAbilityCooldown, abilityImage1, abilityText1);
-        AbilityCooldown(ref currentAbility2Cooldown, ability2Cooldown, ref isAbility2Cooldown, abilityImage2, abilityText2);
+        AbilityCooldown(ref skill2.currentAbilityCooldown, ability2Cooldown, ref skill2.isAbilityCooldown, abilityImage2, abilityText2);
         AbilityCooldown(ref currentAbility3Cooldown, ability3Cooldown, ref isAbility3Cooldown, abilityImage3, abilityText3);
        
     }
@@ -70,11 +72,13 @@ public class    SkillAbility : MonoBehaviour,IObserver
     }
     private void Ability2Input()
     {
-        if ((Input.GetKey(ability2Key) && !isAbility2Cooldown))
+        if ((Input.GetKey(ability2Key) && !skill2.isAbilityCooldown))
         {
-            isAbility2Cooldown = true;
-            currentAbility2Cooldown = ability2Cooldown;
-      
+            skill2.isAbilityCooldown = true;
+            skill2.currentAbilityCooldown = ability2Cooldown;
+            skill2.ActivateSkill();
+
+
         }
     }
     private void Ability3Input()
@@ -129,8 +133,9 @@ public class    SkillAbility : MonoBehaviour,IObserver
 
     public void RestartAbility2()
     {
-        isAbility2Cooldown = false;
-        currentAbility2Cooldown = 0f;
+        skill2.isAbilityCooldown = false;
+        skill2.currentAbilityCooldown = 0f;
+        skill2.Restart();
         ResetUI(abilityImage2, abilityText2);
     }
 
