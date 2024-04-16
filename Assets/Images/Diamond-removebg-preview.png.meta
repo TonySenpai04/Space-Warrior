@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Diamond-removebg-preview_0: 789367575633925369
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

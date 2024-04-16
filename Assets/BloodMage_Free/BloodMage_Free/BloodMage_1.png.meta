@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BloodMage_1_0: -3212233408095342389
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

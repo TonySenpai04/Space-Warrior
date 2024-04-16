@@ -76,6 +76,19 @@ public class BurningSkill : SkillBase
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = 10f;
         targetIcon.transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
+        //if (Input.touchCount > 0)
+        //{
+        //    Touch touch = Input.GetTouch(0); // Lấy thông tin về ngón tay đầu tiên
+
+        //    Vector3 touchPosition = touch.position;
+        //    touchPosition.z = 10f; // Đảm bảo rằng z không thay đổi khi chuyển đổi tọa độ
+
+        //    // Chuyển đổi tọa độ màn hình của ngón tay thành tọa độ thế giới
+        //    Vector3 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+
+        //    // Thiết lập vị trí của biểu tượng mục tiêu theo vị trí của ngón tay
+        //    targetIcon.transform.position = worldPosition;
+        //}
     }
     private void ResumeGame()
     {
@@ -88,8 +101,10 @@ public class BurningSkill : SkillBase
 
     private void HandleBurningSkill()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) /*Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began*/ && isSelectingTarget)
         {
+            //Touch touch = Input.GetTouch(0);
+            //RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero);
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null)
             {
@@ -110,7 +125,14 @@ public class BurningSkill : SkillBase
         {
             ResumeGame();
             UpdateTimers();
-            flameEffect.transform.position = new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y + 2, targetEnemy.transform.position.z) ;
+            if (targetEnemy.enemyType == Enemy.EnemyType.Ground)
+            {
+                flameEffect.transform.position = new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y + 1.6f, targetEnemy.transform.position.z);
+            }
+            else
+            {
+                flameEffect.transform.position = new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y + 2f, targetEnemy.transform.position.z);
+            }
             flameEffect.gameObject.SetActive(true);
             isBurning = true;
         }
@@ -133,6 +155,7 @@ public class BurningSkill : SkillBase
             targetEnemy = null;
             flameEffect.gameObject.SetActive(false);
         }
+
     }
 
     private void UpdateTimers()
@@ -143,8 +166,7 @@ public class BurningSkill : SkillBase
 
     public override void ActivateSkill()
     {
-        
- 
+
         CharacterStats.instance.mana.UseMana(manaConsumption);
     }
 

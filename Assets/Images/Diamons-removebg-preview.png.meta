@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Diamons-removebg-preview_0: 3082926709491157595
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

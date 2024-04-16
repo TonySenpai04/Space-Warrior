@@ -10,6 +10,7 @@ public class CustomArea  : MonoBehaviour
     [SerializeField] private GameObject mapSelection;
     [SerializeField] private GameObject levelSelection;
     [SerializeField] private GameObject loading;
+    [SerializeField]private GameObject home;
 
     [Header("UI")]
     [SerializeField] private Button button;
@@ -66,6 +67,7 @@ public class CustomArea  : MonoBehaviour
             mapSelection.SetActive(false);
             levelSelection.SetActive(false);
             controller.SetArea(index);
+            home.gameObject.SetActive(false);
         }
 
     }

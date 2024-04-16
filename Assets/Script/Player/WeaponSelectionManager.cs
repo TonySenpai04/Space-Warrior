@@ -119,7 +119,12 @@ public class WeaponSelectionManager : MonoBehaviour
         if (weaponsIndex.Contains(weaponIndexToRemove))
         {
             weaponsIndex.Remove(weaponIndexToRemove);   
+            for(int i = 0; i < weaponsIndex.Count; i++)
+            {
+                Debug.Log(i);
+            }
             Debug.Log("Weapon removed successfully.");
+
         }
         else
         {
@@ -137,7 +142,7 @@ public class WeaponSelectionManager : MonoBehaviour
             {
                 if (weaponSelections[i].weaponSelectedGenericWeapon != null)
                 {
-                    swapSelected[i].SetSlot(weaponsIndex[i].Item1, weaponsIndex[i].Item2);
+                    swapSelected[i].SetSlot(weaponSelections[i].slot, weaponSelections[i].weaponIndex);
                     swapSelected[i].SetWeaponSelected(weaponSelections[i]);
                 }
                 else
@@ -145,7 +150,7 @@ public class WeaponSelectionManager : MonoBehaviour
                     swapSelected[i].SetSlot(-1, -1);
                 }
             }
-            weaponController.SetWeapon(weaponsIndex[0].Item1, weaponsIndex[0].Item2);
+            weaponController.SetWeapon(weaponSelections[0].slot, weaponSelections[0].weaponIndex);
         }
     }
 }

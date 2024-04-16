@@ -10,6 +10,7 @@ public class Level : ILevel
 
     public Level() {
         this.baseExp = experienceNeededForNextLevel;
+
     }
   
     public  void GainExperience(int amount)
@@ -26,6 +27,7 @@ public class Level : ILevel
         experienceNeededForNextLevel = 20;
         currentExperience = 0;
         baseExp = experienceNeededForNextLevel;
+        SkillAbility.instance.UpdateSkill(); 
     }
     void LevelUp()
     {
@@ -41,7 +43,9 @@ public class Level : ILevel
         Debug.Log(newDamage);
         currentExperience -= experienceNeededForNextLevel ;
         experienceNeededForNextLevel =(int) Mathf.RoundToInt(baseExp * Mathf.Pow(level, experienceMultiplier));
-  
+
+        SkillAbility.instance.UpdateSkill();
+
     }
 
     public float GetCurrentExp()

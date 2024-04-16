@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Lion_Bas_Relief_0: -7368472042332095135
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

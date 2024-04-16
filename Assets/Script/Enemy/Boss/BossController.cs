@@ -6,7 +6,6 @@ public class BossController : EnemyControllerBase
 {
 
     protected float distance;
-    private bool isAttacking = false;
     public override void Start()
     {
         base.Start();

@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wooden_Box_0: -3682179803197438060
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

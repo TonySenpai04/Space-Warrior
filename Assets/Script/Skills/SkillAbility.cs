@@ -10,7 +10,7 @@ public class    SkillAbility : MonoBehaviour,IObserver
     [Header("Skill1")]
     public Image abilityImage1;
     public TextMeshProUGUI abilityText1;
-    public KeyCode ability1Key;
+   // public KeyCode ability1Key;
     public float ability1Cooldown;
    // private bool isAbility1Cooldown = false;
     //public float currentAbility1Cooldown;
@@ -18,7 +18,7 @@ public class    SkillAbility : MonoBehaviour,IObserver
     [Header("Skill2")]
     public Image abilityImage2;
     public TextMeshProUGUI abilityText2;
-    public KeyCode ability2Key;
+   // public KeyCode ability2Key;
     public float ability2Cooldown;
   //  private bool isAbility2Cooldown = false;
    // public float currentAbility2Cooldown;
@@ -26,54 +26,76 @@ public class    SkillAbility : MonoBehaviour,IObserver
     [Header("Skill3")]
     public Image abilityImage3;
     public TextMeshProUGUI abilityText3;
-    public KeyCode ability3Key;
-    public float ability3Cooldown = 12;
-    private bool isAbility3Cooldown = false;
-    public float currentAbility3Cooldown;
-    
+   // public KeyCode ability3Key;
+    public float ability3Cooldown;
+    //  private bool isAbility3Cooldown = false;
+    // public float currentAbility3Cooldown;
+    public SkillBase skill3;
+
     void Start()
     {
         instance = this;
         abilityImage1.fillAmount = 0;
-        abilityImage2.fillAmount = 0;
-        abilityImage3.fillAmount = 0;
+       // abilityImage2.fillAmount = 0;
+       // abilityImage3.fillAmount = 0;
 
         abilityText1.text = "";
-        abilityText2.text = "";
-        abilityText3.text = "";
+       // abilityText2.text = "";
+       // abilityText3.text = "";
 
         ability2Cooldown = skill2.countdown;
         ability1Cooldown = skill1.countdown;
+        ability3Cooldown= skill3.countdown;
 
+        UpdateSkill();
 
     }
+    public void UpdateSkillAvailability(SkillBase skill, Image abilityImage, TextMeshProUGUI abilityText)
+    {
+        if (skill.levelRequire > CharacterStats.instance.level.GetLevel())
+        {
+            abilityImage.fillAmount = 1;
+            abilityText.text = "Unlock at level " + skill.levelRequire;
+        }
+        else
+        {
+            abilityImage.fillAmount = 0;
+            abilityText.text = "";
+        }
+    }
+    public void UpdateSkill()
+    {
+        UpdateSkillAvailability(skill2, abilityImage2, abilityText2);
+        UpdateSkillAvailability(skill3, abilityImage3, abilityText3);
+    }
+
+
+
     void Update()
     {
-        
 
-        Ability1Input();
-        Ability2Input();
-        Ability3Input();
+
         AbilityCooldown(ref skill1.currentAbilityCooldown, ability1Cooldown, ref skill1.isAbilityCooldown, abilityImage1, abilityText1);
         AbilityCooldown(ref skill2.currentAbilityCooldown, ability2Cooldown, ref skill2.isAbilityCooldown, abilityImage2, abilityText2);
-        AbilityCooldown(ref currentAbility3Cooldown, ability3Cooldown, ref isAbility3Cooldown, abilityImage3, abilityText3);
+        AbilityCooldown(ref skill3.currentAbilityCooldown, ability3Cooldown, ref skill3.isAbilityCooldown, abilityImage3, abilityText3);
        
     }
-    private void Ability1Input()
+    public void Ability1Input()
     {
-        if ((Input.GetKey(ability1Key) && !skill1.isAbilityCooldown))
+        if (!skill1.isAbilityCooldown)
         {
-            skill1.StartSelectTarget();
             skill1.ActivateSkill();
+            skill1.StartSelectTarget();
             skill1.isAbilityCooldown = true;
             skill1.currentAbilityCooldown = ability1Cooldown;
             
         }
     }
-    private void Ability2Input()
+    public void Ability2Input()
     {
-        if ((Input.GetKey(ability2Key) && !skill2.isAbilityCooldown))
+        if (!skill2.isAbilityCooldown && skill2.levelRequire <= CharacterStats.instance.level.GetLevel())
         {
+            Debug.Log(skill2.levelRequire >= CharacterStats.instance.level.GetLevel());
             skill2.isAbilityCooldown = true;
             skill2.currentAbilityCooldown = ability2Cooldown;
             skill2.ActivateSkill();
@@ -81,16 +103,19 @@ public class    SkillAbility : MonoBehaviour,IObserver
 
         }
     }
-    private void Ability3Input()
+    public void Ability3Input()
     {
-        if ((Input.GetKey(ability3Key) && !isAbility3Cooldown))
+        if ( !skill3.isAbilityCooldown&& skill3.levelRequire <= CharacterStats.instance.level.GetLevel())
         {
-            isAbility3Cooldown = true;
+            skill3.isAbilityCooldown = true;
+            skill3.currentAbilityCooldown = ability3Cooldown;
+            skill3.ActivateSkill();
+
             
           
         }
     }
-    private void AbilityCooldown(ref float currentCooldown, float maxCooldown, ref bool isCooldown, Image skillImage, TextMeshProUGUI skillText)
+    public void AbilityCooldown(ref float currentCooldown, float maxCooldown, ref bool isCooldown, Image skillImage, TextMeshProUGUI skillText)
     {
         if (isCooldown)
         {
@@ -141,8 +166,9 @@ public class    SkillAbility : MonoBehaviour,IObserver
 
     public void RestartAbility3()
     {
-        isAbility3Cooldown = false;
-        currentAbility3Cooldown = 0f;
+        skill3.isAbilityCooldown = false;
+        skill3.currentAbilityCooldown = 0f;
+        skill3.Restart();
         ResetUI(abilityImage3, abilityText3);
     }
 
@@ -151,6 +177,7 @@ public class    SkillAbility : MonoBehaviour,IObserver
         RestartAbility1();
         RestartAbility2();
         RestartAbility3();
+        UpdateSkill(); 
     }
 
 

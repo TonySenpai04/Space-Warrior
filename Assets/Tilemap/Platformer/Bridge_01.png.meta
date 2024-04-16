@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bridge_01_0: 2385735961827137053
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

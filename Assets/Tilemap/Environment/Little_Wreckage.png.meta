@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Little_Wreckage_0: 201369756348672547
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

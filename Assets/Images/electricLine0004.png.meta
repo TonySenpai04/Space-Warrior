@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      electricLine0004_0: -1813963857711922118
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

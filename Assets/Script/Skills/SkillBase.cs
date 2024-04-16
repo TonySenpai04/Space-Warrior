@@ -8,6 +8,7 @@ public  abstract class SkillBase : MonoBehaviour
     public bool isAbilityCooldown = false;
     public int manaConsumption;
     public float currentAbilityCooldown;
+    public int levelRequire;
     public virtual void Start()
     {
         isAbilityCooldown = false;

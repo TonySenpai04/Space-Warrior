@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Chest_02_Unlocked_0: -3946051944963471016
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

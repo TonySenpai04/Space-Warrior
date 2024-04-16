@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Decor_Brick_0: -3184784632828657886
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
