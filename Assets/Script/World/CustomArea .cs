@@ -57,7 +57,10 @@ public class CustomArea  : MonoBehaviour
     {
         this.index= index;
     }
-
+    public int GetStar()
+    {
+        return area.GetStar();
+    }
     public void Active()
     {
         if (area.GetUnlock())
@@ -70,5 +73,9 @@ public class CustomArea  : MonoBehaviour
             home.gameObject.SetActive(false);
         }
 
+    }
+    public bool GetUnlock()
+    {
+        return area.GetUnlock();
     }
 }

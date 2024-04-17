@@ -23,8 +23,11 @@ public class CustomPlanet : MonoBehaviour
     }
     public void SelectPlanet()
     {
-        areaSelection.gameObject.SetActive(true);
-        customAreaController.gameObject.SetActive(true );
+        if (isUnlock)
+        {
+            areaSelection.gameObject.SetActive(true);
+            customAreaController.gameObject.SetActive(true);
+        }
     }
 
 }

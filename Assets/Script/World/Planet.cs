@@ -11,6 +11,7 @@ public abstract class Planet : MonoBehaviour
     [SerializeField] protected  Timer timer;
     [SerializeField] protected WeaponControllerBase weaponController;
     [SerializeField] protected CharacterStats characterStats;
+    [SerializeField] protected CustomAreaController areaController;
     public virtual void Start()
     {
         if(areas == null)
@@ -74,7 +75,7 @@ public abstract class Planet : MonoBehaviour
                 index++;
                 areas[index].Unlock();
             }
-
+            areaController.UpdateStar();
         }
     }
     public void NextArea()

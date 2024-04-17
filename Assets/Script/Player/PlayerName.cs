@@ -8,6 +8,7 @@ public class PlayerName : MonoBehaviour
     [SerializeField] private InputField nameInputField;
     [SerializeField] private Text characterNameText;
     [SerializeField] private Button btnCheck;
+    private string[] randomNames = { "Alice", "Bob", "Charlie", "David", "Eva", "Frank", "Grace", "Henry" };
     private void Start()
     {
         btnCheck.onClick.AddListener(CheckName);
@@ -29,5 +30,10 @@ public class PlayerName : MonoBehaviour
         {
             Debug.LogWarning("Character name cannot be empty!");
         }
+    }
+    public void RandomName()
+    {
+        int randomIndex = Random.Range(0, randomNames.Length);
+        nameInputField.text = randomNames[randomIndex];
     }
 }

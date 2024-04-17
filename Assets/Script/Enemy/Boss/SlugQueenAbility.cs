@@ -22,6 +22,7 @@ internal class SlugQueenAbility : ISkillBoss
         float distance = owner.transform.position.x - player.transform.position.x;
         if (distance <= 8)
         {
+            timer += Time.deltaTime;
             if (timer >= skillCooldown)
             {
                 minionInstance =Object.Instantiate(minionPrefab.gameObject);
@@ -34,7 +35,7 @@ internal class SlugQueenAbility : ISkillBoss
             }
             if (minionInstance == null)
             {
-                timer += Time.deltaTime;
+                
 
             }
             

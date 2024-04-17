@@ -55,7 +55,7 @@ public class SwapWeapon : MonoBehaviour
 
     private void UpdateWeaponImage()
     {
-        if(weaponSelection!=null)
+        if(weaponSelection!=null && weaponSelection.weaponSelectedGenericWeapon != null)
         weaponImage.sprite = weaponSelection.weaponSelectedImage.sprite;
     }
 
@@ -84,11 +84,36 @@ public class SwapWeapon : MonoBehaviour
     public void SetWeaponSelected(WeaponSelection weaponSelection)
     {
         this.weaponSelection = weaponSelection;
+        if (!weaponSelection.weaponSelectedGenericWeapon.IsInfiniteAmmo)
+        {
+            ammoCountTxt.text = " /" + weaponSelection.weaponSelectedGenericWeapon.AmmoCount.ToString();
+            currentAmmoTxt.text = weaponSelection.weaponSelectedGenericWeapon.AmmoCount.ToString();
+        }
+        else
+        {
+            currentAmmoTxt.text = "";
+            ammoCountTxt.text = "";
+        }
+        if (weaponSelection.weaponSelectedGenericWeapon != null)
+        {
+            weaponImage.sprite = weaponSelection.weaponSelectedImage.sprite;
+            weaponImage.enabled = true;
+        }
+        else
+        {
+            weaponImage.enabled = false;
+        }
+       // UpdateAmmoInfo(weaponSelection.weaponSelectedGenericWeapon);
+       // UpdateWeaponImage();
+
+
     }
     public void SetSlot(int slotIndex, int weaponIndex)
     {
         this.slotIndex= slotIndex;
         this.weaponIndex= weaponIndex;
+       
+
     }
     private void FixedUpdate()
     {
@@ -98,21 +123,28 @@ public class SwapWeapon : MonoBehaviour
             if (!GetWeapon().IsInfiniteAmmo)
             {
                 currentAmmoTxt.text = GetWeapon().CurrentAmmo.ToString();
-                ammoCountTxt.text = " /"+GetWeapon().AmmoCount.ToString();
+                ammoCountTxt.text = " /" + GetWeapon().AmmoCount.ToString();
             }
             else
             {
                 currentAmmoTxt.text = "";
                 ammoCountTxt.text = "";
             }
- 
-            if(GetWeapon()!= weaponController.GetCurrentWeapon()) {
+
+            if (GetWeapon() != weaponController.GetCurrentWeapon())
+            {
                 button.image.sprite = nomarlWeapon;
             }
             else
             {
                 button.image.sprite = selectedWeapon;
             }
+        }
+        else
+        {
+            currentAmmoTxt.text = "";
+            ammoCountTxt.text = "";
+            weaponImage.enabled= false;
         }
     }
 

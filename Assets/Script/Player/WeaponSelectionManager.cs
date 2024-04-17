@@ -31,7 +31,7 @@ public class WeaponSelectionManager : MonoBehaviour
         AssignWeaponButtonSelectsToSlots();
     }
 
-
+    
     public void AssignWeaponButtonSelectsToSlots()
     {
         int weaponIndex = 0;
@@ -74,37 +74,38 @@ public class WeaponSelectionManager : MonoBehaviour
             if (weaponsIndex.Count < 3)
             {
                 weaponsIndex.Add(weaponIndex);
-            }
-
-            GenericWeapon genericWeapon = weaponSlots[slot].Weapons[index];
-            WeaponButtonSelect weaponButtonSelect=null;
-            for(int i=0;i< weaponButtonSelects.Count; i++)
-            {
-                if (weaponButtonSelects[i].weapon== genericWeapon)
+                GenericWeapon genericWeapon = weaponSlots[slot].Weapons[index];
+                WeaponButtonSelect weaponButtonSelect = null;
+                for (int i = 0; i < weaponButtonSelects.Count; i++)
                 {
-                    weaponButtonSelect = weaponButtonSelects[i];
+                    if (weaponButtonSelects[i].weapon == genericWeapon)
+                    {
+                        weaponButtonSelect = weaponButtonSelects[i];
+                    }
                 }
-            }
-            int emptyIndex = -1;
-            for (int i = 0; i < weaponSelections.Count; i++)
-            {
-                if (weaponSelections[i].weaponSelectedGenericWeapon == null)
-                {
-                    emptyIndex = i;
-                    break;
-                }
-            }
-            if (genericWeapon != null)
-            {
+                int emptyIndex = -1;
                 for (int i = 0; i < weaponSelections.Count; i++)
                 {
-                    if (weaponSelections[i].weaponSelectedGenericWeapon != genericWeapon)
+                    if (weaponSelections[i].weaponSelectedGenericWeapon == null)
                     {
-                        weaponSelections[emptyIndex].SetWeapon(genericWeapon, slot, index, weaponButtonSelect.weaponImage.sprite);
-                        // weaponSelections[weaponsIndex.IndexOf(weaponIndex)].SetWeapon(genericWeapon,slot,index, weaponButtonSelect.weaponImage.sprite);
+                        emptyIndex = i;
+                        break;
+                    }
+                }
+                if (genericWeapon != null)
+                {
+                    for (int i = 0; i < weaponSelections.Count; i++)
+                    {
+                        if (weaponSelections[i].weaponSelectedGenericWeapon != genericWeapon)
+                        {
+                            weaponSelections[emptyIndex].SetWeapon(genericWeapon, slot, index, weaponButtonSelect.weaponImage.sprite);
+                            // weaponSelections[weaponsIndex.IndexOf(weaponIndex)].SetWeapon(genericWeapon,slot,index, weaponButtonSelect.weaponImage.sprite);
+                        }
                     }
                 }
             }
+            Debug.Log(weaponsIndex.Count);
+            
         }
         else
         {
@@ -118,11 +119,20 @@ public class WeaponSelectionManager : MonoBehaviour
 
         if (weaponsIndex.Contains(weaponIndexToRemove))
         {
-            weaponsIndex.Remove(weaponIndexToRemove);   
-            for(int i = 0; i < weaponsIndex.Count; i++)
+            for (int i = 0; i < weaponSelections.Count; i++)
             {
-                Debug.Log(i);
+               
+               if( weaponSelections[i].slot == slot && weaponSelections[i].weaponIndex == index)
+                {
+                    weaponSelections[i].slot = -1;
+                    weaponSelections[i].weaponIndex = -1;
+                    weaponSelections[i].weaponSelectedGenericWeapon = null;
+                    break;
+               }
+
             }
+            weaponsIndex.Remove(weaponIndexToRemove);   
+           
             Debug.Log("Weapon removed successfully.");
 
         }
@@ -138,7 +148,7 @@ public class WeaponSelectionManager : MonoBehaviour
         {
             mapSelection.gameObject.SetActive(true);
             weaponSelection.gameObject.SetActive(false);
-            for (int i = 0; i < weaponsIndex.Count; i++)
+            for (int i = 0; i < swapSelected.Length; i++)
             {
                 if (weaponSelections[i].weaponSelectedGenericWeapon != null)
                 {
@@ -152,5 +162,6 @@ public class WeaponSelectionManager : MonoBehaviour
             }
             weaponController.SetWeapon(weaponSelections[0].slot, weaponSelections[0].weaponIndex);
         }
+        weaponController.ActivateWeapon(weaponSelections[0].slot, weaponSelections[0].weaponIndex);
     }
 }
