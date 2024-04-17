@@ -4,11 +4,17 @@ using UnityEngine.EventSystems;
 
 public class SkillButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public string skillDescription;
-    public GameObject descriptionPanel;
-    public Text descriptionText;
-
+    [SerializeField] private string skillDescription;
+    [SerializeField] private GameObject descriptionPanel;
+    [SerializeField] private Text descriptionText;
+    [SerializeField] private Image skillIcon;
+    [SerializeField] private SkillBase skillBase;
     private bool isPressed = false;
+    private void Start()
+    {
+        if (skillBase != null)
+            skillIcon.sprite = skillBase.icon;
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {

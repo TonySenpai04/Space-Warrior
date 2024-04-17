@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55fad492b0d681458d4d59e6b904717, type: 3}
   m_Name: Robot05
   m_EditorClassIdentifier: 
+  characterName: Robot 05
   health: 180
   mana: 180
   damage: 9
+  level: 1
+  isUnlock: 0
+  skillBases: []

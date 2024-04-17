@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,17 +20,35 @@ public class CustomArea  : MonoBehaviour
 
     private void Start()
     {
+        InitializeButton();
+        AddToggleListeners();
+        CheckAreaUnlock();
+    }
+    private void InitializeButton()
+    {
         button = GetComponent<Button>();
         button.onClick.AddListener(Active);
+    }
+
+    private void AddToggleListeners()
+    {
         Toggle[] toggles = GetComponentsInChildren<Toggle>();
         foreach (Toggle toggle in toggles)
         {
             starList.Add(toggle);
         }
+    }
+
+    private void CollectStarToggles()
+    {
+        // Thêm lắng nghe cho các toggle
+    }
+
+    private void CheckAreaUnlock()
+    {
         if (area.GetUnlock())
         {
             btnLock.gameObject.SetActive(false);
-            
         }
     }
     private void FixedUpdate()

@@ -16,13 +16,22 @@ public class CharacterSelection : MonoBehaviour
 
     private void Start()
     {
-        CharacterButton[] CharacterButtons=GetComponentsInChildren<CharacterButton>();
-        for(int i=0; i< CharacterButtons.Length; i++)
+        InitializeCharacterButtons();
+        SetButtonListeners();
+    }
+
+    private void InitializeCharacterButtons()
+    {
+        CharacterButton[] characterButtons = GetComponentsInChildren<CharacterButton>();
+        for (int i = 0; i < characterButtons.Length; i++)
         {
-            this.characterButtons.Add(CharacterButtons[i]);
+            this.characterButtons.Add(characterButtons[i]);
             this.characterButtons[i].SetIndex(i);
         }
-        characterButtons[0].SelectCharacter();
+    }
+
+    private void SetButtonListeners()
+    {
         nextPageBtn.onClick.AddListener(NextPage);
     }
     public void SetCharacterIndex(int index)

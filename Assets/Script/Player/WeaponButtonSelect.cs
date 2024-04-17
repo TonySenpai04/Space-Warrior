@@ -25,11 +25,19 @@ public class WeaponButtonSelect : MonoBehaviour, IPointerEnterHandler, IPointerE
         InitializeComponents();
         SetupButtonListener();
         DisableRaycastTarget();
+        SetGunInfoPanelState();
+        GetRectTransforms();
+    }
+    private void SetGunInfoPanelState()
+    {
         gunInfoPanel.SetActive(false);
+    }
+
+    private void GetRectTransforms()
+    {
         buttonRectTransform = GetComponent<RectTransform>();
         scrollViewRectTransform = GetComponentInParent<ScrollRect>().GetComponent<RectTransform>();
     }
-
     void InitializeComponents()
     {
         weaponButton = GetComponent<Button>();

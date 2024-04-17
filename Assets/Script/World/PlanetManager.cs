@@ -6,19 +6,30 @@ public class PlanetManager : MonoBehaviour
     [SerializeField] private List<Planet> planets;
     public static PlanetManager instance;
     [SerializeField] private int planetsIndex = 0;
-    
+
     void Start()
     {
+        AssignInstance();
+        FindActivePlanetIndex();
+    }
+
+    private void AssignInstance()
+    {
         instance = this;
-        for(int i=0; i<planets.Count; i++)
+    }
+
+    private void FindActivePlanetIndex()
+    {
+        for (int i = 0; i < planets.Count; i++)
         {
             if (planets[i].isActiveAndEnabled)
             {
-                planetsIndex=i; break;
+                planetsIndex = i;
+                break;
             }
         }
-
     }
+
     public bool IsAreaFinish()
     {
         return planets[planetsIndex].IsFinish();

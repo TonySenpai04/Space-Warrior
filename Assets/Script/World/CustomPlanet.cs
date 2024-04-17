@@ -12,15 +12,28 @@ public class CustomPlanet : MonoBehaviour
     [SerializeField] private Button btn;
     private void Start()
     {
-        btn=GetComponent<Button>();
-        btn.onClick.AddListener(SelectPlanet);
-        if (isUnlock)
-            blackMask.gameObject.SetActive(false);
-        else blackMask.gameObject.SetActive(true);
-
-
-
+        InitializeButton();
+        ToggleBlackMask();
     }
+
+    private void InitializeButton()
+    {
+        btn = GetComponent<Button>();
+        btn.onClick.AddListener(SelectPlanet);
+    }
+
+    private void ToggleBlackMask()
+    {
+        if (isUnlock)
+        {
+            blackMask.gameObject.SetActive(false);
+        }
+        else
+        {
+            blackMask.gameObject.SetActive(true);
+        }
+    }
+
     public void SelectPlanet()
     {
         if (isUnlock)
