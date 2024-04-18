@@ -7,7 +7,7 @@ public class PickUpItem : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        Item item = collision.gameObject.GetComponent<Item>();
+        Currency item = collision.gameObject.GetComponent<Currency>();
 
         if (item != null)
         {

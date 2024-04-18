@@ -56,7 +56,10 @@ public class WeaponButtonSelect : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     private void SelectedWeapon()
     {
-        GetComponentInParent<WeaponSelectionManager>().AddWeapon(slot, weaponIndex);
+        if (weapon.isUnlock)
+            GetComponentInParent<WeaponSelectionManager>().AddWeapon(slot, weaponIndex);
+        else
+            Debug.Log("Locked");
     }
     public void SetWeapon(int slot, int weaponIndex,GenericWeapon weapon)
     {

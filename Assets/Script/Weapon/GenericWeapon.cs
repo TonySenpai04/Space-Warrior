@@ -15,6 +15,7 @@ public class GenericWeapon : MonoBehaviour
     public int AmmoCount;
     public int CurrentAmmo;
     public AudioClip audioShoot;
+    public bool isUnlock;
 
     // Hands
     public SpriteRenderer LeftHand;

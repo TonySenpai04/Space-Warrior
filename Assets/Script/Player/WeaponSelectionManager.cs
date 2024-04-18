@@ -62,7 +62,7 @@ public class WeaponSelectionManager : MonoBehaviour
         bool weaponExists = false;
         foreach (var existingWeaponIndex in weaponsIndex)
         {
-            if (existingWeaponIndex.Item1 == slot && existingWeaponIndex.Item2 == index)
+            if (existingWeaponIndex.Item1 == slot && existingWeaponIndex.Item2 == index )
             {
                 weaponExists = true;
                 break;

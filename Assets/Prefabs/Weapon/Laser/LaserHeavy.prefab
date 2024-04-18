@@ -552,6 +552,7 @@ MonoBehaviour:
   AmmoCount: 25
   CurrentAmmo: 25
   audioShoot: {fileID: 8300000, guid: ffea8d2512c983145b1f77f2c5aa69c3, type: 3}
+  isUnlock: 0
   LeftHand: {fileID: 1908851168475638250}
   RightHand: {fileID: 3113662782272612863}
   LeftHandId: 0
@@ -565,7 +566,7 @@ MonoBehaviour:
   Shell: {fileID: 4000013190636638, guid: 27d88b28ec2c56a45aa5909999736c42, type: 3}
   Smoke: {fileID: 4000013190636638, guid: 27d88b28ec2c56a45aa5909999736c42, type: 3}
   BarrelSpark: {fileID: 4000013190636638, guid: 8c69106a15076d04ebffda84e37c80be, type: 3}
-  DamageRate: 2.2
+  DamageRate: 2.3
   FireRate: 0.5
   colliders: []
 --- !u!114 &2180738941323460288
