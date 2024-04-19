@@ -1,46 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DropItem : MonoBehaviour
 {
-    [SerializeField] private List<Currency> itemList = new List<Currency>();
-    float separationDistance = 0.5f;
-    void Start()
+    [System.Serializable]
+    public class ItemDrop
     {
+        public Item item;
+        public int count;
     }
 
-   List <Currency> GetDropItem()
+    [SerializeField] private List<ItemDrop> itemList = new List<ItemDrop>();
+    float separationDistance = 0.5f;
+
+    List<ItemDrop> GetDropItem()
     {
         int RanDom = Random.Range(1, 101);
-        List<Currency> itemList = new List<Currency>();
-        foreach (Currency item in this.itemList)
+        List<ItemDrop> droppedItems = new List<ItemDrop>();
+        foreach (ItemDrop itemDrop in itemList)
         {
-
-            if (RanDom <= item.dropChange)
+            if (RanDom <= itemDrop.item.dropChange)
             {
-                itemList.Add(item);
+                droppedItems.Add(itemDrop);
             }
         }
-        if (itemList.Count > 0)
-        {
-            Currency dropitem = itemList[Random.Range(0, itemList.Count)];
-
-            return itemList;
-        }
-        return null;
+        return droppedItems;
     }
+
     public void CreateItem(Vector3 spawnPosition)
     {
-       List<Currency> dropitem = GetDropItem();
-        if (dropitem != null)
+        List<ItemDrop> droppedItems = GetDropItem();
+        if (droppedItems != null)
         {
-            for (int i = 0; i < dropitem.Count; i++)
+            for (int i = 0; i < droppedItems.Count; i++)
             {
                 Vector3 spawnPositionNew = new Vector3(spawnPosition.x + i * separationDistance, spawnPosition.y + 0.4f, spawnPosition.z);
-                Currency lootObject= Instantiate(dropitem[i], spawnPositionNew, Quaternion.identity);
-                Currency lootScript = lootObject.GetComponent<Currency>();
+                GameObject lootObject = Instantiate(droppedItems[i].item.gameObject, spawnPositionNew, Quaternion.identity);
+                Item lootScript = lootObject.GetComponent<Item>();
+                lootScript.dropCount = droppedItems[i].count;
                 lootScript.PlayBurstAnimation();
             }
         }

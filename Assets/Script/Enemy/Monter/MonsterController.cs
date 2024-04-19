@@ -8,6 +8,7 @@ public class MonsterController : EnemyControllerBase
     [SerializeField]private Transform pointatk;
     [SerializeField]private GenericProjectile projectile;
     [SerializeField] private float projectileForce;
+    [SerializeField] private int damage;
   
     public override void Start()
     {
@@ -34,7 +35,13 @@ public class MonsterController : EnemyControllerBase
     {
         if (projectile == null || pointatk == null) return;
         var MonsterProjectile = Instantiate(projectile.gameObject, pointatk.position, pointatk.rotation);
+        var projComponent = MonsterProjectile.GetComponent<MonsterProjectile>();
+        if (projComponent != null)
+        {
+            projComponent.damage = damage; 
+        }
         var projRb = MonsterProjectile.GetComponent<Rigidbody2D>();
+
         Vector2 leftForce = new Vector2(-1, 0) * projectileForce;
         projRb.AddForce(leftForce, ForceMode2D.Force);
         Destroy(MonsterProjectile.gameObject, 1f);

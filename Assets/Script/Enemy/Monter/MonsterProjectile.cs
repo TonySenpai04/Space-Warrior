@@ -14,6 +14,7 @@ public class MonsterProjectile : GenericProjectile
     public float TrailFadeTime;
     public Vector2 TrailLifeTime;
     public Vector2 TrailEndWidth;
+    public int damage = 2;
 
     public override void Awake()
     {
@@ -60,7 +61,7 @@ public class MonsterProjectile : GenericProjectile
         if (player != null)
         {
             Destroy(gameObject);
-            player.GetComponentInChildren<CharacterStats>().health.TakeDamage(2 * player.GetComponentInChildren<CharacterStats>().level.GetLevel());
+            player.GetComponentInChildren<CharacterStats>().health.TakeDamage(damage * player.GetComponentInChildren<CharacterStats>().level.GetLevel());
            
         }
         if(collision.CompareTag("Shield"))

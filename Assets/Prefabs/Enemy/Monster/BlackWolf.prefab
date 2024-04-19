@@ -277,6 +277,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   floatingText: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
   offSet: {x: 0, y: 0, z: 0}
+  hit: {fileID: 0}
 --- !u!1 &1880797449735181257
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +526,6 @@ MonoBehaviour:
   animator: {fileID: 0}
   body: {fileID: 8545368022810191995}
   enemyType: 1
-  levelController: {fileID: 0}
   healthUI: {fileID: 0}
   health: 30
   currentHealth: 0
@@ -646,7 +646,11 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+  isDead: 0
   offsetFloatingtext: {x: 0, y: 1.5, z: 0}
+  pointatk: {fileID: 0}
+  projectile: {fileID: 0}
+  projectileForce: 0
 --- !u!114 &-8567937512219848378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,8 +664,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList:
-  - {fileID: 7782746300635471, guid: acf16accdf6a60845a097b2022b15a61, type: 3}
-  - {fileID: -6392110908979428449, guid: eee589e3ad9d59b44b9ddac402802521, type: 3}
+  - item: {fileID: 7782746300635471, guid: acf16accdf6a60845a097b2022b15a61, type: 3}
+    count: 1
+  - item: {fileID: -6392110908979428449, guid: eee589e3ad9d59b44b9ddac402802521, type: 3}
+    count: 1
 --- !u!1 &3425708909314255394
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class WeaponShopItemUI : MonoBehaviour
     [SerializeField] private Text priceTxt;
     [SerializeField] private Text AmmoTxt;
     [SerializeField] private Button buyBtn;
+    [SerializeField] private Sprite alreadyOwnedSprite;
     public void Start()
     {
         weaponItem = GetComponent<ShopItem>();
@@ -24,6 +25,7 @@ public class WeaponShopItemUI : MonoBehaviour
         IWeaponItem weapon = (IWeaponItem)item;
         buyBtn=GetComponentInChildren<Button>();
         buyBtn.onClick.AddListener(Buy);
+        priceTxt=buyBtn.GetComponentInChildren<Text>();
         weaponNameTxt.text = weapon.GetWeaponName();
         AmmoTxt.text = weapon.GetAmmo();
         weaponIcon.sprite = item.itemSprite;
@@ -36,7 +38,7 @@ public class WeaponShopItemUI : MonoBehaviour
             weaponItem.Buy();
         if (weaponItem.isBuy)
         {
-            buyBtn.GetComponentInChildren<Text>().text = "Owned";
+            buyBtn.GetComponentInChildren<Text>().text = "Already Owned";
             foreach (RectTransform child in buyBtn.GetComponent<RectTransform>())
             {
                 Image image = child.GetComponent<Image>();
@@ -46,6 +48,7 @@ public class WeaponShopItemUI : MonoBehaviour
                 }
             }
             buyBtn.onClick.RemoveListener(Buy);
+            buyBtn.GetComponent<Image>().sprite = alreadyOwnedSprite;
         }
         
 

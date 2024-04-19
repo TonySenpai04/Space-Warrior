@@ -1,4 +1,5 @@
-﻿using Unity.VisualScripting;
+﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Minion:Enemy
@@ -27,6 +28,21 @@ public class Minion:Enemy
             
             Destroy(this.gameObject);
         }
+    }
+    public override IEnumerator Death()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (CharacterStats.instance.level.GetLevel() < 10)
+        {
+            int experienceGained = Mathf.RoundToInt(baseExperience * Mathf.Pow(experienceIncreaseRate, CharacterStats.instance.level.GetLevel() - 1));
+            CharacterStats.instance.level.GainExperience(experienceGained);
+        }
+        else
+        {
+            int experienceGained = Mathf.RoundToInt(baseExperience * Mathf.Pow(experienceIncreaseRate - 0.4f, CharacterStats.instance.level.GetLevel() - 1));
+            CharacterStats.instance.level.GainExperience(experienceGained);
+        }
+        gameObject.SetActive(false);
     }
 
 

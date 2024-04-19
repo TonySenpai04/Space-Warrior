@@ -3,26 +3,23 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class Currency:MonoBehaviour
+public abstract class Currency:Item
 {
-    public Sprite sprite;
-    public string lootName;
-    public int dropChange;
-    public int count;
     public float burstDuration = 0.3f;
     public CurrencyManager.CurrencyType typeItem;
     public float speedMove=5f;
     bool isMove=true;
     public GameObject target;
+ 
 
-   public virtual void Start()
+   public override void Start()
     {
 
         GetComponent<SpriteRenderer>().sprite=sprite;
        
 
     }
-    public virtual void PlayBurstAnimation()
+    public override void PlayBurstAnimation()
     {
         StartCoroutine(BurstAnimation());
     }
@@ -42,25 +39,18 @@ public abstract class Currency:MonoBehaviour
 
         transform.localScale = originalScale;
     }
-    public virtual void OnMouseDown()
-    {
-        TriggerItem();
-    }
-    public virtual void Update()
+  
+    public override void Update()
     {
         if(isMove)
         {
             transform.position=Vector3.Lerp(transform.position,target.transform.position,speedMove*Time.deltaTime);
         }
     }
-    public virtual IEnumerator TriggerAfterDelay(float delay)
+    public override IEnumerator TriggerAfterDelay(float delay) => base.TriggerAfterDelay(delay);
+    public override void TriggerItem()
     {
-        yield return new WaitForSeconds(delay);
-        TriggerItem();
-    }
-    public virtual void TriggerItem()
-    {
-        CurrencyManager.instance.AddItem(typeItem, count);
+        CurrencyManager.instance.AddItem(typeItem, dropCount);
         gameObject.GetComponent<Collider2D>().enabled = false;
         isMove = true;
         Destroy(gameObject,3f);

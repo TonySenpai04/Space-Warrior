@@ -29,7 +29,7 @@ public class WeaponItem : ShopItem,IWeaponItem
     public override string GetInfo()
     {
 
-        string info = "\nDamage Rate: " + weapon.DamageRate + "\nFire Rate: " + weapon.FireRate+
+        string info = "\nDamage Rate: " + weapon.DamageRate*100+"%" + "\nFire Rate: " + weapon.FireRate+
             "\nType: " + weapon.weaponType + "\n";
         return info;
     }

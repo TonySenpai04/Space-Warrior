@@ -271,10 +271,12 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+  isDead: 0
   offsetFloatingtext: {x: 0, y: 1.5, z: 0}
   pointatk: {fileID: 1468952694550655224}
   projectile: {fileID: -9145777632191242400, guid: 2829481d18549f04282553a199b37990, type: 3}
   projectileForce: 300
+  damage: 3
 --- !u!114 &3898184549878495245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,8 +290,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList:
-  - {fileID: 7782746300635471, guid: acf16accdf6a60845a097b2022b15a61, type: 3}
-  - {fileID: -6392110908979428449, guid: eee589e3ad9d59b44b9ddac402802521, type: 3}
+  - item: {fileID: 7782746300635471, guid: acf16accdf6a60845a097b2022b15a61, type: 3}
+    count: 1
+  - item: {fileID: -6392110908979428449, guid: eee589e3ad9d59b44b9ddac402802521, type: 3}
+    count: 1
 --- !u!50 &-4298453131882872552
 Rigidbody2D:
   serializedVersion: 4
