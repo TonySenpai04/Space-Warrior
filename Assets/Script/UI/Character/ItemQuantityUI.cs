@@ -26,7 +26,14 @@ public class ItemQuantityUI : MonoBehaviour
         {
             CurrencyManager.CurrencyType itemType = items[i].itemType;
             CurrencyManager.Currency  itemInInventory = CurrencyManager.instance.Inventory.Find(item => item.type == itemType);
-            items[i].quantityText.text = itemInInventory.quantity.ToString();
+            if (itemInInventory.quantity >= 1000000)
+            {
+                items[i].quantityText.text = (itemInInventory.quantity / 1000000f).ToString("0.#") + "m";
+            }
+            else
+            {
+                items[i].quantityText.text = itemInInventory.quantity.ToString();
+            }
 
         }
 

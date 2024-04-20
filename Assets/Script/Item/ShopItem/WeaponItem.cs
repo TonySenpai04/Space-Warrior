@@ -7,7 +7,7 @@ public class WeaponItem : ShopItem,IWeaponItem
     
     [SerializeField] private GenericWeapon weapon;
    
-    public override void Start()
+    public override void Awake()
     {
         this.itemName=weapon.name;
     }

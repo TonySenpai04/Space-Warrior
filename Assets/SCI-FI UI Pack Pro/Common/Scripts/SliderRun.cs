@@ -13,7 +13,7 @@ public class SliderRun : MonoBehaviour
     public GameObject main;
     public GameObject panelControl;
 	public GameObject loading;
-
+	public GameObject currency;
     void Start()
 	{
         
@@ -34,7 +34,8 @@ public class SliderRun : MonoBehaviour
                 loading.SetActive(false);
                 this.main.SetActive(true);
 				panelControl.SetActive(true);
-				time = 0;
+                currency.SetActive(true);
+                time = 0;
 			}
 		}
 	}

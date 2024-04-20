@@ -17,7 +17,7 @@ public class WeaponButtonSelect : MonoBehaviour, IPointerEnterHandler, IPointerE
     [SerializeField] private Text gunInfoPanelText;
     [SerializeField] private RectTransform buttonRectTransform;
     private RectTransform scrollViewRectTransform;
-
+    [SerializeField] private GameObject lockPanel;
 
 
     void Start()
@@ -30,6 +30,7 @@ public class WeaponButtonSelect : MonoBehaviour, IPointerEnterHandler, IPointerE
     }
     private void SetGunInfoPanelState()
     {
+
         gunInfoPanel.SetActive(false);
     }
 
@@ -53,7 +54,11 @@ public class WeaponButtonSelect : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         weaponImage.raycastTarget = false;
     }
-
+    private void FixedUpdate()
+    {
+        if (weapon.isUnlock)
+            lockPanel.SetActive(false);
+    }
     private void SelectedWeapon()
     {
         if (weapon.isUnlock)

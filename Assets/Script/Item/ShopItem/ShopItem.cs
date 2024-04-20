@@ -9,7 +9,7 @@ public abstract class ShopItem : MonoBehaviour
     public CurrencyManager.CurrencyType priceType;
     public int price;
     public bool isBuy;
-    public virtual void Start()
+    public virtual void Awake()
     {
 
     }
