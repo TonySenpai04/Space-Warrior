@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
 public class WeaponShopItemUI : MonoBehaviour
 {
     [SerializeField] private Text weaponNameTxt;
@@ -24,12 +25,28 @@ public class WeaponShopItemUI : MonoBehaviour
     {
         IWeaponItem weapon = (IWeaponItem)item;
         buyBtn=GetComponentInChildren<Button>();
-        buyBtn.onClick.AddListener(Buy);
-        priceTxt=buyBtn.GetComponentInChildren<Text>();
+        priceTxt = buyBtn.GetComponentInChildren<Text>();
+        if (weapon.GetWeapon().isUnlock)
+        {
+           priceTxt.text = "Already Owned";
+            foreach (RectTransform child in buyBtn.GetComponent<RectTransform>())
+            {
+                Image image = child.GetComponent<Image>();
+                if (image != null && image != buyBtn.GetComponent<Image>())
+                {
+                    image.enabled = false;
+                }
+            }
+        }
+        else
+        {
+            buyBtn.onClick.AddListener(Buy);
+            priceTxt.text = item.GetPrice().ToString();
+        }
+       
         weaponNameTxt.text = weapon.GetWeaponName();
         AmmoTxt.text = weapon.GetAmmo();
         weaponIcon.sprite = item.itemSprite;
-        priceTxt.text = item.GetPrice().ToString();
         descriptionTxt.text = item.GetInfo();
     }
     public void Buy()

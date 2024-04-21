@@ -14,6 +14,7 @@ public class ChacracterData : ScriptableObject
     public float damage;
     public int level;
     public bool isUnlock;
+    public float critRate;
     public List<SkillBase> skillBases;
   
     public ChacracterData() { }

@@ -35,9 +35,10 @@ public class GenericProjectile : MonoBehaviour
     //    if (hitPrefab == null) return;
     //    var hit = F3DSpawner.Spawn(hitPrefab, contactPoint, Quaternion.LookRotation(Vector3.forward, contactNormal),
     //        parent);
-       
+
     //}
 
+    [Obsolete]
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         Enemy monster = collision.gameObject.GetComponent<Enemy>();
@@ -45,7 +46,17 @@ public class GenericProjectile : MonoBehaviour
         {
             gameObject.SetActive(false);
             var currentWeapon = WeaponController.instance.GetCurrentWeapon();
-            monster.TakeDamage(currentWeapon.DamageRate*CharacterStats.instance.damage.GetDam(),Color.red);
+            int randomCrit = UnityEngine.Random.RandomRange(0, 101);
+            Debug.Log(randomCrit);
+            if(randomCrit<= CharacterStats.instance.damage.GetCritRate())
+            {
+                monster.TakeDamage(currentWeapon.DamageRate * CharacterStats.instance.damage.GetDam()*2, Color.yellow);
+            }
+            else
+            {
+                monster.TakeDamage(currentWeapon.DamageRate * CharacterStats.instance.damage.GetDam(), Color.red);
+            }
+            
         }
 
 

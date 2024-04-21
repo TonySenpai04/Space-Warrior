@@ -33,7 +33,7 @@ public class CharacterStats : MonoBehaviour,IObserver
         this.chacracterData = chacracterData;
         health = new Health(chacracterData.health);
         mana = new Mana(chacracterData.mana);
-        damage = new Damage(chacracterData.damage);
+        damage = new Damage(chacracterData.damage,chacracterData.critRate);
         level = new Level();
     }
     public void Restart()

@@ -18,4 +18,5 @@ MonoBehaviour:
   damage: 6
   level: 1
   isUnlock: 0
+  critRate: 2
   skillBases: []
