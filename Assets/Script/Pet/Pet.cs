@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class Pet : MonoBehaviour
 {
-   
+    public bool isUnlock;
     public virtual void Start()
     {
 

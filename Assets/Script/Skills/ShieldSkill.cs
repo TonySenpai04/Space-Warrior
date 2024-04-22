@@ -16,10 +16,12 @@ public class ShieldSkill : SkillBase
     }
     public override void Update()
     {
+        shieldObject.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.8f, player.transform.position.z);
         if (isActive)
         {
 
-            shieldObject.gameObject.transform.position =new Vector3( player.transform.position.x, player.transform.position.y+0.8f, player.transform.position.z);
+            //shieldObject.gameObject.transform.position =new Vector3( player.transform.position.x, player.transform.position.y+0.8f, player.transform.position.z);
+            shieldObject.transform.parent= player.transform;
             shieldObject.SetActive(true);
             effectiveTime -= Time.deltaTime;
             if (effectiveTime <= 0)
