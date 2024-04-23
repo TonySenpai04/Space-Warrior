@@ -23,3 +23,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  healthGrowthRate: 0.1
+  manaGrowthRate: 0.05
+  damageGrowthRate: 0.1
+  critGrowthRate: 0.05

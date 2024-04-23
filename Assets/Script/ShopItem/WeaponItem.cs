@@ -16,7 +16,7 @@ public class WeaponItem : ShopItem,IWeaponItem
         CurrencyManager.Currency currency = CurrencyManager.instance.Inventory.Find(item => item.type == priceType);
         if (currency.type == priceType && currency.quantity >= price)
         {
-            currency.quantity -= price;
+            CurrencyManager.instance.RemoveItem(priceType, price);
             isBuy = true;
             weapon.isUnlock = true;
             Debug.Log(weapon.isUnlock);

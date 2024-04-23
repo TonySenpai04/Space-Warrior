@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Robot05
   m_EditorClassIdentifier: 
   characterName: Robot 05
-  health: 180
-  mana: 180
-  damage: 9
+  health: 800
+  mana: 800
+  damage: 80
   level: 1
   isUnlock: 0
   critRate: 8
   skillBases: []
+  healthGrowthRate: 0.1
+  manaGrowthRate: 0.05
+  damageGrowthRate: 0.1
+  critGrowthRate: 0.05

@@ -14,7 +14,7 @@ public class CharacterShop : ShopItem,ICharacterShop
         CurrencyManager.Currency currency = CurrencyManager.instance.Inventory.Find(item => item.type == priceType);
         if (currency.type == priceType && currency.quantity >= price)
         {
-            currency.quantity -= price;
+            CurrencyManager.instance.RemoveItem(priceType, price);
             isBuy = true;
             chacracterData.isUnlock = true;
             Debug.Log(chacracterData.isUnlock);

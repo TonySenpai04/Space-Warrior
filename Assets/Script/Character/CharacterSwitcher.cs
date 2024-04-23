@@ -19,6 +19,8 @@ public class CharacterSwitcher : MonoBehaviour
     [SerializeField] private Button switchRightButton;
     [SerializeField] private Button upgradeButton;
     [SerializeField] private Image lockImage;
+    [SerializeField] private Text coinRequiredText;
+    [SerializeField] private Text gemRequiredText;
 
     [Space]
     [Header("UI Atribute")]
@@ -77,8 +79,32 @@ public class CharacterSwitcher : MonoBehaviour
 
     private void UpgradeCharacter()
     {
-        Debug.Log("Nâng cấp nhân vật " + currentCharacterProfile.chacracterData.name);
+        int currentLevel = currentCharacterProfile.chacracterData.level;
+        int requiredCoin = 50 * currentLevel;
+        int requiredGem = 10 * currentLevel;
+
+        if (currentLevel < 7 &&
+            CurrencyManager.instance.GetCurrencyQuantity(CurrencyManager.CurrencyType.Coin) >= requiredCoin &&
+            CurrencyManager.instance.GetCurrencyQuantity(CurrencyManager.CurrencyType.Gem) >= requiredGem)
+        {
+            CurrencyManager.instance.RemoveItem(CurrencyManager.CurrencyType.Coin, requiredCoin);
+            CurrencyManager.instance.RemoveItem(CurrencyManager.CurrencyType.Gem, requiredGem);
+
+            currentCharacterProfile.chacracterData.level++;
+            int newLevel = currentCharacterProfile.chacracterData.level;
+
+            currentCharacterProfile.chacracterData.UpgradeCharacter(newLevel);
+
+            UpdateCharacter();
+
+            Debug.Log("Character upgraded successfully to level " + currentCharacterProfile.chacracterData.level);
+        }
+        else
+        {
+            Debug.Log("Not enough resources or already at maximum level to upgrade character!");
+        }
     }
+
 
     private void UpdateCharacter()
     {
@@ -92,13 +118,31 @@ public class CharacterSwitcher : MonoBehaviour
         else
         {
             lockImage.enabled = false;
+            int currentLevel = currentCharacterProfile.chacracterData.level;
+            if (currentLevel < 7)
+            {
+                upgradeButton.GetComponentInChildren<Text>().text = "UPGRADE";
+                int requiredCoin = 50 * currentLevel;
+                int requiredGem = 10 * currentLevel;
+                coinRequiredText.text = requiredCoin.ToString();
+                gemRequiredText.text = requiredGem.ToString();
+                coinRequiredText.gameObject.SetActive(true);
+                gemRequiredText.gameObject.SetActive(true);
+            }
+            else
+            {
+                upgradeButton.GetComponentInChildren<Text>().text = "MAX";
+                coinRequiredText.gameObject.SetActive(false);
+                gemRequiredText.gameObject.SetActive(false);
+            }
             upgradeButton.gameObject.SetActive(true);
         }
         characterNametxt.text = currentCharacterProfile.chacracterData.name;
         characterLeveltxt.text =  "Lv."+currentCharacterProfile.chacracterData.level.ToString();
-        characterHealthText.text =  currentCharacterProfile.chacracterData.health.ToString();
-        characterManaText.text =  currentCharacterProfile.chacracterData.mana.ToString();
-        characterDamText.text =  currentCharacterProfile.chacracterData.damage.ToString();
-        characterCritText.text = currentCharacterProfile.chacracterData.critRate.ToString();
+        characterHealthText.text = Mathf.RoundToInt(currentCharacterProfile.chacracterData.health).ToString();
+        characterManaText.text = Mathf.RoundToInt(currentCharacterProfile.chacracterData.mana).ToString();
+        characterDamText.text = Mathf.RoundToInt(currentCharacterProfile.chacracterData.damage).ToString();
+        characterCritText.text = Mathf.RoundToInt(currentCharacterProfile.chacracterData.critRate).ToString();
+
     }
 }

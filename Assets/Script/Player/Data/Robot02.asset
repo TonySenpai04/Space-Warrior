@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Robot02
   m_EditorClassIdentifier: 
   characterName: Robot 02
-  health: 120
-  mana: 120
-  damage: 6
+  health: 150
+  mana: 150
+  damage: 10
   level: 1
   isUnlock: 0
   critRate: 2
   skillBases: []
+  healthGrowthRate: 0.1
+  manaGrowthRate: 0.05
+  damageGrowthRate: 0.1
+  critGrowthRate: 0.05

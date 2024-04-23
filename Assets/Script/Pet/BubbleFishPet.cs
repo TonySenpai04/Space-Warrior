@@ -20,9 +20,13 @@ public class BubbleFishPet : Pet
         shieldObject.transform.position= new Vector3(player.transform.position.x, player.transform.position.y + 0.8f, player.transform.position.z);
         shieldObject.transform.parent = player.transform;
         shieldObject.SetActive(false);
+        description = GetSkillDescription();
     }
 
-
+    public override string GetSkillDescription()
+    {
+        return "Creates a bubble layer that protects the character for" + shieldInterval+ "seconds and"+ shieldDuration + "seconds cooldown";
+    }
     private void Update()
     {
         shieldObject.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.8f, player.transform.position.z);

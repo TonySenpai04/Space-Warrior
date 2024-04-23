@@ -15,6 +15,7 @@ public class DeathScytheGreenPet : Pet
     [SerializeField] private float damageIncreasePerLevel;
     public override void Start()
     {
+        description=GetSkillDescription();
         InitializeVariables();
     }
     public void InitializeVariables()
@@ -35,6 +36,12 @@ public class DeathScytheGreenPet : Pet
         this.damage = Mathf.Ceil (CharacterStats.instance.damage.GetDam()/ damageIncreasePerLevel);
         line.SetDamage(this.damage);
     }
+    public override string GetSkillDescription()
+    {
+        float damagePercentage = damageIncreasePerLevel;
+        return "Deals damage equal to " + damagePercentage.ToString("0") + "% of the character's damage";
+    }
+
     public override void ActivateSkill()
     {
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, mask);

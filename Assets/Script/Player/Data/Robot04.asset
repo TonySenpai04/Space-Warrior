@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Robot04
   m_EditorClassIdentifier: 
   characterName: Robot 04
-  health: 160
-  mana: 160
-  damage: 8
+  health: 400
+  mana: 400
+  damage: 40
   level: 1
   isUnlock: 0
   critRate: 6
   skillBases: []
+  healthGrowthRate: 0.1
+  manaGrowthRate: 0.05
+  damageGrowthRate: 0.1
+  critGrowthRate: 0.05

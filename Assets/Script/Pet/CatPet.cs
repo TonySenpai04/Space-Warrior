@@ -5,15 +5,21 @@ using UnityEngine;
 public class CatPet : Pet
 {
     [SerializeField] private CharacterStats characterStats;
+    [SerializeField] private float additionalCritRate = 10f;
     public override void Start()
     {
+        description = GetSkillDescription();
         ActivateSkill();
     }
     public override void ActivateSkill()
     {
        float critRate= characterStats.damage.GetCritRate();
-       characterStats.damage.SetCritRate(critRate+10);
+       characterStats.damage.SetCritRate(critRate+ additionalCritRate);
 
     }
-    
+    public override string GetSkillDescription()
+    {
+        return "Increases the critical hit rate of the character's damage by " + additionalCritRate + "%"; 
+    }
+
 }
