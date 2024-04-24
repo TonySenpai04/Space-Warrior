@@ -87,4 +87,8 @@ public class DeathScytheGreenPet : Pet
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
+    public override void Upgrade()
+    {
+        damageIncreasePerLevel += 1;
+    }
 }

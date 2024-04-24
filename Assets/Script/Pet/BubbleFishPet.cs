@@ -8,8 +8,8 @@ public class BubbleFishPet : Pet
     [SerializeField] private GameObject shieldPrefab;
     [SerializeField] private bool isSkillActive = false;
     [SerializeField] private float timer = 0f;
-    [SerializeField] private  float shieldInterval = 2f;
-    [SerializeField] private  float shieldDuration = 15f;
+    [SerializeField] private  float shieldInterval;
+    [SerializeField] private  float shieldDuration ;
     [SerializeField] private GameObject shieldObject;
     [SerializeField] private float effectiveTime;
 
@@ -25,7 +25,7 @@ public class BubbleFishPet : Pet
 
     public override string GetSkillDescription()
     {
-        return "Creates a bubble layer that protects the character for" + shieldInterval+ "seconds and"+ shieldDuration + "seconds cooldown";
+        return "Creates a bubble layer that protects the character for " + shieldDuration + " seconds and "+ shieldInterval + " seconds cooldown";
     }
     private void Update()
     {
@@ -65,5 +65,9 @@ public class BubbleFishPet : Pet
     public override void ActivateSkill()
     {
         isSkillActive = true;
+    }
+    public override void Upgrade()
+    {
+        shieldInterval -= 0.5f;
     }
 }

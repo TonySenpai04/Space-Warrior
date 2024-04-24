@@ -77,27 +77,56 @@ public class CharacterSwitcher : MonoBehaviour
         UpdateCharacter();
     }
 
+    [Obsolete]
     private void UpgradeCharacter()
     {
         int currentLevel = currentCharacterProfile.chacracterData.level;
         int requiredCoin = 50 * currentLevel;
         int requiredGem = 10 * currentLevel;
-
+        float upgradeSuccessRate;
+        switch (currentLevel)
+        {
+            case 1:
+                upgradeSuccessRate = 80;
+                break;
+            case 2:
+                upgradeSuccessRate = 60;
+                break;
+            case 3:
+                upgradeSuccessRate = 40;
+                break;
+            case 4:
+                upgradeSuccessRate = 20;
+                break;
+            case 5:
+                upgradeSuccessRate = 10;
+                break;
+            default:
+                upgradeSuccessRate = 5;
+                break;
+        }
+        float randomUpgradeSuccessRate = UnityEngine.Random.RandomRange(0, 100);
         if (currentLevel < 7 &&
             CurrencyManager.instance.GetCurrencyQuantity(CurrencyManager.CurrencyType.Coin) >= requiredCoin &&
             CurrencyManager.instance.GetCurrencyQuantity(CurrencyManager.CurrencyType.Gem) >= requiredGem)
         {
             CurrencyManager.instance.RemoveItem(CurrencyManager.CurrencyType.Coin, requiredCoin);
             CurrencyManager.instance.RemoveItem(CurrencyManager.CurrencyType.Gem, requiredGem);
+            if (randomUpgradeSuccessRate <= upgradeSuccessRate)
+            {
+                currentCharacterProfile.chacracterData.level++;
+                int newLevel = currentCharacterProfile.chacracterData.level;
 
-            currentCharacterProfile.chacracterData.level++;
-            int newLevel = currentCharacterProfile.chacracterData.level;
+                currentCharacterProfile.chacracterData.UpgradeCharacter(newLevel);
 
-            currentCharacterProfile.chacracterData.UpgradeCharacter(newLevel);
+                Debug.Log("Character upgraded successfully to level " + currentCharacterProfile.chacracterData.level);
+            }
+            else
+            {
+                Debug.Log("Charcter upgrade failded");
+            }
 
             UpdateCharacter();
-
-            Debug.Log("Character upgraded successfully to level " + currentCharacterProfile.chacracterData.level);
         }
         else
         {
@@ -119,9 +148,31 @@ public class CharacterSwitcher : MonoBehaviour
         {
             lockImage.enabled = false;
             int currentLevel = currentCharacterProfile.chacracterData.level;
+            float upgradeSuccessRate;
+            switch (currentLevel)
+            {
+                case 1:
+                    upgradeSuccessRate = 80;
+                    break;
+                case 2:
+                    upgradeSuccessRate = 60;
+                    break;
+                case 3:
+                    upgradeSuccessRate = 40;
+                    break;
+                case 4:
+                    upgradeSuccessRate = 20;
+                    break;
+                case 5:
+                    upgradeSuccessRate = 10;
+                    break;
+                default:
+                    upgradeSuccessRate = 5;
+                    break;
+            }
             if (currentLevel < 7)
             {
-                upgradeButton.GetComponentInChildren<Text>().text = "UPGRADE";
+                upgradeButton.GetComponentInChildren<Text>().text = "UPGRADE(Success Rate:" + upgradeSuccessRate + "%)"; ;
                 int requiredCoin = 50 * currentLevel;
                 int requiredGem = 10 * currentLevel;
                 coinRequiredText.text = requiredCoin.ToString();

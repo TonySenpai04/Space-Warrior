@@ -5,7 +5,7 @@ using UnityEngine;
 public class CatPet : Pet
 {
     [SerializeField] private CharacterStats characterStats;
-    [SerializeField] private float additionalCritRate = 10f;
+    [SerializeField] private float additionalCritRate;
     public override void Start()
     {
         description = GetSkillDescription();
@@ -21,5 +21,8 @@ public class CatPet : Pet
     {
         return "Increases the critical hit rate of the character's damage by " + additionalCritRate + "%"; 
     }
-
+    public override void Upgrade()
+    {
+        additionalCritRate += 3;
+    }
 }
