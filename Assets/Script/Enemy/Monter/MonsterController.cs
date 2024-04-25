@@ -9,7 +9,8 @@ public class MonsterController : EnemyControllerBase
     [SerializeField]private GenericProjectile projectile;
     [SerializeField] private float projectileForce;
     [SerializeField] private int damage;
-  
+    [SerializeField] private float distanceMove=3f;
+
     public override void Start()
     {
         base.Start();
@@ -18,7 +19,7 @@ public class MonsterController : EnemyControllerBase
     public override void Update()
     {
         float distance = transform.position.x - player.transform.position.x;
-        if (distance >= 3f)
+        if (distance >= distanceMove)
         {
             Move();
         }

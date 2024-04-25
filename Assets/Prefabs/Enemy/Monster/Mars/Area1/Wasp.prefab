@@ -436,8 +436,9 @@ MonoBehaviour:
   offsetFloatingtext: {x: 0, y: 1.5, z: 0}
   pointatk: {fileID: 4699515408007906915}
   projectile: {fileID: -9145777632191242400, guid: 2829481d18549f04282553a199b37990, type: 3}
-  projectileForce: 300
+  projectileForce: 500
   damage: 2
+  distanceMove: 3
 --- !u!114 &-3698827056722592997
 MonoBehaviour:
   m_ObjectHideFlags: 0

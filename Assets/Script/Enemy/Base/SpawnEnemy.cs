@@ -77,6 +77,10 @@ public class SpawnEnemy : ISpawn,ICanSpawn,IGetCurentEnemy
     {
         currentTransform = startPos;
         canSpawn = true;
+        foreach(var enemy in poolMonsters)
+        {
+            enemy.gameObject.SetActive(false);
+        }
         currentEnemy = null;
         timer = 0f;
         startTime = Time.time;

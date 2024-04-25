@@ -25,6 +25,7 @@ public class RestartBtn : MonoBehaviour
  
     public void Restart()
     {
+        subject.RegisterObserver(PlanetManager.instance.GetCurrentArea());
         subject.RegisterObserver(skill);
         subject.NotifyObservers();
         weaponController.Resstart();

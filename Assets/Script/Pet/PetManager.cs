@@ -10,12 +10,16 @@ public class PetManager : MonoBehaviour
     {
         ShowCurrentPet();
     }
+    private void FixedUpdate()
+    {
+        ShowCurrentPet();
+    }
 
     private void ShowCurrentPet()
     {
         for (int i = 0; i < pets.Count; i++)
         {
-            if (i == currentPetIndex)
+            if (i == currentPetIndex && pets[i].isUnlock)
             {
                 pets[i].gameObject.SetActive(true); 
             }

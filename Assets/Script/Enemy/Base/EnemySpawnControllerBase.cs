@@ -46,12 +46,13 @@ public abstract class EnemySpawnControllerBase : MonoBehaviour
     //}
     public virtual void Restart()
     {
+        
+        IGetCurentEnemy getCurentEnemy = (IGetCurentEnemy)spawnEnemy;
         if (GetCurrentEnemy() != null)
         {
-           GetCurrentEnemy().gameObject.SetActive(false);
+            GetCurrentEnemy().gameObject.SetActive(false);
         }
-        IGetCurentEnemy getCurentEnemy = (IGetCurentEnemy)spawnEnemy;
-         getCurentEnemy.Restart();
+        getCurentEnemy.Restart();
 
     }
     public virtual void Spawn()
