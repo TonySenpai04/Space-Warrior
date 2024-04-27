@@ -9,7 +9,8 @@ public abstract class Pet : MonoBehaviour
     public bool isUnlock;
     public int level;
     public string description;
-    public virtual void Start()
+    public bool isUse=false;
+   public virtual void Start()
     {
 
     }

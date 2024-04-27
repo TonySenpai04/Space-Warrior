@@ -10,6 +10,7 @@ public class PetSwitcheer : MonoBehaviour
     [SerializeField] private List<PetProfile> pets;
     [SerializeField] private int currentIndex = 0;
     [SerializeField] private PetProfile currentPetProfile;
+    [SerializeField] private PetManager petManager;
 
     [Space]
     [Header("UI Elements")]
@@ -17,6 +18,7 @@ public class PetSwitcheer : MonoBehaviour
     [SerializeField] private Button switchLeftButton;
     [SerializeField] private Button switchRightButton;
     [SerializeField] private Button upgradeButton;
+    [SerializeField] private Button useButton;
     [SerializeField] private Image lockImage;
     [SerializeField] private Text soulRequiredText;
 
@@ -33,8 +35,11 @@ public class PetSwitcheer : MonoBehaviour
     {
         public Pet pet;
         public Sprite characterAvt;
+  
 
     }
+
+    [Obsolete]
     private void Start()
     {
         if (pets.Count > 0)
@@ -44,13 +49,36 @@ public class PetSwitcheer : MonoBehaviour
             switchLeftButton.onClick.AddListener(SwitchPetLeft);
             switchRightButton.onClick.AddListener(SwitchPetRight);
             upgradeButton.onClick.AddListener(UpgradePet);
+            useButton.onClick.AddListener(UsePet);
         }
         else
         {
-            Debug.LogError("Không có nhân vật trong danh sách.");
+            Debug.LogError("Không có pet trong danh sách.");
         }
     }
+    public void UsePet()
+    {
+        if (!currentPetProfile.pet.isUse)
+        {
 
+            currentPetProfile.pet.isUse = true;
+            foreach (var pet in pets)
+            {
+                if (pet != currentPetProfile)
+                {
+                    pet.pet.isUse = false;
+                }
+            }
+            useButton.GetComponentInChildren<Text>().text = "UNUSE";
+        }
+        else
+        {
+            currentPetProfile.pet.isUse = false;
+            useButton.GetComponentInChildren<Text>().text = "USE";
+        }
+
+        petManager.ChangePetByPet(currentPetProfile.pet);
+    }
     private void SwitchPetLeft()
     {
         currentIndex--;
@@ -137,11 +165,22 @@ public class PetSwitcheer : MonoBehaviour
         {
             lockImage.enabled = true;
             upgradeButton.gameObject.SetActive(false);
+            useButton.gameObject.SetActive(false );
         }
         else
         {
            
             lockImage.enabled = false;
+            useButton.gameObject.SetActive(true);
+            if (!currentPetProfile.pet.isUse)
+            {
+
+                useButton.GetComponentInChildren<Text>().text = "USE";
+            }
+            else
+            {
+                useButton.GetComponentInChildren<Text>().text = "UNUSE";
+            }
             int currentLevel = currentPetProfile.pet.level;
             float upgradeSuccessRate;
             switch (currentLevel)

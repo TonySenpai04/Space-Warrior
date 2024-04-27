@@ -78,7 +78,8 @@ public class WeaponButtonSelect : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void OnPointerEnter(PointerEventData eventData)
     {
         string ammoText = weapon.IsInfiniteAmmo ? "Infinite" : weapon.AmmoCount.ToString();
-        gunInfoPanelText.text = "Damage Rate: " + weapon.DamageRate + "\nAmmo Count: " + ammoText + "\nFire Rate: " + weapon.FireRate;
+        gunInfoPanelText.text = "Level: " + weapon.level+"\nDamage Rate: " + weapon.DamageRate * 100 + "%" + "\nFire Rate: " + weapon.FireRate + "s" +
+            "\nType: " + weapon.weaponType + "\n";
         Vector3 buttonLocalPos = buttonRectTransform.localPosition;
         Vector3 panelPos = buttonLocalPos + new Vector3(buttonRectTransform.rect.width / 2f, buttonRectTransform.rect.height / 2f, 0f);
         gunInfoPanel.transform.localPosition = panelPos;

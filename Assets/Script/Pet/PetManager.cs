@@ -10,16 +10,13 @@ public class PetManager : MonoBehaviour
     {
         ShowCurrentPet();
     }
-    private void FixedUpdate()
-    {
-        ShowCurrentPet();
-    }
+
 
     private void ShowCurrentPet()
     {
         for (int i = 0; i < pets.Count; i++)
         {
-            if (i == currentPetIndex && pets[i].isUnlock)
+            if (i == currentPetIndex && pets[i].isUnlock && pets[i].isUse)
             {
                 pets[i].gameObject.SetActive(true); 
             }
@@ -29,8 +26,16 @@ public class PetManager : MonoBehaviour
             }
         }
     }
+    public void ChangePetByPet(Pet pet)
+    {
+        if (pet != null)
+        {
+            currentPetIndex = pets.IndexOf(pet);
+            ShowCurrentPet();
+        }
+    }
 
-    public void ChangePet(int newIndex)
+    public void ChangePetByIndex(int newIndex)
     {
         
         if (newIndex >= 0 && newIndex < pets.Count)

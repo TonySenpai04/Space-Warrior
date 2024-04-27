@@ -16,6 +16,7 @@ public class GenericWeapon : MonoBehaviour
     public int CurrentAmmo;
     public AudioClip audioShoot;
     public bool isUnlock;
+    public int level;
 
     // Hands
     public SpriteRenderer LeftHand;
@@ -43,7 +44,7 @@ public class GenericWeapon : MonoBehaviour
 
     [Header("Weapon Settings")]
 
-    [SerializeField][Range(1f, 3f)]  public float DamageRate;
+    [SerializeField][Range(1f, 5f)]  public float DamageRate;
     [SerializeField][Range(0.1f,1f)] public float FireRate;
 
 
@@ -78,6 +79,15 @@ public class GenericWeapon : MonoBehaviour
         spawnBeam = new SpawnBeam(poolProjectile, poolProjectile, FXSocket, this, weaponType);
 
         CurrentAmmo = AmmoCount;
+    }
+    public virtual void UpgradeWeapon()
+    {
+        if (!IsInfiniteAmmo)
+        {
+            AmmoCount += 10;
+
+        }
+        DamageRate += 0.1f;
     }
     public void OnEnable()
     {
