@@ -19,6 +19,14 @@ public abstract class WeaponControllerBase : MonoBehaviour
                 WeaponSlotCounter = 0;
         }
     }
+    public virtual void AutoShoting()
+    {
+       
+    }
+    public virtual bool GetAutoState()
+    {
+        return false;
+    }
     public virtual void Resstart()
     {
        

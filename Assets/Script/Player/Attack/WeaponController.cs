@@ -28,7 +28,7 @@ public class WeaponController : WeaponControllerBase
     [SerializeField] private bool isShoot;
     [SerializeField] private AudioClip shootAudio;
     [SerializeField] private AudioSource shootAudioSource;
-    public bool isTest=false;
+    public bool isAuto=false;
 
     public enum WeaponType
     {
@@ -78,6 +78,10 @@ public class WeaponController : WeaponControllerBase
             }
         }
     }
+    public override void AutoShoting()
+    {
+        isAuto =! isAuto;
+    }
     public override void StartShooting()
     {
         canShooting=true;
@@ -101,30 +105,14 @@ public class WeaponController : WeaponControllerBase
     }
     public override void Shoot()
     {
-        if (Input.GetKey(KeyCode.T))
-        {
-            isTest = true;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            isTest = false;
-            Time.timeScale = 1f;
-        }
-        if (isTest)
-        {
-            Time.timeScale = 10f;
-
-        }
         
-       
-
         if (canShooting)
         {
             nextFireTime += Time.deltaTime;
             if (nextFireTime >= fireRate)
             {
                 isShoot = true;
-                if (isTest)
+                if (isAuto)
                 {
                     Slots[EquippedSlot].Weapons[EquippedWeapon].Fire();
                     if (!GetCurrentWeapon().IsInfiniteAmmo && GetCurrentWeapon().CurrentAmmo <= 0)
@@ -132,6 +120,7 @@ public class WeaponController : WeaponControllerBase
 
                         return;
                     }
+                    shootAudioSource.PlayOneShot(Slots[EquippedSlot].Weapons[EquippedWeapon].audioShoot);
                     SetTrigger("FireTrigger");
                     nextFireTime = 0;
                 }
@@ -188,6 +177,11 @@ public class WeaponController : WeaponControllerBase
 
             }
         }
+        isAuto=false; 
+    }
+    public override bool GetAutoState()
+    {
+        return isAuto;
     }
     public void SetFloat(string var, float value)
     {
