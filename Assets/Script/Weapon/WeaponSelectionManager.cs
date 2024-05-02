@@ -15,6 +15,8 @@ public class WeaponSelectionManager : MonoBehaviour
     [SerializeField] private GameObject mapSelection;
     [SerializeField] private Button nextPageBtn;
     [SerializeField] private GameObject weaponSelection;
+    [SerializeField] private GameObject tipObject;
+    [SerializeField] private Canvas canvas;
     void Start()
     {
         nextPageBtn.onClick.AddListener(NextPage);
@@ -161,6 +163,12 @@ public class WeaponSelectionManager : MonoBehaviour
                 }
             }
             weaponController.SetWeapon(weaponSelections[0].slot, weaponSelections[0].weaponIndex);
+        }
+        else
+        {
+            GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+            tipObjectIns.GetComponentInChildren<Text>().text = "PLEASE CHOOSE A WEAPON!";
+            Destroy(tipObjectIns, 1f);
         }
         weaponController.ActivateWeapon(weaponSelections[0].slot, weaponSelections[0].weaponIndex);
     }

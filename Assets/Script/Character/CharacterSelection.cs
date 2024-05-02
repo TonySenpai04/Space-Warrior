@@ -13,6 +13,8 @@ public class CharacterSelection : MonoBehaviour
     [SerializeField] private GameObject charcterSelection;
     [SerializeField] private Button nextPageBtn;
     [SerializeField] private GameObject weaponSelection;
+    [SerializeField] private GameObject tipObject;
+    [SerializeField] private Canvas canvas;
 
     private void Start()
     {
@@ -59,6 +61,12 @@ public class CharacterSelection : MonoBehaviour
             this.weaponSelection.SetActive(true);
             this.charcterSelection.SetActive(false);
             SelectCharacter();
+        }
+        else
+        {
+            GameObject  tipObjectIns= Instantiate(tipObject, canvas.transform);
+            tipObjectIns.GetComponentInChildren<Text>().text = "PLEASE CHOOSE A CHARACTER!";
+            Destroy(tipObjectIns, 1f);
         }
     }
 
