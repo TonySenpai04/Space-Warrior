@@ -10,11 +10,28 @@ public class Minion:Enemy
     public override void  Awake()
      {
         base.Awake();
+        WalkAnim();
      }
     public override void Update()
     {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        if (currentHealth > 0)
+        {
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
+        }
         
+    }
+    public override void TakeDamage(float dam, Color color)
+    {
+        currentHealth -= dam;
+        healthUI.TakeDamageUI(dam, color);
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            DieAnim();
+
+        }
+
+
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {

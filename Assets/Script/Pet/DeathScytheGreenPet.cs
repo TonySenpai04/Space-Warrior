@@ -39,7 +39,7 @@ public class DeathScytheGreenPet : Pet
     public override string GetSkillDescription()
     {
         float damagePercentage = damageIncreasePerLevel;
-        return "Deals damage equal to " + damagePercentage.ToString("0") + "% of the character's damage";
+        return "Every second deals damage equal to " + damagePercentage.ToString("0") + "% of the character's damage";
     }
 
     public override void ActivateSkill()

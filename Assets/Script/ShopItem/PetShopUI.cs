@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class PetShopUI : MonoBehaviour
@@ -11,6 +12,8 @@ public class PetShopUI : MonoBehaviour
     [SerializeField] private Text descriptionTxt;
     [SerializeField] private Text priceTxt;
     [SerializeField] private Button buyBtn;
+    [SerializeField] private GameObject tipObject;
+    [SerializeField] private Canvas canvas;
     public void Start()
     {
         petItem = GetComponent<ShopItem>();
@@ -60,6 +63,14 @@ public class PetShopUI : MonoBehaviour
                 }
             }
             buyBtn.onClick.RemoveListener(Buy);
+        }
+        else
+        {
+            CurrencyManager.Currency currency = CurrencyManager.instance.Inventory.Find(item => item.type == petItem.priceType);
+            GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+            tipObjectIns.GetComponentInChildren<Text>().text = "YOU STILL LACK " + (int)(petItem.price - currency.quantity) + " " +
+                petItem.priceType.ToString().ToUpper() + " TO BUY";
+            Destroy(tipObjectIns, 1f);
         }
 
 

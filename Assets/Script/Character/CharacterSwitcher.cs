@@ -21,6 +21,8 @@ public class CharacterSwitcher : MonoBehaviour
     [SerializeField] private Image lockImage;
     [SerializeField] private Text coinRequiredText;
     [SerializeField] private Text gemRequiredText;
+    [SerializeField] private GameObject tipObject;
+    [SerializeField] private Canvas canvas;
 
     [Space]
     [Header("UI Atribute")]
@@ -119,10 +121,18 @@ public class CharacterSwitcher : MonoBehaviour
 
                 currentCharacterProfile.chacracterData.UpgradeCharacter(newLevel);
 
+                string tip = "Character upgraded successfully to level " + currentCharacterProfile.chacracterData.level;
+                GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+                tipObjectIns.GetComponentInChildren<Text>().text = tip.ToUpper();
+                Destroy(tipObjectIns, 1f);
                 Debug.Log("Character upgraded successfully to level " + currentCharacterProfile.chacracterData.level);
             }
             else
             {
+                string tip = "Charcter upgrade failded";
+                GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+                tipObjectIns.GetComponentInChildren<Text>().text = tip.ToUpper();
+                Destroy(tipObjectIns, 1f);
                 Debug.Log("Charcter upgrade failded");
             }
 
@@ -130,6 +140,11 @@ public class CharacterSwitcher : MonoBehaviour
         }
         else
         {
+            string tip = "Not enough resources or already at maximum level to upgrade character!";
+            GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+            tipObjectIns.GetComponentInChildren<Text>().text = tip.ToUpper();
+            Destroy(tipObjectIns, 1f);
+            
             Debug.Log("Not enough resources or already at maximum level to upgrade character!");
         }
     }

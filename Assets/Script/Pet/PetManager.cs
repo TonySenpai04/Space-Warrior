@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PetManager : MonoBehaviour
+public class PetManager : MonoBehaviour,IObserver
 {
     [SerializeField] private List<Pet> pets;
     [SerializeField] private int currentPetIndex;
@@ -18,7 +18,8 @@ public class PetManager : MonoBehaviour
         {
             if (i == currentPetIndex && pets[i].isUnlock && pets[i].isUse)
             {
-                pets[i].gameObject.SetActive(true); 
+                pets[i].gameObject.SetActive(true);
+                pets[i].ActivateSkill();
             }
             else
             {
@@ -48,6 +49,18 @@ public class PetManager : MonoBehaviour
             Debug.LogWarning("Invalid pet index!");
         }
     }
+    public void Restart()
+    {
+        foreach(Pet pet in pets)
+        {
+            pet.Restart();
+        }
+    }
 
- 
+   
+
+    public void UpdateObserver()
+    {
+        Restart();
+    }
 }

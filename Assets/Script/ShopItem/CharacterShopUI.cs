@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -19,6 +20,8 @@ public class CharacterShopUI : MonoBehaviour ,IPointerClickHandler, IPointerExit
     [SerializeField] private RectTransform panelRectTransform;
     [SerializeField] private Image characterAvtInfo;
     [SerializeField] private GameObject priceUI;
+    [SerializeField] private GameObject tipObject;
+    [SerializeField] private Canvas canvas;
     public void Start()
     {
         character = GetComponent<ShopItem>();
@@ -55,7 +58,14 @@ public class CharacterShopUI : MonoBehaviour ,IPointerClickHandler, IPointerExit
             priceUI.SetActive(false);
             buyBtn.onClick.RemoveListener(Buy);
         }
-
+        else
+        {
+            CurrencyManager.Currency currency = CurrencyManager.instance.Inventory.Find(item => item.type == character.priceType);
+            GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+            tipObjectIns.GetComponentInChildren<Text>().text = "YOU STILL LACK "+(int) (character.price-currency.quantity)+" "+
+                character.priceType.ToString().ToUpper()+ " TO BUY";
+            Destroy(tipObjectIns, 1f);
+        }
 
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 
@@ -15,6 +16,8 @@ public class WeaponShopItemUI : MonoBehaviour
     [SerializeField] private Text AmmoTxt;
     [SerializeField] private Button buyBtn;
     [SerializeField] private Sprite alreadyOwnedSprite;
+    [SerializeField] private GameObject tipObject;
+    [SerializeField] private Canvas canvas;
     public void Start()
     {
         weaponItem = GetComponent<ShopItem>();
@@ -67,7 +70,15 @@ public class WeaponShopItemUI : MonoBehaviour
             buyBtn.onClick.RemoveListener(Buy);
             buyBtn.GetComponent<Image>().sprite = alreadyOwnedSprite;
         }
-        
+        else
+        {
+            CurrencyManager.Currency currency = CurrencyManager.instance.Inventory.Find(item => item.type == weaponItem.priceType);
+            GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+            tipObjectIns.GetComponentInChildren<Text>().text = "YOU STILL LACK " + (int)(weaponItem.price - currency.quantity) + " " +
+                weaponItem.priceType.ToString().ToUpper() + " TO BUY";
+            Destroy(tipObjectIns, 1f);
+        }
+
 
     }
 

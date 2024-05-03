@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterShop : ShopItem,ICharacterShop
 {
     [SerializeField] private ChacracterData chacracterData;
+    
     public override void Awake()
     {
         this.itemName = chacracterData.characterName;

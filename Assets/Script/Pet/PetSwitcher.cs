@@ -21,6 +21,8 @@ public class PetSwitcheer : MonoBehaviour
     [SerializeField] private Button useButton;
     [SerializeField] private Image lockImage;
     [SerializeField] private Text soulRequiredText;
+    [SerializeField] private GameObject tipObject;
+    [SerializeField] private Canvas canvas;
 
     [Space]
     [Header("UI Atribute")]
@@ -139,11 +141,18 @@ public class PetSwitcheer : MonoBehaviour
                 currentPetProfile.pet.level++;
                 int newLevel = currentPetProfile.pet.level;
                 currentPetProfile.pet.Upgrade();
-
+                string tip = "Pet upgraded successfully to level " + currentPetProfile.pet.level;
+                GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+                tipObjectIns.GetComponentInChildren<Text>().text = tip.ToUpper();
+                Destroy(tipObjectIns, 1f);
                 Debug.Log("Pet upgraded successfully to level " + currentPetProfile.pet.level);
             }
             else
             {
+                string tip = "Pet upgrade failded";
+                GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+                tipObjectIns.GetComponentInChildren<Text>().text = tip.ToUpper();
+                Destroy(tipObjectIns, 1f);
                 Debug.Log("Pet upgrade failded");
             }
             UpdatePet();
@@ -152,7 +161,11 @@ public class PetSwitcheer : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not enough resources or already at maximum level to upgrade character!");
+            string tip = "Not enough resources or already at maximum level to upgrade pet!";
+            GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+            tipObjectIns.GetComponentInChildren<Text>().text = tip.ToUpper();
+            Destroy(tipObjectIns, 1f);
+            Debug.Log("Not enough resources or already at maximum level to upgrade pet!");
         }
     }
 

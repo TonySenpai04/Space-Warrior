@@ -19,6 +19,8 @@ public class WeaponSwitcher : MonoBehaviour
     [SerializeField] private Button upgradeButton;
     [SerializeField] private Image lockImage;
     [SerializeField] private Text coinRequiredText;
+    [SerializeField] private GameObject tipObject;
+    [SerializeField] private Canvas canvas;
 
 
     [Space]
@@ -112,11 +114,20 @@ public class WeaponSwitcher : MonoBehaviour
                 int newLevel = currentWeaponProfile.weaponData.level;
 
                 currentWeaponProfile.weaponData.UpgradeWeapon();
+                string tip = "Weapon upgraded successfully to level " + currentWeaponProfile.weaponData.level;
+                GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+                tipObjectIns.GetComponentInChildren<Text>().text = tip.ToUpper();
+                Destroy(tipObjectIns, 1f);
 
                 Debug.Log("Weapon upgraded successfully to level " + currentWeaponProfile.weaponData.level);
             }
             else
             {
+                string tip = "Weapon upgrade failded";
+                GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+                tipObjectIns.GetComponentInChildren<Text>().text = tip.ToUpper();
+                Destroy(tipObjectIns, 1f);
+
                 Debug.Log("Weapon upgrade failded");
             }
 
@@ -124,6 +135,10 @@ public class WeaponSwitcher : MonoBehaviour
         }
         else
         {
+            string tip = "Not enough resources or already at maximum level to upgrade weapon!";
+            GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+            tipObjectIns.GetComponentInChildren<Text>().text = tip.ToUpper();
+            Destroy(tipObjectIns, 1f);
             Debug.Log("Not enough resources or already at maximum level to upgrade weapon!");
         }
     }

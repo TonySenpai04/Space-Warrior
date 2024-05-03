@@ -26,4 +26,8 @@ public abstract class Pet : MonoBehaviour
     {
 
     }
+    public virtual void Restart()
+    {
+
+    }
 }

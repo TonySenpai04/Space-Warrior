@@ -11,6 +11,7 @@ public class RestartBtn : MonoBehaviour
     [SerializeField] private WeaponControllerBase weaponController;
     [SerializeField] private CharacterStats characterStats;
     [SerializeField] private SkillAbility skill;
+    [SerializeField] private PetManager petManager;
     void Start()
     {
         subject = new ConcreteSubject();
@@ -18,7 +19,7 @@ public class RestartBtn : MonoBehaviour
         subject.RegisterObserver(characterStats);
         subject.RegisterObserver(PlanetManager.instance.GetCurrentArea());
         subject.RegisterObserver(GridManager.instance.GetCurrentGrid());
-
+        subject.RegisterObserver(petManager);
         GetComponent<Button>().onClick.AddListener(Restart);
     }
 
