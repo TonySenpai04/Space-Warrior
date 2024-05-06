@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BottleHP : MonoBehaviour
+public class BottleHP : Bottle
 {
-    public int count;
     public CharacterStats characterStats;
     public Text text;
-    private void Start()
+    public override void Start()
     {
-        GetComponentInChildren<Button>().onClick.AddListener(Heal);
+       GetComponentInChildren<Button>().onClick.AddListener(Heal);
         text.text=count.ToString();
     }
     public void Heal()

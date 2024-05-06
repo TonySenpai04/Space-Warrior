@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BottleMP : MonoBehaviour
+public class BottleMP : Bottle
 {
-    public int count;
     public CharacterStats characterStats;
     public Text text;
-    private void Start()
+    public override  void Start()
     {
         GetComponentInChildren<Button>().onClick.AddListener(RestoreMana);
         text.text = count.ToString();
