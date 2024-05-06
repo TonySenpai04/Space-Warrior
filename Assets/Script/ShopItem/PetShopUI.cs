@@ -54,6 +54,9 @@ public class PetShopUI : MonoBehaviour
         if (petItem.isBuy)
         {
             buyBtn.GetComponentInChildren<Text>().text = "Already Owned";
+            GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+            tipObjectIns.GetComponentInChildren<Text>().text = "YOU GET " + petItem.itemName.ToUpper()+" PET";
+            Destroy(tipObjectIns, 1f);
             foreach (RectTransform child in buyBtn.GetComponent<RectTransform>())
             {
                 Image image = child.GetComponent<Image>();

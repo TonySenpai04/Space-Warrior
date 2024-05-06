@@ -55,6 +55,9 @@ public class CharacterShopUI : MonoBehaviour ,IPointerClickHandler, IPointerExit
         if (character.isBuy)
         {
             buyBtn.GetComponentInChildren<Text>().text = "Already Owned";
+            GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+            tipObjectIns.GetComponentInChildren<Text>().text = "YOU GET "+character.itemName.ToUpper();
+            Destroy(tipObjectIns, 1f);
             priceUI.SetActive(false);
             buyBtn.onClick.RemoveListener(Buy);
         }

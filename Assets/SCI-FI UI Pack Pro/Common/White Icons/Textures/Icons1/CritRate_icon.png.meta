@@ -176,7 +176,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CritRate_icon_0: 3623708691258633715
+      CritRate_icon_1: -9035532125016578406
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

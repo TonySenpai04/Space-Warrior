@@ -58,7 +58,11 @@ public class WeaponShopItemUI : MonoBehaviour
             weaponItem.Buy();
         if (weaponItem.isBuy)
         {
+            IWeaponItem weapon = (IWeaponItem)weaponItem;
             buyBtn.GetComponentInChildren<Text>().text = "Already Owned";
+            GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+            tipObjectIns.GetComponentInChildren<Text>().text = "YOU GET " + weapon.GetWeaponName().ToUpper();
+            Destroy(tipObjectIns, 1f);
             foreach (RectTransform child in buyBtn.GetComponent<RectTransform>())
             {
                 Image image = child.GetComponent<Image>();

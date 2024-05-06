@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class BottleItemShopUI : MonoBehaviour
@@ -36,6 +37,9 @@ public class BottleItemShopUI : MonoBehaviour
         if (bottletem.GetPrice()<= currency.quantity)
         {
             bottletem.Buy();
+            GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
+            tipObjectIns.GetComponentInChildren<Text>().text = "YOU GET " + bottletem.itemName.ToUpper();
+            Destroy(tipObjectIns, 1f);
         }
         else
         {
