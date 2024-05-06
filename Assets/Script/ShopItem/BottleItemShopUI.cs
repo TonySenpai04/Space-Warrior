@@ -38,7 +38,7 @@ public class BottleItemShopUI : MonoBehaviour
         {
             bottletem.Buy();
             GameObject tipObjectIns = Instantiate(tipObject, canvas.transform);
-            tipObjectIns.GetComponentInChildren<Text>().text = "YOU GET " + bottletem.itemName.ToUpper();
+            tipObjectIns.GetComponentInChildren<Text>().text = "SUCCESSFULLY PURCHASE" ;
             Destroy(tipObjectIns, 1f);
         }
         else
