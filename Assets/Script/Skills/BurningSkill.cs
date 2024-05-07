@@ -73,22 +73,22 @@ public class BurningSkill : SkillBase
     }
     private void MoveTargetIconWithMouse()
     {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = 10f;
-        targetIcon.transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
-        //if (Input.touchCount > 0)
-        //{
-        //    Touch touch = Input.GetTouch(0); // Lấy thông tin về ngón tay đầu tiên
+        //Vector3 mousePosition = Input.mousePosition;
+        //mousePosition.z = 10f;
+        //targetIcon.transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0); // Lấy thông tin về ngón tay đầu tiên
 
-        //    Vector3 touchPosition = touch.position;
-        //    touchPosition.z = 10f; // Đảm bảo rằng z không thay đổi khi chuyển đổi tọa độ
+            Vector3 touchPosition = touch.position;
+            touchPosition.z = 10f; // Đảm bảo rằng z không thay đổi khi chuyển đổi tọa độ
 
-        //    // Chuyển đổi tọa độ màn hình của ngón tay thành tọa độ thế giới
-        //    Vector3 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+            // Chuyển đổi tọa độ màn hình của ngón tay thành tọa độ thế giới
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
 
-        //    // Thiết lập vị trí của biểu tượng mục tiêu theo vị trí của ngón tay
-        //    targetIcon.transform.position = worldPosition;
-        //}
+            // Thiết lập vị trí của biểu tượng mục tiêu theo vị trí của ngón tay
+            targetIcon.transform.position = worldPosition;
+        }
     }
     private void ResumeGame()
     {
@@ -101,11 +101,11 @@ public class BurningSkill : SkillBase
 
     private void HandleBurningSkill()
     {
-        if (Input.GetMouseButtonDown(0) /*Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began*/ && isSelectingTarget)
+        if (/*Input.GetMouseButtonDown(0) */Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && isSelectingTarget)
         {
-            //Touch touch = Input.GetTouch(0);
-            //RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero);
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            Touch touch = Input.GetTouch(0);
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero);
+            //RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null)
             {
                 if (hit.collider.GetComponent<Enemy>())

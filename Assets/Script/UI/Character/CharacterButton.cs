@@ -37,7 +37,10 @@ public class CharacterButton : MonoBehaviour
             levelTxt.text = "";
         }
     }
-
+    private void FixedUpdate()
+    {
+        CheckCharacterUnlockStatus();
+    }
     public void SelectCharacter()
     {
         if (chacracterData.isUnlock)

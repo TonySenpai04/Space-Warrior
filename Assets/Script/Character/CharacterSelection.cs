@@ -43,6 +43,7 @@ public class CharacterSelection : MonoBehaviour
     public void SetCharacterData(ChacracterData characterData)
     {
         this.characterData = characterData;
+
     }
     // Phương thức được gọi khi nhấn nút "Select"
     public void SelectCharacter()
@@ -52,6 +53,7 @@ public class CharacterSelection : MonoBehaviour
         //avatar.SwitchCharacter(selectedCharacterIndex);
         characterStats.SetData(this.characterData);
         avatar.SetCharacter(selectedCharacterIndex);
+        Debug.Log(selectedCharacterIndex);
     }
 
     public void NextPage()
@@ -61,6 +63,7 @@ public class CharacterSelection : MonoBehaviour
             this.weaponSelection.SetActive(true);
             this.charcterSelection.SetActive(false);
             SelectCharacter();
+            avatar.SwitchCharacter();
         }
         else
         {

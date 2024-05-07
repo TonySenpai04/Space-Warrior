@@ -12,7 +12,7 @@ public class CharacterAvatar : MonoBehaviour
     public SpriteRenderer Body;
     public Image avatar;
     //
-    private WeaponController weaponController;
+   [SerializeField] private WeaponController weaponController;
 
     //
     [Serializable]
@@ -32,11 +32,10 @@ public class CharacterAvatar : MonoBehaviour
     private void Awake()
     {
         InitializeVariables();
-        SwitchCharacter();
+        //SwitchCharacter();
     }
     public void InitializeVariables()
     {
-        weaponController = FindAnyObjectByType<WeaponController>();
         if (RandomizeAtStart) CharacterId = UnityEngine.Random.Range(0, 6);
         SwitchCharacter(CharacterId);
 
@@ -44,6 +43,7 @@ public class CharacterAvatar : MonoBehaviour
     public void SetCharacter(int index)
     {
         this.CharacterId = index;
+       
     }
     public void SwitchCharacter()
     {

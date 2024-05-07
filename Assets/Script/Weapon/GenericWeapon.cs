@@ -85,7 +85,7 @@ public class GenericWeapon : MonoBehaviour
         if (!IsInfiniteAmmo)
         {
             AmmoCount += 10;
-
+            CurrentAmmo = AmmoCount;
         }
         DamageRate += 0.1f;
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CharacterShopUI : MonoBehaviour ,IPointerClickHandler, IPointerExitHandler
+public class CharacterShopUI : MonoBehaviour ,IPointerClickHandler, IPointerExitHandler, IPointerDownHandler
 {
     [SerializeField] private Text characterNameTxt;
     [SerializeField] private Image characterIcon;
@@ -80,6 +80,25 @@ public class CharacterShopUI : MonoBehaviour ,IPointerClickHandler, IPointerExit
     }
 
     public void OnPointerClick(PointerEventData eventData)
+    {
+        ICharacterShop characterShop = (ICharacterShop)character;
+        characterHealthText.text = characterShop.GetChacracterData().health.ToString();
+        characterManaText.text = characterShop.GetChacracterData().mana.ToString();
+        characterDamText.text = characterShop.GetChacracterData().damage.ToString();
+        characterCritText.text = characterShop.GetChacracterData().critRate.ToString();
+        characterAvtInfo.sprite = characterIcon.sprite;
+        Vector3 buttonLocalPos = panelRectTransform.localPosition;
+        Vector3 panelPos = buttonLocalPos + new Vector3(panelRectTransform.rect.width, -panelRectTransform.rect.height, 0f);
+        characterInfoPanel.transform.localPosition = panelPos;
+        if (characterInfoPanel.GetComponent<RectTransform>().anchoredPosition.x >= 69)
+        {
+            characterInfoPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3(-2,
+                characterInfoPanel.GetComponent<RectTransform>().anchoredPosition.y);
+        }
+        characterInfoPanel.SetActive(true);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
     {
         ICharacterShop characterShop = (ICharacterShop)character;
         characterHealthText.text = characterShop.GetChacracterData().health.ToString();
