@@ -28,7 +28,7 @@ public class Move : IMove, IStopMove,ICanMove
         if (isMove)
         {
             rigidbody.velocity = new Vector3(speed * Time.deltaTime * 1, rigidbody.velocity.y, 0);
-          //  audioSource.enabled=true;
+            audioSource.enabled=true;
         }
     }
     
@@ -36,7 +36,7 @@ public class Move : IMove, IStopMove,ICanMove
     {
         isMove = false;
         rigidbody.velocity = Vector2.zero;
-       // audioSource.enabled=false;
+        audioSource.enabled=false;
     }
 
     public void CanMove()

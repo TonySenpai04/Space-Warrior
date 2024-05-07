@@ -5409,9 +5409,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList:
-  - {fileID: 7782746300635471, guid: acf16accdf6a60845a097b2022b15a61, type: 3}
-  - {fileID: -6392110908979428449, guid: eee589e3ad9d59b44b9ddac402802521, type: 3}
-  - {fileID: -3972795983043725926, guid: b4b3b86d3c5879544a8d0d7293f1025c, type: 3}
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
 --- !u!114 &-3500802738428934018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5428,6 +5431,7 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 2
   floatingTextPrefab: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
+  isDead: 0
   offsetFloatingtext: {x: 0, y: 3, z: 0}
 --- !u!50 &-8911331184414373278
 Rigidbody2D:
@@ -5476,9 +5480,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   body: {fileID: 5253516337278794336}
   enemyType: 1
-  levelController: {fileID: 0}
   healthUI: {fileID: 0}
-  health: 300
+  health: 2500
   currentHealth: 0
   baseExperience: 5
   experienceIncreaseRate: 1.1
@@ -5533,6 +5536,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   floatingText: {fileID: 1042950545455429407, guid: 7fdc1c29604e5c941be6681df67d95c4, type: 3}
   offSet: {x: 0, y: 0, z: 0}
+  hit: {fileID: 0}
 --- !u!1 &3574356266832917644
 GameObject:
   m_ObjectHideFlags: 0

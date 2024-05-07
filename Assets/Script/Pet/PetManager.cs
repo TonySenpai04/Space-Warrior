@@ -19,7 +19,7 @@ public class PetManager : MonoBehaviour,IObserver
             if (i == currentPetIndex && pets[i].isUnlock && pets[i].isUse)
             {
                 pets[i].gameObject.SetActive(true);
-                pets[i].ActivateSkill();
+                //pets[i].ActivateSkill();
             }
             else
             {
