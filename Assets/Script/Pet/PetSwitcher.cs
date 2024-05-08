@@ -170,9 +170,12 @@ public class PetSwitcheer : MonoBehaviour
     }
 
 
-    private void UpdatePet()
+    public void UpdatePet()
     {
-
+        if(currentPetProfile.pet == null)
+        {
+            currentPetProfile = pets[0];
+        }
         petIcon.sprite = currentPetProfile.characterAvt;
         if (!currentPetProfile.pet.isUnlock)
         {
@@ -236,4 +239,5 @@ public class PetSwitcheer : MonoBehaviour
         descriptionText.text = currentPetProfile.pet.GetSkillDescription();
 
     }
+
 }

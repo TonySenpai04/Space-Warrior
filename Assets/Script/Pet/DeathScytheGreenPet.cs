@@ -17,6 +17,7 @@ public class DeathScytheGreenPet : Pet
     {
         description=GetSkillDescription();
         InitializeVariables();
+        
     }
     public void InitializeVariables()
     {
@@ -90,5 +91,10 @@ public class DeathScytheGreenPet : Pet
     public override void Upgrade()
     {
         damageIncreasePerLevel += 1;
+    }
+    public override void UpdateSkillAfterLoadData()
+    {
+        damageIncreasePerLevel = damageIncreasePerLevel + level - 1;
+        GetSkillDescription();
     }
 }

@@ -8,8 +8,10 @@ public class CatPet : Pet
     [SerializeField] private float additionalCritRate;
     public override void Start()
     {
+        
         description = GetSkillDescription();
         ActivateSkill();
+        
     }
     public override void ActivateSkill()
     {
@@ -24,5 +26,10 @@ public class CatPet : Pet
     public override void Upgrade()
     {
         additionalCritRate += 3;
+    }
+    public override void UpdateSkillAfterLoadData()
+    {
+        additionalCritRate += (level - 1) * 3;
+        GetSkillDescription();
     }
 }

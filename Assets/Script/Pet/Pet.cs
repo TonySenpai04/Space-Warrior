@@ -30,4 +30,8 @@ public abstract class Pet : MonoBehaviour
     {
 
     }
+    public virtual void UpdateSkillAfterLoadData()
+    {
+
+    }
 }

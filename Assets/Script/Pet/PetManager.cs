@@ -1,11 +1,17 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class PetManager : MonoBehaviour,IObserver
 {
     [SerializeField] private List<Pet> pets;
     [SerializeField] private int currentPetIndex;
+    //private const string UnlockKeyPrefix = "PetUnlock_";
+    //private const string UseKeyPrefix = "PetUse_";
+    //private const string LevelKeyPrefix = "PetLevel_";
+    //private const string savePath = "pets.json";
+
     private void Start()
     {
         ShowCurrentPet();
@@ -63,4 +69,6 @@ public class PetManager : MonoBehaviour,IObserver
     {
         Restart();
     }
+   
+
 }

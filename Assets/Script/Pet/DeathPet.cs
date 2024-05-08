@@ -12,7 +12,10 @@ public class DeathPet : Pet
     [SerializeField] private float force;
     [SerializeField] private Image image;
     [SerializeField] private Text ammunitiontxt;
-
+    public override void Start()
+    {
+        maxAmmunition = maxAmmunition + level - 1;
+    }
     public override void ActivateSkill()
     {
         if (ammunition >= 1)
@@ -55,5 +58,10 @@ public class DeathPet : Pet
     public override void Upgrade()
     {
         maxAmmunition++;
+    }
+    public override void UpdateSkillAfterLoadData()
+    {
+        maxAmmunition = maxAmmunition + level - 1;
+        GetSkillDescription();
     }
 }
