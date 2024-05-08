@@ -10,6 +10,10 @@ public abstract class Bottle:MonoBehaviour
     {
       
     }
+    public virtual void Update()
+    {
+
+    }
     
 
 }

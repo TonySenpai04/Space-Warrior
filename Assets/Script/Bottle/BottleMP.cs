@@ -13,6 +13,10 @@ public class BottleMP : Bottle
         GetComponentInChildren<Button>().onClick.AddListener(RestoreMana);
         text.text = count.ToString();
     }
+    public override void Update()
+    {
+        text.text = count.ToString();
+    }
     public void RestoreMana()
     {
         if (count > 0)

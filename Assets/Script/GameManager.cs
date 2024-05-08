@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,6 +26,11 @@ public class GameManager : MonoBehaviour
     }
     public void OnApplicationQuit()
     {
+        
+
+    }
+    public void SaveGame()
+    {
         weaponData.SaveData();
         currencyManager.SaveData();
         petData.SaveData();
@@ -34,7 +40,20 @@ public class GameManager : MonoBehaviour
         {
             planet.SaveAreaStates();
         }
-
+    }
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus)
+        {
+            SaveGame();
+        }
+    }
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            SaveGame();
+        }
     }
     public void QuitGame()
     {

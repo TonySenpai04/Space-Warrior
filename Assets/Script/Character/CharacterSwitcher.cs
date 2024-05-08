@@ -80,8 +80,9 @@ public class CharacterSwitcher : MonoBehaviour
     }
 
     [Obsolete]
-    private void UpgradeCharacter()
+    public void UpgradeCharacter()
     {
+        
         int currentLevel = currentCharacterProfile.chacracterData.level;
         int requiredCoin = 50 * currentLevel;
         int requiredGem = 10 * currentLevel;
@@ -150,9 +151,12 @@ public class CharacterSwitcher : MonoBehaviour
     }
 
 
-    private void UpdateCharacter()
+    public void UpdateCharacter()
     {
-
+        if (currentCharacterProfile.chacracterData == null)
+        {
+            currentCharacterProfile = characters[0];
+        }
         characterIcon.sprite = currentCharacterProfile.characterAvt;
         if (!currentCharacterProfile.chacracterData.isUnlock)
         {

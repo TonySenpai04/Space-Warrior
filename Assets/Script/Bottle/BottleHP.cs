@@ -15,6 +15,10 @@ public class BottleHP : Bottle
        
    
     }
+    public override void Update()
+    {
+        text.text = count.ToString();
+    }
     public void Heal()
     {
         if (count > 0)

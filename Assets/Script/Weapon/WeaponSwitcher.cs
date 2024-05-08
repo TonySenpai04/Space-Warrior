@@ -43,7 +43,7 @@ public class WeaponSwitcher : MonoBehaviour
         if (weapons.Count > 0)
         {
             currentWeaponProfile = weapons[currentIndex];
-            UpdateCharacter();
+            UpdateWeapon();
             switchLeftButton.onClick.AddListener(SwitchWeaponLeft);
             switchRightButton.onClick.AddListener(SwitchWeaponRight);
             upgradeButton.onClick.AddListener(UpgradeWeapon);
@@ -62,7 +62,7 @@ public class WeaponSwitcher : MonoBehaviour
             currentIndex = weapons.Count - 1;
         }
         currentWeaponProfile = weapons[currentIndex];
-        UpdateCharacter();
+        UpdateWeapon();
     }
 
     private void SwitchWeaponRight()
@@ -73,11 +73,11 @@ public class WeaponSwitcher : MonoBehaviour
             currentIndex = 0;
         }
         currentWeaponProfile = weapons[currentIndex];
-        UpdateCharacter();
+        UpdateWeapon();
     }
 
     [Obsolete]
-    private void UpgradeWeapon()
+    public void UpgradeWeapon()
     {
         int currentLevel = currentWeaponProfile.weaponData.level;
         int requiredCoin = 50 * currentLevel;
@@ -131,7 +131,7 @@ public class WeaponSwitcher : MonoBehaviour
                 Debug.Log("Weapon upgrade failded");
             }
 
-            UpdateCharacter();
+            UpdateWeapon();
         }
         else
         {
@@ -144,9 +144,12 @@ public class WeaponSwitcher : MonoBehaviour
     }
 
 
-    private void UpdateCharacter()
+    public void UpdateWeapon()
     {
-
+        if (currentWeaponProfile.weaponData == null)
+        {
+            currentWeaponProfile = weapons[0];
+        }
         weaponIcon.sprite = currentWeaponProfile.weaponAvt;
         if (!currentWeaponProfile.weaponData.isUnlock)
         {

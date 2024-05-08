@@ -28,6 +28,7 @@ public abstract class Planet : MonoBehaviour
         //    InitializeAreas();
         
     }
+    
     public virtual void SaveAreaStates()
     {
         for (int i = 0; i < areas.Count; i++)
