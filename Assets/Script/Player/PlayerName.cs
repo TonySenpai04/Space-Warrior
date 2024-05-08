@@ -9,6 +9,11 @@ public class PlayerName : MonoBehaviour
     [SerializeField] private Text characterNameText;
     [SerializeField] private Button btnCheck;
     private string[] randomNames = { "Alice", "Bob", "Charlie", "David", "Eva", "Frank", "Grace", "Henry" };
+    private void Awake()
+    {
+        LoadPlayerName();
+    }
+
     private void Start()
     {
         btnCheck.onClick.AddListener(CheckName);
@@ -24,6 +29,7 @@ public class PlayerName : MonoBehaviour
         if (!string.IsNullOrEmpty(newName))
         {
             characterNameText.text = newName;
+            SavePlayerName();
             this.gameObject.SetActive(false);
         }
         else
@@ -35,5 +41,35 @@ public class PlayerName : MonoBehaviour
     {
         int randomIndex = Random.Range(0, randomNames.Length);
         nameInputField.text = randomNames[randomIndex];
+    }
+    private void SavePlayerName()
+    {
+        PlayerPrefs.SetString("PlayerName", nameInputField.text);
+        PlayerPrefs.SetInt("isSavePlayerName", 1);
+        PlayerPrefs.Save();
+ 
+    }
+
+    private void LoadPlayerName()
+    {
+        if (PlayerPrefs.GetInt("isSavePlayerName", 0) == 1)
+        {
+            string savedName = PlayerPrefs.GetString("PlayerName");
+            if (!string.IsNullOrEmpty(savedName))
+            {
+                characterNameText.text = savedName;
+                nameInputField.text = savedName;
+                this.gameObject.SetActive(false);
+            }
+            else
+            {
+                this.gameObject.SetActive(true);
+            }
+
+        }
+    }
+    private void OnApplicationQuit()
+    {
+        SavePlayerName();
     }
 }

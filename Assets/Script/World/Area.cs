@@ -13,12 +13,13 @@ public class Area : MonoBehaviour, IObserver
     [SerializeField] private GameObject bossNotification;
     [SerializeField] private bool isShowbossNotification = true;
     [SerializeField] private bool isShowVictoryPanel = true;
-    [SerializeField] private bool isUnlock;
+    [SerializeField] public bool isUnlocked;
     [SerializeField] private Victory victoryPanel;
     [SerializeField] public bool isRun=false;
     [SerializeField] private Timer timer;
-    [SerializeField] private int stars;
+    [SerializeField] public int stars;
     [SerializeField] private Planet planet;
+    public bool isCompleted;
 
     public virtual void Start()
     {
@@ -30,11 +31,11 @@ public class Area : MonoBehaviour, IObserver
     }
     public bool GetUnlock()
     {
-        return this.isUnlock;
+        return this.isUnlocked;
     }
     public void Unlock()
     {
-        this.isUnlock = true;
+        this.isUnlocked = true;
     }
     public bool IsFinish()
     {
@@ -58,7 +59,7 @@ public class Area : MonoBehaviour, IObserver
     public  void FixedUpdate()
     {
         
-            if (isUnlock && isRun)
+            if (isUnlocked && isRun)
             {
                 if (!isFinish)
                 {
@@ -89,11 +90,13 @@ public class Area : MonoBehaviour, IObserver
                     if (isShowVictoryPanel)
                     {
                         victoryPanel.gameObject.SetActive(true);
-
-
-                    stars = timer.GetTimer() < 600 ? 3 : timer.GetTimer() < 900 ? 2 : 1;
-
-                    victoryPanel.SetStar(stars);
+                    if (!isCompleted)
+                    {
+                        stars = timer.GetTimer() < 600 ? 3 : timer.GetTimer() < 900 ? 2 : 1;
+                        victoryPanel.SetStar(stars);
+                    }
+                    isCompleted = true;
+                       
 
                     }
 

@@ -9,8 +9,11 @@ public class BottleHP : Bottle
     public Text text;
     public override void Start()
     {
-       GetComponentInChildren<Button>().onClick.AddListener(Heal);
+        base.Start();
+        GetComponentInChildren<Button>().onClick.AddListener(Heal);
         text.text=count.ToString();
+       
+   
     }
     public void Heal()
     {

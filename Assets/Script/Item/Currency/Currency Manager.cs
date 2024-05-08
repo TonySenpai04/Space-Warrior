@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class CurrencyManager : MonoBehaviour
 {
@@ -21,7 +23,10 @@ public class CurrencyManager : MonoBehaviour
    [SerializeField] private List<Currency > inventory ;
 
     public List<Currency > Inventory { get => inventory;  }
-
+    private void Awake()
+    {
+        LoadData();
+    }
     void Start()
     {
         instance = this;
@@ -69,5 +74,38 @@ public class CurrencyManager : MonoBehaviour
         }
         return 0; // Trả về 0 nếu không tìm thấy loại tiền tệ
     }
+    public void SaveData()
+    {
+        foreach (Currency currency in Inventory)
+        {
+            string keyPrefix = currency.type.ToString();
+            PlayerPrefs.SetInt(keyPrefix , currency.quantity);
+        }
+        PlayerPrefs.SetInt("isSaveCurrency", 1);
+        PlayerPrefs.Save();
+    }
+    public void LoadData()
+    {
+        if (PlayerPrefs.GetInt("isSaveCurrency", 0) == 1)
+        {
+            for (int i = 0; i < Inventory.Count; i++)
+            {
+                string keyPrefix = Inventory[i].type.ToString();
+                int quantity = PlayerPrefs.GetInt(keyPrefix, 1);
+                int index = Inventory.FindIndex(item => item.type.ToString() == keyPrefix);
+                if (index != -1)
+                {
 
+                    Currency existingItem = Inventory[index];
+                    existingItem.quantity = quantity;
+                    Inventory[index] = existingItem;
+                }
+
+            }
+        }
+    }
+    private void OnApplicationQuit()
+    {
+        SaveData();
+    }
 }

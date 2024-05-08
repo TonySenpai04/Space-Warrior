@@ -8,7 +8,8 @@ public abstract class Bottle:MonoBehaviour
     public string bottleName;
     public virtual void Start()
     {
-
+      
     }
-   
+    
+
 }

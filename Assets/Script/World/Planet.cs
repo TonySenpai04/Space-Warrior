@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,12 +13,57 @@ public abstract class Planet : MonoBehaviour
     [SerializeField] protected WeaponControllerBase weaponController;
     [SerializeField] protected CharacterStats characterStats;
     [SerializeField] protected CustomAreaController areaController;
+    [SerializeField] protected string planetName;
+    public virtual void Awake()
+    {
+        if (areas == null)
+        {
+            InitializeAreas();
+        }
+        LoadAreaStates();
+    }
     public virtual void Start()
     {
-        if(areas == null)
-            InitializeAreas();
+        //if(areas == null)
+        //    InitializeAreas();
         
     }
+    public virtual void SaveAreaStates()
+    {
+        for (int i = 0; i < areas.Count; i++)
+        {
+            
+            string keyPrefix =planetName+"-"+"Area_" + i + "_";
+            PlayerPrefs.SetInt(keyPrefix + "Unlocked", areas[i].isUnlocked ? 1 : 0);
+            PlayerPrefs.SetInt(keyPrefix + "Completed", areas[i].isCompleted ? 1 : 0);
+            PlayerPrefs.SetInt(keyPrefix + "StarsEarned", areas[i].stars);
+        }
+        PlayerPrefs.SetInt("isSave"+ planetName, 1);
+        PlayerPrefs.Save();
+    }
+    public virtual void OnApplicationQuit()
+    {
+        SaveAreaStates();
+    }
+    public virtual void LoadAreaStates()
+    {
+        if (PlayerPrefs.GetInt("isSave" + planetName, 0) == 1)
+        {
+            for (int i = 0; i < areas.Count; i++)
+            {
+
+                string keyPrefix = planetName + "-" + "Area_" + i + "_";
+                bool isUnlocked = PlayerPrefs.GetInt(keyPrefix + "Unlocked", 0) == 1;
+                bool isCompleted = PlayerPrefs.GetInt(keyPrefix + "Completed", 0) == 1;
+                int starsEarned = PlayerPrefs.GetInt(keyPrefix + "StarsEarned", 0);
+                areas[i].isUnlocked = isUnlocked;
+                areas[i].isCompleted = isCompleted;
+                areas[i].stars = starsEarned;
+
+            }
+        }
+    }
+
     public Area GetCurrentArea()
     {
         return areas[index];
@@ -42,6 +88,8 @@ public abstract class Planet : MonoBehaviour
             this.areas.Add(area);
         }
         
+
+
     }
     public void SetActiveArea(int index)
     {
@@ -66,6 +114,7 @@ public abstract class Planet : MonoBehaviour
     }
     public void UnlockNextArea()
     {
+
         if (areas[index].IsFinish())
         {
             areas[index].isRun = false;
@@ -97,6 +146,15 @@ public abstract class Planet : MonoBehaviour
     }
     public virtual void Update()
     {
+        for (int i = 0; i < areas.Count; i++)
+        {
 
+            if (areas[i].isCompleted && i < areas.Count - 1)
+            {
+                areas[++i].Unlock();
+                Debug.Log("Unlocking next area: " + (i ));
+                break;
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ public class BottleMP : Bottle
     public Text text;
     public override  void Start()
     {
+        base.Start();
         GetComponentInChildren<Button>().onClick.AddListener(RestoreMana);
         text.text = count.ToString();
     }

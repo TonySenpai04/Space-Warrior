@@ -59,6 +59,10 @@ public class CustomArea  : MonoBehaviour
             SetStars();
 
         }
+        else
+        {
+            btnLock.gameObject.SetActive(true);
+        }
     }
     public void SetStars()
     {
